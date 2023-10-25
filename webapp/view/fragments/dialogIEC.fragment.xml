@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="IEC Branch Code" class="sapUiPopupWithPadding"
+		items="{path: 'IECode>/results',sorter:{path:'iecbnchcod',ascending: true}}" confirm="_handleCloseIEC" cancel="_handleCloseIEC"
+		liveChange="_handleSearchIEC">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{IECode>iecbnchcod}" description="{IECode>city2}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

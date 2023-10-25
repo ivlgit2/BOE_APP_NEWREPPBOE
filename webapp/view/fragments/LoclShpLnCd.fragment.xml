@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Local Shipping Line"
+		class="sapUiPopupWithPadding"
+		
+		items="{path:'BOEDOCList>/xBRIxI_SHIPPING_LINE',sorter:{path:'lifnr'}}"
+		liveChange="_handleValueHelpSearch_LnCd"
+		confirm="_handleValueHelpClose_Port"
+		cancel="_handleValueHelpClose_Port">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{BOEDOCList>lifnr}"
+			description="{BOEDOCList>name1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

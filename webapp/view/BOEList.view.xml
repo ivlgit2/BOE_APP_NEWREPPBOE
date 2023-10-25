@@ -1,0 +1,539 @@
+<mvc:View controllerName="EXIM_IMPNBOE.controller.BOEList" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified" xmlns:t="sap.ui.table" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" class="clsbackground" xmlns:ux="sap.uxap">
+	<Page floatingFooter="true">
+		<customHeader>
+			<Bar>
+				<contentLeft></contentLeft>
+				<contentMiddle>
+					<Label text="{i18n>CLINpage_NNDOnumbersPgTitle}"/>
+				</contentMiddle>
+				<contentRight></contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<l:VerticalLayout width="100%" class="filterbarBackgroundStyle">
+				<fb:FilterBar reset="onReset" search="onSearch" header="" class="FilterBarClass" showRestoreButton="true" showClearButton="true"
+					clear="clearFilter">
+					<fb:filterItems>
+						<!--<fb:FilterItem name="FilterMode" id="FilterMode"-->
+						<!--	label="Mode">-->
+						<!--	<fb:control>-->
+						<!--		<ComboBox  id="idMode" -->
+						<!--			validationError="handleValidationStringError"-->
+						<!--			validationSuccess="handleValidationSuccess" change="OnChangeMode">-->
+						<!--			<items>-->
+						<!--<core:Item key="C" text="Create" />-->
+						<!--				<core:Item key="D" text="Change/Display" />-->
+						<!--			</items>-->
+						<!--		</ComboBox>-->
+						<!--	</fb:control>-->
+						<!--</fb:FilterItem>-->
+						<fb:FilterItem name="BoeTypefilter" label="BOE Type" id="BoeTypefilter" visible="true" labelTooltip="BOE Type">
+							<fb:control>
+								<ComboBox id="idBOEType" placeholder="BOE Type" change="OnChangeCategory">
+									<items>
+										<core:Item key="W" text="Home Consumption"/>
+										<core:Item key="Y" text="Into Bond"/>
+										<!--<core:Item key="T" text="Transfer Bond" />-->
+										<core:Item key="E" text="Ex Bond"/>
+										<core:Item key="B" text="Bond to Bond"/>
+										<!--<core:Item key="E" text="Ex Bond"/>-->
+									</items>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="B" label="BOE Sub Category" visible="false" labelTooltip="BOE Sub Category" id="BoeSubCatergoryfilter">
+							<fb:control>
+								<ComboBox id="IdSubCategory" items="{subcategory>/results}" enabled="false" change="OnChangeSubCategory">
+									<items>
+										<core:Item key="{subcategory>key}" text="{subcategory>text}"/>
+									</items>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="IddocNofromfilter" label="BOE No. From" id="IddocNofromfilter" visible="false">
+							<fb:control>
+								<Input enabled="false" id="idNNDOnoFrom" type="Text" placeholder="Ref doc. no from.." showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleNNDOValueHelpFrom" suggest="OnDocNoSuggest" suggestionItemSelected="suggestionItemSelected" valueLiveUpdate="true"
+									maxLength="10">
+									<!--<suggestionItems>-->
+									<!--	<core:ListItem key="{NNDOnosearchHelp>Docnr}"-->
+									<!--		text="{NNDOnosearchHelp>Docnr}" additionalText="{reqNo}" />-->
+									<!--</suggestionItems>-->
+								</Input>
+								<!-- <Input id="idLCreqnoFrom" /> -->
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="IddocnoTofilter" label="BOE No. To" id="IddocnoTofilter" visible="false">
+							<fb:control>
+								<Input enabled="false" id="idNNDOnoTo" type="Text" placeholder="Ref doc. no to.." showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleNNDOValueHelpTo" suggest="OnDocNoSuggest" suggestionItemSelected="suggestionItemSelected" valueLiveUpdate="true"
+									maxLength="10">
+									<!--<suggestionItems>-->
+									<!--	<core:ListItem key="{NNDOnosearchHelp>Docnr}"-->
+									<!--		text="{NNDOnosearchHelp>Docnr}" additionalText="{NNDOnosearchHelp>Docnr}" />-->
+									<!--</suggestionItems>-->
+								</Input>
+								<!-- <Input id="idLCreqnoTo" /> -->
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="idVendorfilter" label="CHA Code" labelTooltip="CHA Code" id="idVendorfilter" visible="false">
+							<fb:control>
+								<!--handleVendorValueHelp-->
+								<Input enabled="false" id="Vendor" type="Text" placeholder="Enter CHA Code..." showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleValueHelp_CHA" suggestionItems="{VendorNosearchHelp>/results}" valueHelpOnly="true"
+									suggestionItemSelected="suggestionItemSelected" valueLiveUpdate="true" maxLength="10">
+									<suggestionItems>
+										<core:ListItem key="{VendorNosearchHelp>lifnr}" text="{VendorNosearchHelp>lifnr}" additionalText="{VendorNosearchHelp>lifnr}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="idCmpfilter" label="Company Code" labelTooltip="Company Code" id="idCmpfilter" visible="false">
+							<fb:control>
+								<Input id="idNNDOreqCMPCDname" type="Text" placeholder="Enter Company Code..." showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleValueHelp_No" suggestionItems="{CmnModel>/company_code}" suggestionItemSelected="suggestionItemSelected"
+									valueLiveUpdate="true" maxLength="10">
+									<suggestionItems>
+										<core:ListItem text="{CmnModel>bukrs}" additionalText="{CmnModel>bukrs}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="F" label="BOE Date" id="Idclindatefilter" visible="false">
+							<fb:control>
+								<DateRangeSelection enabled="false" id="idNNDODaterange" dateValue="{path:'/dateValueDRS2'}" secondDateValue="{path:'/secondDateValueDRS2'}"
+									minDate="{path:'/dateMinDRS2'}" maxDate="{path:'/dateMaxDRS2'}" change="handleChange" displayFormat="{i18n>BOEDateFormat}"/>
+							</fb:control>
+						</fb:FilterItem>
+							<fb:FilterItem name="cusstomsboeno" label="Customs BOE No" id="IdBOEnofilter" visible="false">
+							<fb:control>
+								<Input enabled="false" id="idCustBOEno" type="Text" placeholder="Customs BOE. no .." showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleCustBoEValueHelp" suggest="OnCustBOENoSuggest" suggestionItemSelected="suggestionItemSelected" valueLiveUpdate="true"
+									maxLength="10">
+									<!--<suggestionItems>-->
+									<!--	<core:ListItem key="{NNDOnosearchHelp>Docnr}"-->
+									<!--		text="{NNDOnosearchHelp>Docnr}" additionalText="{reqNo}" />-->
+									<!--</suggestionItems>-->
+								</Input>
+								<!-- <Input id="idLCreqnoFrom" /> -->
+							</fb:control>
+						</fb:FilterItem>
+						
+						<!--changed by Aiswarya-->
+						<fb:FilterItem name="GG" label="Customs BOE Date" id="CustomsDateFilter" visible="false">
+							<fb:control>
+				          <DateRangeSelection enabled="false" id="idCustomsDateRange" dateValue="{path:'/dateValueDRS2'}" secondDateValue="{path:'/secondDateValueDRS2'}"
+									minDate="{path:'/dateMinDRS2'}" maxDate="{path:'/dateMaxDRS2'}" change="handleChange" displayFormat="{i18n>BOEDateFormat}"/>
+									<!--DatePicker id="impdpdat2" change="handleChange" value="{path: 'boeHeaderdetails>/impdpdat', formatter: 'BOE.Formatter.formatDateandTime' }"
+							valueFormat="dd/MM/yyyy" displayFormat="dd/MM/yyyy" enabled="{= ${boeHeaderdetails>/doc_stat} >= '25'?false:${State>/enable}}"/>-->
+							</fb:control>
+						</fb:FilterItem>
+					<!--/***changed by Aiswarya***/-->
+						<fb:FilterItem name="PON" label="PO Number" id="Idponofilter" visibleInFilterBar="false">
+							<fb:control>
+								<Input id="idPONo" type="Text" placeholder="Enter PO Number..." showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleValueHelp_No" suggestionItems="{BOEDOCList>/xBRIxCE_BOE_PO_NO}" suggestionItemSelected="suggestionItemSelected"
+									valueLiveUpdate="true" maxLength="10">
+									<suggestionItems>
+										<core:ListItem key="{BOEDOCList>ebeln}" text="{BOEDOCList>ebeln}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="UJNO" label="CHA Job Number" id="Idujnofilter" visibleInFilterBar="false">
+							<fb:control>
+								<Input id="idUJNo" type="Text" placeholder="Enter CHA Job Number..." showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleValueHelp_No" suggestionItems="{BOEDOCList>/xBRIxi_ujno}" suggestionItemSelected="suggestionItemSelected"
+									valueLiveUpdate="true" maxLength="10">
+									<suggestionItems>
+										<core:ListItem key="{BOEDOCList>ujno}" text="{BOEDOCList>ujno}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="CHJNO" label="User Job Number" id="Idchjnofilter" visibleInFilterBar="false">
+							<fb:control>
+								<Input id="idCHJNo" type="Text" placeholder="Enter User Job Number..." showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleValueHelp_No" suggestionItems="{BOEDOCList>/xBRIxBOE_CHA_JOB_NO}" suggestionItemSelected="suggestionItemSelected"
+									valueLiveUpdate="true" maxLength="10">
+									<suggestionItems>
+										<core:ListItem key="{BOEDOCList>cha_job_no}" text="{BOEDOCList>cha_job_no}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="Import Coordinator" label="Import Coordinator" visibleInFilterBar="false">
+							<fb:control>
+								<Input id="impcord" type="Text" placeholder="Import Coordinator" showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleValueHelp_No" suggestionItems="{path:'BOEDOCList>/xBRIxI_FI_import_coordinator'}"
+									suggestionItemSelected="suggestionItemSelected" valueLiveUpdate="true" maxLength="10" suggest="LoadNNDOset">
+									<suggestionItems>
+										<core:ListItem key="{BOEDOCList>import_coordinator}" text="{BOEDOCList>import_coordinator}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="C FT Coordinator" label="C FT Coordinator" visibleInFilterBar="false">
+							<fb:control>
+								<Input id="cftcord" type="Text" placeholder="C FT Coordinator" showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleValueHelp_No" suggestionItems="{path:'BOEDOCList>/xBRIxI_FI_c_ft_coordinator'}"
+									suggestionItemSelected="suggestionItemSelected" valueLiveUpdate="true" maxLength="10" suggest="LoadNNDOset">
+									<suggestionItems>
+										<core:ListItem key="{BOEDOCList>c_ft_coordinator}" text="{BOEDOCList>c_ft_coordinator}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="BU Coordinator / Planner" label="BU Coordinator / Planner" visibleInFilterBar="false">
+							<fb:control>
+								<Input id="BUcord" type="Text" placeholder="BU Coordinator / Planner" showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleValueHelp_No" suggestionItems="{path:'BOEDOCList>/xBRIxI_boe_bu_coordinator'}"
+									suggestionItemSelected="suggestionItemSelected" valueLiveUpdate="true" maxLength="10">
+									<suggestionItems>
+										<core:ListItem key="{BOEDOCList>bu_coordinator}" text="{BOEDOCList>bu_coordinator}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="Deffered payment check" label="Deffered payment check" visibleInFilterBar="false">
+							<fb:control>
+								<ComboBox id="defpmtFlt" items="{BOEDOCList>/xBRIxI_DIFFDUTYPAYMENT}" placeholder="Deffered payment check">
+									<core:Item key="{BOEDOCList>codtyp}" text="{BOEDOCList>coddesc}"/>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="Clearance Type" label="Clearance Type" visibleInFilterBar="false">
+							<fb:control>
+								<ComboBox id="clearance_typeflt" items="{BOEDOCList>/xBRIxCE_Clearance_Type}" placeholder="Clearance Type">
+									<core:Item key="{BOEDOCList>Code}" text="{BOEDOCList>clearancetyp}"/>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="Country of Export" label="Country of Export" visibleInFilterBar="false">
+							<fb:control>
+								<Input id="ctryexpflt" placeholder="Country of Export" showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleVendorValueHelpCountry" suggestionItems="{CmnModel>/I_Country}">
+									<suggestionItems>
+										<core:ListItem key="{CmnModel>Country}" text="{CmnModel>Country}" additionalText="{CmnModel>Country_Text}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="Shipment No" label="Shipment No" visibleInFilterBar="false">
+							<fb:control>
+								<Input id="shpmtno" type="Text" placeholder="Shipment No" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelp_No"
+									suggestionItems="{path:'BOEDOCList>/xBRIxI_shipmentno'}" suggestionItemSelected="suggestionItemSelected" maxLength="10">
+									<suggestionItems>
+										<core:ListItem key="{BOEDOCList>shipmentno}" text="{BOEDOCList>shipmentno}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="Shipment Type" label="Shipment Type" visibleInFilterBar="false">
+							<fb:control>
+								<ComboBox id="shptyp" placeholder="Shipment Type" items="{BOEDOCList>/xBRIxCE_shptyp}" enabled="{State>/enable}">
+									<core:Item key="{BOEDOCList>code}" text="{BOEDOCList>shptyp}"/>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="Mode of Shipment" label="Mode of Shipment" visibleInFilterBar="false">
+							<fb:control>
+								<ComboBox id="mdshpflt" items="{BOEDOCList>/xBRIxmod_of_shpmnt}" placeholder="Mode of Shipment">
+									<core:Item key="{BOEDOCList>codtyp}" text="{BOEDOCList>coddesc}"/>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="ETA" label="ETA" visibleInFilterBar="false">
+							<fb:control>
+								<DateRangeSelection enabled="true" id="eta_Filteritm" dateValue="{path:'/dateValueDRS2'}" secondDateValue="{path:'/secondDateValueDRS2'}"
+									minDate="{path:'/dateMinDRS2'}" maxDate="{path:'/dateMaxDRS2'}" change="handleChange" displayFormat="{i18n>BOEDateFormat}"/>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="ETD" label="ETD" visibleInFilterBar="false">
+							<fb:control>
+								<DateRangeSelection enabled="true" id="etd_Filteritm" dateValue="{path:'/dateValueDRS2'}" secondDateValue="{path:'/secondDateValueDRS2'}"
+									minDate="{path:'/dateMinDRS2'}" maxDate="{path:'/dateMaxDRS2'}" change="handleChange" displayFormat="{i18n>BOEDateFormat}"/>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="Destination Port / Gateway Port" label="Destination Port / Gateway Port" visibleInFilterBar="false">
+							<fb:control>
+								<Input enabled="true" id="gatptcod_filter" type="Text" placeholder="Enter Port..." showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleVendorValueHelpPort" suggestionItems="{CmnModel>/xBRIxI_PORT_CODTYP}"
+									suggestionItemSelected="suggestionItemSelected" valueLiveUpdate="true" maxLength="10">
+									<suggestionItems>
+										<core:ListItem key="{CmnModel>codtyp}" text="{CmnModel>codtyp}" additionalText="{CmnModel>codtyp}"/>
+									</suggestionItems>
+								</Input>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem id="IdStatusFltr" name="Status" label="Status">
+							<fb:control>
+								<ComboBox id="sts_fltr" placeholder="BOE Status" selectionChange="onSelectMatType" items="{BOE_StatusModel>/results}"
+									enabled="{State>/enable}">
+									<core:Item key="{BOE_StatusModel>status}" text="{BOE_StatusModel>descr}"/>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterItem>
+					</fb:filterItems>
+				</fb:FilterBar>
+			</l:VerticalLayout>
+			<t:Table id="idnndoTable" selectionMode="None" rowSelectionChange="onSelectionChange" cellClick="onCellClick" visibleRowCount="6"
+				enableCellFilter="{ui>/cellFilterOn}" filter="filterPrice" ariaLabelledBy="title" visible="false" rows="{nndoLists>/results}">
+				<!--<t:toolbar>-->
+				<!--				<Toolbar class="vBoxBackgroundStyle">-->
+				<!--					<content>-->
+				<!--						<Label id="title" class="titleLabel" text="Applications"/>-->
+				<!--					</content>-->
+				<!--				</Toolbar>-->
+				<!--			</t:toolbar>-->
+				<t:columns>
+					<t:Column id="idNNDONo" width="10rem" filterProperty="PONumber">
+						<Label id="idDocumentNumber" text="BOE Number"/>
+						<t:template>
+							<Link text="{nndoLists>docno}" emphasized="true" wrapping="false" press="onPressDocNo"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="idDate" width="10rem" filterProperty="">
+						<Label id="idDocumentDate" text="BOE Date"/>
+						<t:template>
+							<Text text="{ path: 'nndoLists>boedate', formatter: 'BOE.Formatter.formatDate' }" wrapping="false"/>
+							<!-- <Text text="{NNDODate}" emphasized="true" wrapping="false" /> -->
+						</t:template>
+					</t:Column>
+					<t:Column id="idVendor" width="10rem" filterProperty="">
+						<Label text="CHA Code"/>
+						<t:template>
+							<Text tooltip="{nndoLists>chaDescription}" text="{nndoLists>chacode}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="doc_stat" width="10rem" filterProperty="">
+						<Label tooltip="Status Check on BOE" text="Status"/>
+						<t:template>
+							<Text text="{nndoLists>doc_stat_descr}" tooltip="{nndoLists>doc_stat_descr}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="idCmp" width="10rem" filterProperty="">
+						<Label text="Company Code"/>
+						<t:template>
+							<Text tooltip="{nndoLists>bukrs}" text="{nndoLists>bukrs}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="ctryexp" width="10rem" filterProperty="">
+						<Label tooltip="Country of Export" text="Country of Export"/>
+						<t:template>
+							<Text text="{nndoLists>ctryexp}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="filshptyp" width="10rem" filterProperty="">
+						<Label tooltip="Shipment Type" text="Shipment Type"/>
+						<t:template>
+							<Text text="{nndoLists>shpdesc}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="filmdshp" width="10rem" filterProperty="">
+						<Label tooltip="Mode of Shipment" text="Mode of Shipment"/>
+						<t:template>
+							<Text text="{nndoLists>modtran}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="fildefpmt" width="10rem" filterProperty="">
+						<Label tooltip="Deffered payment check" text="Deffered payment check"/>
+						<t:template>
+							<Text text="{nndoLists>dff_pmt_check_desc}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="clearance_type" width="10rem" filterProperty="">
+						<Label tooltip="Clearance Type" text="Clearance Type"/>
+						<t:template>
+							<!--<Text text="{nndoLists>clearance_type}" wrapping="false"/>-->
+							<Text text="{nndoLists>cleardesc}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="m_tart" width="10rem" filterProperty="">
+						<Label tooltip="Material Type" text="Material Type"/>
+						<t:template>
+							<!--<Text text="{nndoLists>m_tart}" wrapping="false"/>-->
+							<Text text="{nndoLists>materialdesc}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="impurp" width="10rem" filterProperty="">
+						<Label tooltip="Import Purpose" text="Import Purpose"/>
+						<t:template>
+							<!--<Text text="{nndoLists>impurp}" wrapping="false"/>-->
+							<Text text="{nndoLists>impdesc}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="import_coordinator" width="10rem" filterProperty="">
+						<Label tooltip="Import Coordinator" text="Import Coordinator"/>
+						<t:template>
+							<Text text="{nndoLists>import_coordinator}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="arvtrmnl" width="10rem" filterProperty="">
+						<Label tooltip="Arrival Terminal" text="Arrival Terminal"/>
+						<t:template>
+							<Text text="{nndoLists>arvtrmnl}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="c_ft_coordinator" width="10rem" filterProperty="">
+						<Label tooltip="C FT Coordinator" text="C FT Coordinator"/>
+						<t:template>
+							<Text text="{nndoLists>c_ft_coordinator}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="bu_coordinator" width="10rem" filterProperty="">
+						<Label tooltip="BU Coordinator / Planner" text="BU Coordinator"/>
+						<t:template>
+							<Text text="{nndoLists>bu_coordinator}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="eta" width="10rem" filterProperty="">
+						<Label tooltip="ETA" text="ETA"/>
+						<t:template>
+							<Text text="{ path: 'nndoLists>eta', formatter: 'BOE.Formatter.formatDate' }" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="etd" width="10rem" filterProperty="">
+						<Label tooltip="ETD" text="ETD"/>
+						<t:template>
+							<Text text="{ path: 'nndoLists>etd', formatter: 'BOE.Formatter.formatDate' }" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="arivport" width="10rem" filterProperty="">
+						<Label tooltip="Port of Arrival" text="Port of Arrival"/>
+						<t:template>
+							<Text text="{nndoLists>arivport}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="icd" width="10rem" filterProperty="">
+						<Label tooltip="Arrival Date at ICD" text="Arrival Date at ICD"/>
+						<t:template>
+							<Text text="{nndoLists>icd}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="invoice_incoterm" width="10rem" filterProperty="">
+						<Label tooltip=" Invoice Incoterm" text="Incoterm"/>
+						<t:template>
+							<Text text="{nndoLists>invoice_incoterm}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="typassmt" width="10rem" filterProperty="">
+						<Label tooltip="Type of Assessment" text="Type of Assessment"/>
+						<t:template>
+							<!--<Text text="{nndoLists>typassmt}" wrapping="false"/>-->
+							<Text text="{nndoLists>typdesc}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="custhousname" width="10rem" filterProperty="">
+						<Label tooltip="Custom Housename" text="Custom Housename"/>
+						<t:template>
+							<Text text="{nndoLists>custhousname}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="iecbnchcod" width="10rem" filterProperty="">
+						<Label tooltip="IEC Branch Code" text="IEC Branch Code"/>
+						<t:template>
+							<Text text="{nndoLists>iecbnchcod}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="portcodboe" width="10rem" filterProperty="">
+						<Label tooltip="Port Code on BOE" text="Port Code on BOE"/>
+						<t:template>
+							<Text text="{nndoLists>portcodboe}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="gatptcod" width="10rem" filterProperty="">
+						<Label tooltip="Destination Port / Gateway Port" text="Gateway Port"/>
+						<t:template>
+							<Text text="{nndoLists>gatptcod}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="actdtypyd" width="10rem" filterProperty="">
+						<Label tooltip="Total Duty Payment Amount" text="Total Duty Payment Amount"/>
+						<t:template>
+							<Text text="{nndoLists>actdtypyd}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="moddtypmt" width="10rem" filterProperty="">
+						<Label tooltip="Mode of Duty Payment" text="Mode of Duty Payment"/>
+						<t:template>
+							<Text text="{nndoLists>moddtypmt}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="duedatdtypmt" width="10rem" filterProperty="">
+						<Label tooltip="Due Date of Duty Payment" text="Due Date of Duty Payment"/>
+						<t:template>
+							<Text text="{ path: 'nndoLists>duedatdtypmt', formatter: 'BOE.Formatter.formatDate' }" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="datdtypmtbasc" width="10rem" filterProperty="">
+						<Label tooltip="Date of Duty Payment Settled Challan by BASC" text="Date of Duty Payment Settled Challan by BASC"/>
+						<t:template>
+							<Text text="{ path: 'nndoLists>datdtypmtbasc', formatter: 'BOE.Formatter.formatDate' }" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="otpgendat" width="10rem" filterProperty="">
+						<Label tooltip="OTP Generation Date" text="OTP Generation Date"/>
+						<t:template>
+							<Text text="{ path: 'nndoLists>otpgendat', formatter: 'BOE.Formatter.formatDate' }" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<!--edited by swathy-->
+						<t:Column id="impdpsno" width="10rem" filterProperty="">
+						<Label tooltip="Customs BOE No." text="Customs BOE No."/>
+						<t:template>
+							<Text text="{nndoLists>impdpsno}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="impdpdat" width="10rem" filterProperty="">
+						<Label tooltip="Customs BOE Date" text="Customs BOE Date"/>
+						<t:template>
+							<!--<Text text="{nndoLists>impdpdat}" wrapping="false"/>-->
+				<Text text="{ path: 'nndoLists>impdpdat', formatter: 'BOE.Formatter.formatDate' }" wrapping="false"/>
+							
+						</t:template>
+					</t:Column>
+					<t:Column id="actudtypyd" width="10rem" filterProperty="">
+						<Label tooltip="Actual Duty Paid" text="Actual Duty Paid"/>
+						<t:template>
+							<Text text="{nndoLists>actdtypyd}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="penlty" width="10rem" filterProperty="">
+						<Label tooltip="Penalty" text="Penalty"/>
+						<t:template>
+							<Text text="{nndoLists>penlty}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="intrstgst" width="10rem" filterProperty="">
+						<Label tooltip="Interest" text="Interest"/>
+						<t:template>
+							<Text text="{nndoLists>intrstgst}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+				<t:Column id="latfnechge" width="10rem" filterProperty="">
+						<Label tooltip="Late fine charges" text="Late fine charges"/>
+						<t:template>
+							<Text text="{nndoLists>latfnechge}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+				<t:footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Title id="table_footer" text="Total NUmber"></Title>
+					</Toolbar>
+				</t:footer>
+			</t:Table>
+			<l:VerticalLayout width="100%"></l:VerticalLayout>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Download" id="downloadBtn" icon="sap-icon://copy" press="exportToExcel" visible="false"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Info Code" class="sapUiPopupWithPadding" items="{path:'BOEDOCList>/xBRIxI_CE_drctportdelvery',sorter:{path:'description'}}"
+		liveChange="_handleValueHelpSearchD_Code" confirm="_handleValueHelpClose_Port" cancel="_handleValueHelpClose_Port">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{BOEDOCList>description}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

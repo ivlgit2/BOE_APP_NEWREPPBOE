@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Info Type" class="sapUiPopupWithPadding" items="{path:'BOEDOCList>/xBRIxi_inf_typ_cof',sorter:{path:'info_type'}}"
+		liveChange="_handleValueHelpSearch_type" confirm="_handleValueHelpClose_type" cancel="_handleValueHelpClose_type">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{BOEDOCList>info_type}" description="{BOEDOCList>info_type_des}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

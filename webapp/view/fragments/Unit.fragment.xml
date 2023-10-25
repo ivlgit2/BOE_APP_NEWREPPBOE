@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Unit of mesure" class="sapUiPopupWithPadding" items="{CmnModel>/I_UnitOfMeasure}" search="_handleValueHelpSearch1"
+		confirm="_handleValueHelpClose1" cancel="_handleValueHelpClose1">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{CmnModel>UnitOfMeasure}" description="{CmnModel>UnitOfMeasure_Text}"/>   
+	</SelectDialog>
+</core:FragmentDefinition>

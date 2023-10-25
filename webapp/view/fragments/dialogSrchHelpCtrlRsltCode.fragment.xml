@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Control Code" class="sapUiPopupWithPadding" items="{path:'BOEDOCList>/xBRIxi_ctr_rlt_cof',sorter:{path:'ctr_rslt_cod'}}"
+		liveChange="_handleValueHelpSearch_CtrlRsltCd" confirm="_handleValueHelpClose_CtrlRsltCd" cancel="_handleValueHelpClose_CtrlRsltCd">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{BOEDOCList>ctr_rslt_cod}" description="{BOEDOCList>ctr_rslt_cod_des}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

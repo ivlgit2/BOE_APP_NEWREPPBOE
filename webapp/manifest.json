@@ -1,0 +1,610 @@
+{
+	"_version": "1.7.0",
+	"sap.app": {
+		"id": "EXIM_IMPNBOE",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"NndoData": {
+				"type": "JSON",
+				"uri": "model/JSONfile.json"
+			},
+			"NNDOlist": {
+				"type": "JSON",
+				"uri": "model/NNDOlist.json"
+			},
+			"boeItems": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeHeader": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeShipping": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeAllocation": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeDutyComp": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"AdditionalInfo": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"ConstituemtsInfo": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"ProductionInfo": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"ControlInfo": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"I_RSP_BE_Info": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"I_DEPB_BE_Info": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"I_reimport_be_Info": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"I_statemet_be_Info": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"I_be_sup_doc_Info": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boedetail": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeBEdetails": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeExchgDetails": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boePmsnDetails": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeCetDetails": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeCtxDetails": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeAmndtDetails": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeHSSDetails": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"boeIGMDetails": {
+				"type": "JSON",
+				"uri": ""
+			},
+			"SB_BOEIID": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_BOEIID/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_BOEIID/metadata.xml"
+				}
+			},
+			"SB_IID": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_IID/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_IID/metadata.xml"
+				}
+			},
+			"SB_IIDCLDOCHDR": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_IIDCLDOCHDR/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_IIDCLDOCHDR/metadata.xml"
+				}
+			},
+			"CMN_SERVICES": {
+				"uri": "/abap/sap/opu/odata/BRI/CMN_SERVICES/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/CMN_SERVICES/metadata.xml"
+				}
+			},
+			"SB_IIDTARNT": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_IIDTARNT/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_IIDTARNT/metadata.xml"
+				}
+			},
+			"B_OPTIEXIMC": {
+				"uri": "/abap/sap/opu/odata/BRI/B_OPTIEXIMC/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/B_OPTIEXIMC/metadata.xml"
+				}
+			},
+			"SB_IMPDOCFLOW": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_IMPDOCFLOW/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_IMPDOCFLOW/metadata.xml"
+				}
+			},
+			"SB_BEFILEGEN": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_BEFILEGEN/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_BEFILEGEN/metadata.xml"
+				}
+			},
+			"SB_TCONFIG": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_TCONFIG/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_TCONFIG/metadata.xml"
+				}
+			},
+			"SB_BELOGGEN": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_BELOGGEN/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_BELOGGEN/metadata.xml"
+				}
+			},
+			"SB_DMS": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_DMS/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_DMS/metadata.xml"
+				}
+			},
+			"SB_DMS_SERVICE": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_DMS_SERVICE/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_DMS_SERVICE/metadata.xml"
+				}
+			},
+			"SB_GSTINSTCODE": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_GSTINSTCODE/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_GSTINSTCODE/metadata.xml"
+				}
+			},
+			"SB_BOE_VERSION": {
+				"uri": "/sap/opu/odata/bri/SB_BOE_VERSION/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_BOE_VERSION/metadata.xml"
+				}
+			}
+		},
+		"crossNavigation": {
+			"inbounds": {
+				"intent1": {
+					"signature": {
+						"parameters": {},
+						"additionalParameters": "allowed"
+					},
+					"semanticObject": "BOE_APP",
+					"action": "Display"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"services": {
+			"ShellUIService": {
+				"factoryName": "sap.ushell.ui5service.ShellUIService"
+			}
+		},
+		"rootView": {
+			"viewName": "EXIM_IMPNBOE.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "EXIM_IMPNBOE.i18n.i18n"
+				}
+			},
+			"NndoData": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "NndoData"
+			},
+			"NNDOlist": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "NNDOlist"
+			},
+			"boeItems": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeItems"
+			},
+			"boeHeader": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeHeader"
+			},
+			"boeShipping": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeShipping"
+			},
+			"boeAllocation": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeAllocation"
+			},
+			"boedetail": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boedetail"
+			},
+			"boeDutyComp": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeDutyComp"
+			},
+			"AdditionalInfo": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "AdditionalInfo"
+			},
+			"ProductionInfo": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "ProductionInfo"
+			},
+			"ConstituemtsInfo": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "ConstituemtsInfo"
+			},
+			"ControlInfo": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "ControlInfo"
+			},
+			"I_RSP_BE_Info": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "I_RSP_BE_Info"
+			},
+			"I_DEPB_BE_Info": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "I_DEPB_BE_Info"
+			},
+			"I_reimport_be_Info": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "I_reimport_be_Info"
+			},
+			"I_statemet_be_Info": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "I_statemet_be_Info"
+			},
+			"I_be_sup_doc_Info": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "I_be_sup_doc_Info"
+			},
+			"boeBEdetails": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeBEdetails"
+			},
+			"boeExchgDetails": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeExchgDetails"
+			},
+			"boePmsnDetails": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boePmsnDetails"
+			},
+			"boeCetDetails": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeCetDetails"
+			},
+			"boeCtxDetails": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeCtxDetails"
+			},
+			"boeAmndtDetails": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeAmndtDetails"
+			},
+			"boeHSSDetails": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeHSSDetails"
+			},
+			"boeIGMDetails": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "boeIGMDetails"
+			},
+			"BOEDOCList": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_BOEIID",
+				"preload": true
+			},
+			"CLINdoclist": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "None"
+				},
+				"dataSource": "SB_IIDCLDOCHDR",
+				"preload": true
+			},
+			"CmnModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "CMN_SERVICES",
+				"preload": true
+			},
+			"Tarifflist": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_IIDTARNT",
+				"preload": true
+			},
+			"MasterService": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "B_OPTIEXIMC",
+				"preload": true
+			},
+			"Doc_Flow": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_IMPDOCFLOW",
+				"preload": true
+			},
+			"BE_model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_BEFILEGEN",
+				"preload": true
+			},
+			"Config_Model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_TCONFIG",
+				"preload": true
+			},
+			"belog_model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_BELOGGEN",
+				"preload": true
+			},
+			"DMS_Model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_DMS",
+				"preload": true
+			},
+			"DMSService_Model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_DMS_SERVICE",
+				"preload": true
+			},
+			"File_Service_Model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_BOEIID",
+				"preload": true
+			},
+			"S_User_Identif_Model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_IID",
+				"preload": true
+			},
+			"GSTN_StateCodeData": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_GSTINSTCODE",
+				"preload": true
+			},
+			"BoeVersion_Model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_BOE_VERSION",
+				"preload": true
+			},
+			"BOEVersion": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_BOE_VERSION",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			],
+			"js": [
+				{
+					"uri": "utilities/Validation.js"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "EXIM_IMPNBOE.view",
+				"controlId": "app",
+				"controlAggregation": "pages"
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "boelist",
+					"target": "boelist"
+				},
+				{
+					"pattern": "nndodetail/{Mode},{docnr}",
+					"name": "nndodetail",
+					"target": "nndodetail"
+				},
+				{
+					"pattern": "nndodetail1/{Mode},{docnr}/{strtup}",
+					"name": "nndodetail1",
+					"target": "nndodetail"
+				},
+				{
+					"pattern": "nndodetail/{nndoNo}",
+					"name": "clinPOitem",
+					"target": "clinPOitem"
+				},
+				{
+					"pattern": "createCLIN/{nndoNo}",
+					"name": "createclin",
+					"target": "createclin"
+				}
+			],
+			"targets": {
+				"boelist": {
+					"viewName": "BOEList"
+				},
+				"nndodetail": {
+					"viewName": "chngDispBOE"
+				},
+				"clinPOitem": {
+					"viewName": "itemDetailView"
+				},
+				"createclin": {
+					"viewName": "createCLIN"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

@@ -1,0 +1,38 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_xbrixiid_impdocflow" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="xBRIxI_IMPDOCFLOWType" sap:label="Import Doc Flow" sap:content-version="1">
+				<Key><PropertyRef Name="NNDO_Category"/><PropertyRef Name="NNDO_Number"/></Key><Property Name="NNDO_Category" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Document Category"
+					sap:quickinfo="Document category"/><Property Name="NNDO_Number" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number"
+					sap:quickinfo="Document number"/><Property Name="CLIN_Category" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Document Category"
+					sap:quickinfo="Document category"/><Property Name="CLIN_number" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number"
+					sap:quickinfo="Document number"/><Property Name="nndo_ref" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Reference Doc no:"
+					sap:quickinfo="Reference document number"/><Property Name="BOE_type" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Type of Document"/><Property Name="BOE_number" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="BOE Number (Internal"
+					sap:quickinfo="BOE Number (Internal)"/></EntityType>
+			<EntityContainer Name="cds_xbrixiid_impdocflow_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="xBRIxI_IMPDOCFLOW" EntityType="cds_xbrixiid_impdocflow.xBRIxI_IMPDOCFLOWType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/></EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixiid_impdocflow.cds_xbrixiid_impdocflow_Entities">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self"
+				href="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/BRI/SB_IMPDOCFLOW/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
+				href="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/BRI/SB_IMPDOCFLOW/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

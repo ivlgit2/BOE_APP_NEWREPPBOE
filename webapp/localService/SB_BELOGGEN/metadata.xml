@@ -1,0 +1,82 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_xbrixsd_belog" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="xBRIxce_belogType" sap:label="table updation for be file generation" sap:content-version="1">
+				<Key><PropertyRef Name="beno"/><PropertyRef Name="betyp"/><PropertyRef Name="filename"/><PropertyRef Name="INDICATORS"/></Key><Property Name="beno" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="BOE Number (Internal"/><Property Name="betyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Type of Document"/><Property Name="filename" Type="Edm.String" Nullable="false" MaxLength="50" sap:display-format="UpperCase" sap:label="BE Filename"/><Property Name="INDICATORS" Type="Edm.String" Nullable="false" MaxLength="1"/><NavigationProperty Name="Parameters" Relationship="cds_xbrixsd_belog.assoc_52B065D479FAA4A642F555A0B7EDE751"
+					FromRole="ToRole_assoc_52B065D479FAA4A642F555A0B7EDE751" ToRole="FromRole_assoc_52B065D479FAA4A642F555A0B7EDE751" sap:filterable="false"/></EntityType>
+			<EntityType Name="xBRIxce_belogParameters" sap:semantics="parameters" sap:content-version="1">
+				<Key><PropertyRef Name="beno"/><PropertyRef Name="betyp"/><PropertyRef Name="filename"/></Key><Property Name="beno" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory"
+					sap:label="BOE Number (Internal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="betyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:parameter="mandatory"
+					sap:label="Type of Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="filename" Type="Edm.String" Nullable="false" MaxLength="50" sap:display-format="UpperCase" sap:parameter="mandatory"
+					sap:label="BE Filename" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="Set" Relationship="cds_xbrixsd_belog.assoc_52B065D479FAA4A642F555A0B7EDE751"
+					FromRole="FromRole_assoc_52B065D479FAA4A642F555A0B7EDE751" ToRole="ToRole_assoc_52B065D479FAA4A642F555A0B7EDE751"/></EntityType>
+			<Association Name="assoc_52B065D479FAA4A642F555A0B7EDE751" sap:content-version="1"><End Type="cds_xbrixsd_belog.xBRIxce_belogParameters" Multiplicity="1" Role="FromRole_assoc_52B065D479FAA4A642F555A0B7EDE751"/><End Type="cds_xbrixsd_belog.xBRIxce_belogType" Multiplicity="*" Role="ToRole_assoc_52B065D479FAA4A642F555A0B7EDE751"/></Association>
+			<EntityContainer Name="cds_xbrixsd_belog_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true"
+				sap:supported-formats="atom json xlsx"><EntitySet Name="xBRIxce_belogSet" EntityType="cds_xbrixsd_belog.xBRIxce_belogType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="xBRIxce_belog" EntityType="cds_xbrixsd_belog.xBRIxce_belogParameters" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="assoc_52B065D479FAA4A642F555A0B7EDE751" Association="cds_xbrixsd_belog.assoc_52B065D479FAA4A642F555A0B7EDE751"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxce_belog" Role="FromRole_assoc_52B065D479FAA4A642F555A0B7EDE751"/><End EntitySet="xBRIxce_belogSet" Role="ToRole_assoc_52B065D479FAA4A642F555A0B7EDE751"/></AssociationSet>
+			</EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_belog.cds_xbrixsd_belog_Entities">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_belog.cds_xbrixsd_belog_Entities/xBRIxce_belog">
+				<Annotation Term="Capabilities.FilterRestrictions">
+					<Record>
+						<PropertyValue Property="NonFilterableProperties">
+							<Collection>
+								<PropertyPath>beno</PropertyPath>
+								<PropertyPath>betyp</PropertyPath>
+								<PropertyPath>filename</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.NavigationRestrictions">
+					<Record>
+						<PropertyValue Property="RestrictedProperties">
+							<Collection>
+								<Record><PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+									<PropertyValue Property="FilterRestrictions">
+										<Record><PropertyValue Property="Filterable" Bool="false"/></Record>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.SortRestrictions">
+					<Record>
+						<PropertyValue Property="NonSortableProperties">
+							<Collection>
+								<PropertyPath>beno</PropertyPath>
+								<PropertyPath>betyp</PropertyPath>
+								<PropertyPath>filename</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/opu/odata/BRI/SB_BELOGGEN/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/opu/odata/BRI/SB_BELOGGEN/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

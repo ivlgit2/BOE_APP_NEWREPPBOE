@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:layout="sap.ui.layout">
+	<Dialog title="Exchange Rate Date" class="sapUiPopupWithPadding">
+		<content>
+			<DatePicker id="exch_rate_date" change="handleExchangeRateDtChange"
+				value="{path:'boeHeaderdetails>/exch_rate_date',formatter:'BOE.Formatter.formatDateandTime'}" valueFormat="dd/MM/yyyy"
+				displayFormat="dd/MM/yyyy"/>
+		</content>
+		<buttons>
+			<Button text="Change" icon="sap-icon://add" press="ChangeExchFun" type="Accept"/>
+			<Button text="Close" icon="sap-icon://decline" press="oncloseWin" type="Reject"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

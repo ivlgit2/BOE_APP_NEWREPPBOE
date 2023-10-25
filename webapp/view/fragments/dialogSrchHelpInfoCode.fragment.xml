@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Info Code" class="sapUiPopupWithPadding"
+	items="{path:'InfoCodeDataModel>/results',sorter:{path:'code'}}"
+		liveChange="_handleValueHelpSearch_Code" confirm="_handleValueHelpClose_Code" cancel="_handleValueHelpClose_Code">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{InfoCodeDataModel>code}" description="{InfoCodeDataModel>discription}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

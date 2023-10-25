@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Notification Number" class="sapUiPopupWithPadding" items="{BOEDOCList>/xBRIxCE_Notification}"
+		liveChange="_handleValueHelpSearch_Noti" confirm="_handleValueHelpClose_Noti" cancel="_handleValueHelpClose_Noti">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{BOEDOCList>tarntno}" description="{BOEDOCList>notifslno}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

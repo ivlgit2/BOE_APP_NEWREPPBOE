@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Benefit Number" class="sapUiPopupWithPadding"
+		items="{path : 'TrackNoList>/results',sorter : {path:'trkno',descending: true}}" liveChange="_handleValueHelpSearch_TrackNo"
+		confirm="_handleValueHelpClose_TrackNo" cancel="_handleValueHelpClose_TrackNo">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{TrackNoList>trkno}"
+			description="Actual Scheme:{TrackNoList>bsno},Quantity:{TrackNoList>balance}"
+			info="{ path: 'TrackNoList>trkdt', formatter: 'BOE.Formatter.formatDateandTime' }"/>
+	</SelectDialog>
+</core:FragmentDefinition>

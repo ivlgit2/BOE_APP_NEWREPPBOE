@@ -1,0 +1,331 @@
+<core:FragmentDefinition id="fr1" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m" controllerName="BRILEXIM_NNDO.controller.POList"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Dialog title="Item Details" contentWidth="1000px"
+		contentHeight="1000px">
+		<IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="true"
+			enableScrolling="true" class="sapUiResponsiveContentPadding">
+			<items>
+				<IconTabFilter icon="sap-icon://customer-briefing"
+					tooltip="Reference Documents" iconColor="Neutral" text="Refer Docs">
+					<f:SimpleForm id="idReferenceDocumentsForm" editable="false"
+						layout="ResponsiveGridLayout" title="" labelSpanXL="5" labelSpanL="5"
+						labelSpanM="5" labelSpanS="12" adjustLabelSpan="false"
+						emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+						columnsXL="3" columnsL="2" columnsM="2" singleContainerFullSize="false">
+						<f:content>
+							<core:Title text="Reference Documents" />
+							<Label text="Sl. No" />
+							<Text text="1" />
+							<Label text="Purchasing Document" />
+							<Text text="4500000008" />
+							<Label text="Item" />
+							<Text text="10" />
+							<Label text="Material" />
+							<Text text="15" />
+							<Label text="Quantity" />
+							<Text text="12.000" />
+						</f:content>
+					</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabSeparator icon="" />
+				<IconTabFilter icon="sap-icon://receipt" tooltip="Clearing Intruction"
+					iconColor="Neutral" text="Clearing Inst.">
+					<f:SimpleForm id="idClearingIntructionForm" editable="false"
+						layout="ResponsiveGridLayout" title="" labelSpanXL="4" labelSpanL="4"
+						labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+						emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+						columnsXL="3" columnsL="2" columnsM="2" singleContainerFullSize="false">
+						<f:content>
+							<core:Title text="Clearing Intruction" />
+							<Label text="Invoice Number" />
+							<Text text="INV01" />
+							<Label text="Invoice Amount" />
+							
+							<u:Currency value="1568" currency="INR" class="clscurrency"/>
+							<!-- <Text text="1,568.00" />
+							<Text text="INR">
+								<layoutData>
+									<l:GridData span="XL2 L3 M3 S4" />
+								</layoutData>
+							</Text>-->
+							<Label text="Freight Amount" />
+							<u:Currency value="0" currency="INR" class="clscurrency"/>
+							<!-- <Text text="0.00" />
+							<Text text="">
+								<layoutData>
+									<l:GridData span="XL2 L3 M3 S4" />
+								</layoutData>
+							</Text>-->
+							<Label text="Insurance Amount" />
+							<u:Currency value="0" currency="INR" class="clscurrency"/>
+							<!-- <Text text="0.00" />
+							<Text text="{}">
+								<layoutData>
+									<l:GridData span="XL2 L3 M3 S4" />
+								</layoutData>
+							</Text>-->
+							<Label text="Agency Commission" />
+							<!-- <Text text="0.00" />
+							<Text text="{}">
+								<layoutData>
+									<l:GridData span="XL2 L3 M3 S4" />
+								</layoutData>
+							</Text>-->
+							<u:Currency value="0" currency="INR" class="clscurrency"/>
+							<Label text="Misc. Charges" />
+							<Text text="{}" />
+							<Text text="{}">
+								<layoutData>
+									<l:GridData span="XL2 L3 M3 S4" />
+								</layoutData>
+							</Text>
+							<Label text="Total Invoice Value" />
+							<u:Currency value="1568" currency="INR" class="clscurrency"/>
+							<!-- <Text text="1,568.00" />
+							<Text text="INR">
+								<layoutData>
+									<l:GridData span="XL2 L3 M3 S4" />
+								</layoutData>
+							</Text>-->
+							<Label text="Landing Charges" />
+							<Text text="0.00" />
+							<Text text="{}">
+								<layoutData>
+									<l:GridData span="XL2 L3 M3 S4" />
+								</layoutData>
+							</Text>
+							<core:Title text="" />
+							<Label text="Date" />
+							<Text text="01.01.2018" />
+							<Label text="Exchange Rate" />
+							<Text text="1.00" />
+							<Label text="Exchange Rate" />
+							<Text text="{}" />
+							<Label text="Exchange Rate" />
+							<Text text="{}" />
+							<Label text="Exchange Rate" />
+							<Text text="{}" />
+							<Label text="Exchange Rate" />
+							<Text text="{}" />
+						</f:content>
+					</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabSeparator icon="" />
+				<IconTabFilter icon="sap-icon://loan" tooltip="Invoice Details"
+					iconColor="Neutral" text="Invoice">
+					<t:Table id="idInvtable" selectionMode="None" title="Invoice Details"
+						rowSelectionChange="onSelectionChange" cellClick="onCellClick"
+						visibleRowCount="4" enableCellFilter="{ui>/cellFilterOn}" filter="filterPrice"
+						ariaLabelledBy="title" visible="true" rows="{/dataCollection}">
+						<t:columns>
+							<t:Column id="idInvNo" filterProperty="PONumber">
+								<Label text="Invoice" />
+								<t:template>
+									<Link text="{invname}" emphasized="true" wrapping="false"
+										press="onPressPoNo" />
+								</t:template>
+							</t:Column>
+							<t:Column id="idDate" filterProperty="BL">
+								<Label text="Date" />
+								<t:template>
+									<Text text="{InvDate}" emphasized="true" wrapping="false" />
+								</t:template>
+							</t:Column>
+							<t:Column id="idAmount" filterProperty="BL">
+								<Label text="Amount" />
+								<t:template>
+									<Text text="{amount}" emphasized="true" wrapping="false" />
+								</t:template>
+							</t:Column>
+							<t:Column id="idCurrency" filterProperty="BL">
+								<Label text="Curreny" />
+								<t:template>
+									<Text text="{curr}" emphasized="true" wrapping="false" />
+								</t:template>
+							</t:Column>
+							<t:Column id="idlc" filterProperty="BL">
+								<Label text="LC" />
+								<t:template>
+									<ComboBox type="Text" id="idLClist" change="OnTypeChange">
+										<items>
+											<core:Item key="PO" text="Lc1" />
+											<core:Item key="MIGO" text="Lc2" />
+											<core:Item key="IBD" text="Lc3" />
+										</items>
+									</ComboBox>
+								</t:template>
+							</t:Column>
+							<t:Column id="iddel" width="8%" filterProperty="BL">
+								<Label text="" />
+								<t:template>
+									<Button icon="sap-icon://sys-cancel-2" text=""
+										press="OnPressInvDelete"  /><!-- class=" sapThemeHighlight-asBackgroundColor " -->
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
+				</IconTabFilter>
+				<IconTabSeparator icon="" />
+				<IconTabFilter icon="sap-icon://activity-items" tooltip="Item Details"
+					iconColor="Neutral" text="Item">
+					<t:Table id="idrefDocTabtable" selectionMode="None" title="Item Details"
+						cellClick="onCellClick" rows="{NndoData>itemDetails}"
+						visibleRowCount="10" filter="filterPrice" ariaLabelledBy="title"
+						fixedColumnCount="6">
+						<t:columns>
+							<t:Column id="idItem">
+								<Label text="Item" />
+								<t:template>
+									<Text text="{NndoData>item}" wrapping="false" />
+								</t:template>
+							</t:Column>
+							<t:Column width="25%">
+								<Label text="Material" />
+								<t:template>
+									<Text text="{NndoData>item}" wrapping="false" />
+								</t:template>
+							</t:Column>
+							<t:Column id="idpoQuantity" 
+								defaultFilterOperator="StartsWith">
+								<Label text="P.O Quantity" />
+								<t:template>
+									<Input value="{NndoData>POQuantity}" wrapping="false"
+										liveChange="CalculateAmount" app:mydata="{NndoData>currency}"></Input>
+								</t:template>
+							</t:Column>
+
+							<t:Column id="idnetPrize"
+								defaultFilterOperator="StartsWith">
+								<Label text="Net Price" />
+								<t:template>
+									<Text text="{NndoData>netAmt} {NndoData>currency}" id="idNetAmount"
+										wrapping="false" visible="true" />
+								</t:template>
+							</t:Column>
+
+							<t:Column id="idpoAmount" 
+								defaultFilterOperator="StartsWith">
+								<Label text="Amount" />
+								<t:template>
+									<Text id="idPerAmount" wrapping="false" visible="true" />
+								</t:template>
+							</t:Column>
+							
+							<t:Column id="idUom" defaultFilterOperator="StartsWith">
+								<Label text="Uom" />
+								<t:template>
+									<Text text="{NndoData>Uom}" wrapping="false" />
+								</t:template>
+							</t:Column>
+
+							<!-- <t:Column id="idFOB" width="25%" defaultFilterOperator="StartsWith">
+								<Label text="FOB" />
+								<t:template>
+									<Text text="{NndoData>FOB}" wrapping="false" />
+								</t:template>
+							</t:Column>-->
+							<t:Column defaultFilterOperator="StartsWith">
+								<Label text="InVoice" />
+								<t:template>
+									<ComboBox id="Combobox1" type="Text"
+										items="{NndoData>collectedData}">
+										<items>
+											<core:Item key="{NndoData>InvName}" text="{NndoData>InvName}" />
+										</items>
+									</ComboBox>
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<buttons>
+			<Button type="Accept" text="Save" press="OnPressItemSave" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
+
+
+<!-- <IconTabBar id="idIconTabBarSeparatorNoIcon" expanded="true" enableScrolling="true" 
+	class="sapUiResponsiveContentPadding"> <items> <IconTabFilter icon="sap-icon://customer-briefing" 
+	tooltip="Reference Documents" iconColor="Neutral"> <f:SimpleForm id="idReferenceDocumentsForm" 
+	editable="true" layout="ResponsiveGridLayout" title="" labelSpanXL="5" labelSpanL="5" 
+	labelSpanM="5" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" 
+	emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2" singleContainerFullSize="false"> 
+	<f:content> <core:Title text="Item Details" /> <Label text="Sl. No" /> <Input 
+	value="{}" /> <Label text="Purchasing Document" /> <Input value="{}" /> <Label 
+	text="Item" /> <Input value="{}" /> <Label text="Material" /> <Input value="{}" 
+	/> <Label text="Quantity" /> <Input value="{}" /> </f:content> </f:SimpleForm> 
+	</IconTabFilter> <IconTabSeparator icon="" /> <IconTabFilter icon="sap-icon://receipt" 
+	tooltip="Clearing Intruction" iconColor="Neutral"> <f:SimpleForm id="idClearingIntructionForm" 
+	editable="true" layout="ResponsiveGridLayout" title="" labelSpanXL="4" labelSpanL="4" 
+	labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" 
+	emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2" singleContainerFullSize="false"> 
+	<f:content> <core:Title text="" /> <Label text="Invoice Number" /> <Input 
+	value="{}" /> <Label text="Invoice Amount" /> <Input value="{}" /> <Input 
+	value="{}"> <layoutData> <l:GridData span="XL2 L3 M3 S4" /> </layoutData> 
+	</Input> <Label text="Freight Amount" /> <Input value="{}" /> <Input value="{}"> 
+	<layoutData> <l:GridData span="XL2 L3 M3 S4" /> </layoutData> </Input> <Label 
+	text="Insurance Amount" /> <Input value="{}" /> <Input value="{}"> <layoutData> 
+	<l:GridData span="XL2 L3 M3 S4" /> </layoutData> </Input> <Label text="Agency 
+	Commission" /> <Input value="{}" /> <Input value="{}"> <layoutData> <l:GridData 
+	span="XL2 L3 M3 S4" /> </layoutData> </Input> <Label text="Misc. Charges" 
+	/> <Input value="{}" /> <Input value="{}"> <layoutData> <l:GridData span="XL2 
+	L3 M3 S4" /> </layoutData> </Input> <Label text="Total Invoice Value" /> 
+	<Input value="{}" /> <Input value="{}"> <layoutData> <l:GridData span="XL2 
+	L3 M3 S4" /> </layoutData> </Input> <Label text="Landing Charges" /> <Input 
+	value="{}" /> <Input value="{}"> <layoutData> <l:GridData span="XL2 L3 M3 
+	S4" /> </layoutData> </Input> <core:Title text="" /> <Label text="Date" /> 
+	<Input value="{}" /> <Label text="Exchange Rate" /> <Input value="{}" /> 
+	<Label text="Exchange Rate" /> <Input value="{}" /> <Label text="Exchange 
+	Rate" /> <Input value="{}" /> <Label text="Exchange Rate" /> <Input value="{}" 
+	/> <Label text="Exchange Rate" /> <Input value="{}" /> </f:content> </f:SimpleForm> 
+	</IconTabFilter> <IconTabSeparator icon="" /> <IconTabFilter icon="sap-icon://loan" 
+	tooltip="Invoice Details" iconColor="Neutral"> <t:Table id="idInvtable" selectionMode="None" 
+	rowSelectionChange="onSelectionChange" cellClick="onCellClick" visibleRowCount="4" 
+	enableCellFilter="{ui>/cellFilterOn}" filter="filterPrice" ariaLabelledBy="title" 
+	visible="true" rows="{/dataCollection}"> <t:columns> <t:Column id="idInvNo" 
+	filterProperty="PONumber"> <Label text="Invoices" /> <t:template> <Link text="{invname}" 
+	emphasized="true" wrapping="false" press="onPressPoNo" /> </t:template> </t:Column> 
+	<t:Column id="idDate" filterProperty="BL"> <Label text="Date" /> <t:template> 
+	<Text text="{InvDate}" emphasized="true" wrapping="false" /> </t:template> 
+	</t:Column> <t:Column id="idAmount" filterProperty="BL"> <Label text="Amount" 
+	/> <t:template> <Text text="{amount}" emphasized="true" wrapping="false" 
+	/> </t:template> </t:Column> <t:Column id="idCurrency" filterProperty="BL"> 
+	<Label text="Curreny" /> <t:template> <Text text="{curr}" emphasized="true" 
+	wrapping="false" /> </t:template> </t:Column> <t:Column id="idlc" filterProperty="BL"> 
+	<Label text="LC" /> <t:template> <ComboBox type="Text" id="idLClist" change="OnTypeChange"> 
+	<items> <core:Item key="PO" text="Lc1" /> <core:Item key="MIGO" text="Lc2" 
+	/> <core:Item key="IBD" text="Lc3" /> </items> </ComboBox> </t:template> 
+	</t:Column> <t:Column id="iddel" width="8%" filterProperty="BL"> <Label text="Action" 
+	/> <t:template> <Button icon="sap-icon://sys-cancel-2" text="" press="OnPressInvDelete" 
+	class=" sapThemeHighlight-asBackgroundColor " /> </t:template> </t:Column> 
+	</t:columns> </t:Table> </IconTabFilter> <IconTabSeparator icon="" /> <IconTabFilter 
+	icon="sap-icon://receipt" tooltip="Clearing Intruction" iconColor="Neutral"> 
+	<t:Table id="idrefDocTabtable" selectionMode="None" cellClick="onCellClick" 
+	rows="{NndoData>itemDetails}" visibleRowCount="10" filter="filterPrice" ariaLabelledBy="title" 
+	fixedColumnCount="6"> <t:columns> <t:Column id="idItem" width="25%"> <Label 
+	text="Item" /> <t:template> <Text text="{NndoData>item}" wrapping="false" 
+	/> </t:template> </t:Column> <t:Column width="25%"> <Label text="Material" 
+	/> <t:template> <Text text="{NndoData>item}" wrapping="false" /> </t:template> 
+	</t:Column> <t:Column id="idpoQuantity" width="25%" defaultFilterOperator="StartsWith"> 
+	<Label text="P.O Quantity" /> <t:template> <Input value="{NndoData>POQuantity}" 
+	wrapping="false" liveChange="CalculateAmount" app:mydata="{NndoData>currency}"></Input> 
+	</t:template> </t:Column> <t:Column id="idnetPrize" width="25%" defaultFilterOperator="StartsWith"> 
+	<Label text="Net Prize" /> <t:template> <Text text="{NndoData>netAmt} {NndoData>currency}" 
+	id="idNetAmount" wrapping="false" visible="true" /> </t:template> </t:Column> 
+	<t:Column id="idpoAmount" width="25%" defaultFilterOperator="StartsWith"> 
+	<Label text="Amount" /> <t:template> <Text id="idPerAmount" wrapping="false" 
+	visible="true" /> </t:template> </t:Column> <t:Column id="idFOB" width="25%" 
+	defaultFilterOperator="StartsWith"> <Label text="FOB" /> <t:template> <Text 
+	text="{NndoData>FOB}" wrapping="false" /> </t:template> </t:Column> <t:Column 
+	width="25%" defaultFilterOperator="StartsWith"> <Label text="InVoice" /> 
+	<t:template> <ComboBox id="Combobox1" type="Text" items="{NndoData>collectedData}"> 
+	<items> <core:Item key="{NndoData>InvName}" text="{NndoData>InvName}" /> 
+	</items> </ComboBox> </t:template> </t:Column> </t:columns> </t:Table> </IconTabFilter> 
+	</items> </IconTabBar> -->

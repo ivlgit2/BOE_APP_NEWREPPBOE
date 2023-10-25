@@ -1,0 +1,99 @@
+/* Enter your custom styles here */
+/*.clsLCoverviewbackground {
+	background-image: url('../assets/img/ImpExp.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}*/
+
+.sapUiBody .sapMPageBgStandard {
+	background-image: url('../assets/img/ImpExptBckgrnd.jpg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+
+
+/*.clsbackground {
+	background-image: url('../assets/img/ImpExp.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}*/
+
+.filterbarBackgroundStyle {
+	opacity: 0.9;
+	border-radius: 10px;
+}
+
+.sapUiTableM {
+	opacity: 0.9;
+	padding-top: 2rem;
+	padding-bottom: 1rem;
+	padding-right: 2rem;
+	padding-left: 2rem;
+}
+ .sapUiTableCnt {
+   border-radius: 0.3rem;
+ }
+
+.ClsClearBg{
+	background-image:none !important;
+}
+
+.formHeaderBackground .sapUiForm .sapUiFormTitle{
+	background-color:#ecf4fc;
+}
+
+.sapMITBContainerContent{
+	padding:5px;
+	opacity: 0.9;
+}
+
+.sapMITBContent{
+	border-radius:1em;
+}
+
+ .clscurrency .sapUiUfdCurrencyAlign  {
+    text-align: left;
+}
+.sapMPageFloatingFooter .sapMPageFooter .sapMIBar-CTX.sapMFooter-CTX.sapMTB{
+
+                margin-right: 6px;
+
+}
+
+ 
+/* .sapUiBody .sapMPageBgStandard {
+	background-image: url('../assets/img/ImpExptBckgrnd1.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.filterbarBackgroundStyle {
+	opacity: 0.9;
+	border-radius: 10px;
+}
+
+.sapUiVltCell{
+	padding: 5px 5px 5px 5px;
+}
+
+.sapUiTableM {
+	opacity: 0.9;
+	padding-top: 2rem;
+	padding-bottom: 1rem;
+	padding-right: 2rem;
+	padding-left: 2rem;
+}
+ .sapUiTableCnt {
+   border-radius: 0.3rem;
+ }
+ 
+ .labelColor {
+ color: PapayaWhip;
+ }
+ 
+ .textColor {
+ color: PapayaWhip;
+ } */
+ 
+ 

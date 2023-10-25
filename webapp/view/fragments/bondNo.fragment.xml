@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Bond No" class="sapUiPopupWithPadding" items="{datamodel>/result}" search="_handleSearchBondNo"
+		confirm="_handleCloseBondNo" cancel="_handleCloseBondNo">
+		<StandardListItem icon="{ProductPicUrl}" iconDensityAware="false" iconInset="false" title="{datamodel>trkno}"
+			description="Bond File No:{datamodel>bondregnno},Bond Date:{path: 'datamodel>bonddate', formatter: 'BOE.Formatter.formatDate'}"
+			
+			/>
+	</SelectDialog>
+</core:FragmentDefinition>

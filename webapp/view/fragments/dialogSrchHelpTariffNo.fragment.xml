@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Tariff Number"
+		class="sapUiPopupWithPadding"
+		items="{Tarifflist>/results}"
+		liveChange="_handleValueHelpSearch_Tno"
+		confirm="_handleValueHelpClose_Tno"
+		cancel="_handleValueHelpClose_Tno">
+		
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{Tarifflist>tarntno}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

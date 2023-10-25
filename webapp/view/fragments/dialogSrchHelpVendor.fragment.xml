@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Vendor"
+		class="sapUiPopupWithPadding"
+		items="{CmnModel>/vendor}"
+		liveChange="_handleValueHelpSearch_Vendor"
+		confirm="_handleValueHelpClose_Vendor"
+		cancel="_handleValueHelpClose_Vendor">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{CmnModel>lifnr}"
+			description="{CmnModel>name1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

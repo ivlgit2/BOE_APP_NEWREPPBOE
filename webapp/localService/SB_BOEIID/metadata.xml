@@ -1,0 +1,514 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_xbrixsd_boeiid" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="xBRIxiiidbeshdType" sap:label="Imports document BOE shipping details" sap:content-version="1">
+				<Key><PropertyRef Name="doctyp"/><PropertyRef Name="boerefno"/><PropertyRef Name="boecdat"/><PropertyRef Name="refdocno"/><PropertyRef Name="refdocdat"/><PropertyRef Name="refdoccat"/></Key><Property Name="doctyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Type of Document"/><Property Name="boerefno" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="BOE Number (Internal"
+					sap:quickinfo="BOE Number (Internal)" sap:creatable="false" sap:updatable="false"/><Property Name="boecdat" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"
+					sap:label="Date on which the record was created" sap:heading=""/><Property Name="refdocno" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Reference docn no"
+					sap:quickinfo="Reference document number"/><Property Name="refdocdat" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Reference doc date"
+					sap:quickinfo="Reference document date"/><Property Name="refdoccat" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Reference Doc cat"
+					sap:quickinfo="Reference document category"/><Property Name="bolnr" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Bill of ladding no:"
+					sap:quickinfo="Bill of lading"/><Property Name="boldt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Bill of ladding Date"
+					sap:quickinfo="Bill of lading date"/><Property Name="linno" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Line number"/><Property Name="nopkg" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Number of Packages"/><Property Name="groswt" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Gross weight"/><Property Name="unit" Type="Edm.String" MaxLength="3" sap:label="Imp/Exp item UOM" sap:quickinfo="Import/Export item UOM"
+					sap:value-list="standard" sap:semantics="unit-of-measure"/><Property Name="hawbno" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="HAWB Number" sap:quickinfo="HAWB number"/><Property Name="hawbdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="HAWB Date" sap:quickinfo="HAWB date"/><Property Name="port" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Port of filing of Bill of Entry (for MG)"/><Property Name="ernam" Type="Edm.String" MaxLength="12" sap:label="Created By"
+					sap:quickinfo="Name of Person Responsible for Creating the Object"/><Property Name="ersda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On"/><Property Name="aenam" Type="Edm.String" MaxLength="12" sap:label="Changed by" sap:quickinfo="Name of person who changed object"/><Property Name="laeda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Change"
+					sap:quickinfo="Date of Last Change"/><Property Name="timestamp" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp"
+					sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/><NavigationProperty Name="to_BOEHeader" Relationship="cds_xbrixsd_boeiid.assoc_46CFB437BC8263B6A09BB42545C736E2"
+					FromRole="FromRole_assoc_46CFB437BC8263B6A09BB42545C736E2" ToRole="ToRole_assoc_46CFB437BC8263B6A09BB42545C736E2"/><NavigationProperty Name="to_Unit" Relationship="cds_xbrixsd_boeiid.assoc_BB814FE772D8331FD6D736525BA99CDE"
+					FromRole="FromRole_assoc_BB814FE772D8331FD6D736525BA99CDE" ToRole="ToRole_assoc_BB814FE772D8331FD6D736525BA99CDE"/></EntityType>
+			<EntityType Name="xBRIxiiidbsaloType" sap:label="Imports document" sap:content-version="1">
+				<Key><PropertyRef Name="docnr"/><PropertyRef Name="doccat"/><PropertyRef Name="docitem"/><PropertyRef Name="lineitem"/></Key><Property Name="docnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Document number"
+					sap:creatable="false" sap:updatable="false"/><Property Name="doccat" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Document Category"
+					sap:quickinfo="Document category"/><Property Name="docitem" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Doc Item number"/><Property Name="lineitem" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Line item number"/><Property Name="matnr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material Number"/><Property Name="matldes" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Material description"
+					sap:quickinfo="Material description for BoE"/><Property Name="matkl" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group"/><Property Name="anln1" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Asset" sap:quickinfo="Main Asset Number"/><Property Name="anln2" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Asset subnumber" sap:heading=""/><Property Name="menge" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Invoice Item Quantit" sap:quickinfo="Invoice Item Quantity"/><Property Name="meins" Type="Edm.String" MaxLength="3" sap:label="meins" sap:heading="" sap:semantics="unit-of-measure"/><Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/><Property Name="benclass" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Benefit class"/><Property Name="bnftyp" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Benefit schemes"
+					sap:quickinfo="Benefit schemes as per FTP"/><Property Name="benno" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Benefit number"/><Property Name="bendat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Benefit date"/><Property Name="trackno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Internal track no."/><Property Name="trackdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tracking date"
+					sap:quickinfo="Tracking / Application date"/><Property Name="cthno" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Tariff/Nitification"/><Property Name="siono" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SION number"/><Property Name="natdtycod" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Nature of duty code"/><Property Name="totqty" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Total quantity"/><Property Name="alloqty" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Allotted quantity" sap:quickinfo="Allottted quantity"/><Property Name="uom" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/><Property Name="waers_inr" Type="Edm.String" MaxLength="5" sap:label="Currency(INR)" sap:semantics="currency-code"/><Property Name="cifval" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="CIF value"/><Property Name="assval" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Assessable value"/><Property Name="totdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Total duty value"/><Property Name="benefitamt" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Benefit amount avail"
+					sap:quickinfo="Benefit amount availed"/><Property Name="actdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Actual duty"/><Property Name="protdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Duty paid under prot"
+					sap:quickinfo="Duty paid under protest (for MG)"/><Property Name="depbdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="DEPB Credit"/><Property Name="licbondno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Bond Reference No"
+					sap:quickinfo="Bond Reference Number (Internal)"/><Property Name="licbonddt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Bond registration da"
+					sap:quickinfo="Bond registration date"/><Property Name="adduty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Additional Duty"/><Property Name="depbval" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="DEPB Value"/><Property Name="port" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Port of filing of Bill of Entry (for MG)"/><Property Name="post_status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Posting Status for FI posting"/><Property Name="fiscal_year" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal year of Posti"
+					sap:quickinfo="Fiscal year of Posting"/><Property Name="document_no" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number from"
+					sap:quickinfo="Document Number from FI posting"/><Property Name="andumpdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Anti-Dumping Duty"/><Property Name="bgno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Internal track no."/><Property Name="bnkguarno" Type="Edm.String" MaxLength="35" sap:label="Actual BG number tha"
+					sap:quickinfo="Actual BG number that been received from the bank"/><Property Name="bgamtlc" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="BG amount in LC"/><Property Name="cukyrs" Type="Edm.String" MaxLength="5" sap:label="Currency Key - LC" sap:semantics="currency-code"/><Property Name="bondno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Internal track no."/><Property Name="bondregnno" Type="Edm.String" MaxLength="35" sap:label="Bond registration nu" sap:quickinfo="Bond registration number"/><Property Name="bondvalu" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Bond value"/><Property Name="cukyfc" Type="Edm.String" MaxLength="5" sap:label="Currency Key - FC" sap:semantics="currency-code"/><Property Name="doctyp" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Type of Document"/><NavigationProperty Name="to_BOEITEM" Relationship="cds_xbrixsd_boeiid.assoc_4935F8FD4872E58330E58C973D6AC3AC"
+					FromRole="FromRole_assoc_4935F8FD4872E58330E58C973D6AC3AC" ToRole="ToRole_assoc_4935F8FD4872E58330E58C973D6AC3AC"/></EntityType>
+			<EntityType Name="xBRIxI_CE_BOE_STATUSType" sap:label="Custom entity for boe status" sap:content-version="1">
+				<Key><PropertyRef Name="code"/></Key><Property Name="code" Type="Edm.String" Nullable="false" MaxLength="5"/><Property Name="description" Type="Edm.String" MaxLength="30"/></EntityType>
+			<EntityType Name="xBRIxi_iidbedutType" sap:label="Imports document duty details" sap:content-version="1">
+				<Key><PropertyRef Name="doctyp"/><PropertyRef Name="docno"/><PropertyRef Name="docyear"/><PropertyRef Name="boeitno"/><PropertyRef Name="linitni"/><PropertyRef Name="stepnum"/></Key><Property Name="doctyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Type of Document"/><Property Name="docno" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="BOE Number (Internal"
+					sap:quickinfo="BOE Number (Internal)" sap:creatable="false" sap:updatable="false"/><Property Name="docyear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Document year"/><Property Name="boeitno" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item no Bill of Entr"
+					sap:quickinfo="Item number of Bill of Entry"/><Property Name="linitni" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Line number of item"
+					sap:quickinfo="Line number of the item"/><Property Name="stepnum" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Primary Step Number"/><Property Name="dutcode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Duty Code"/><Property Name="dutyrat" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Duty Rate"/><Property Name="ratetyp" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Specific / Advalorem"
+					sap:quickinfo="Specific / Advalorem Rates"/><Property Name="baseunt" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:value-list="standard"
+					sap:semantics="unit-of-measure"/><Property Name="sysvalu" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="System Calculated Va"
+					sap:quickinfo="System Calculated Value"/><Property Name="actvalu" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Actual duty"/><Property Name="noti" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Tariff/Notification"/><Property Name="ntdtyrt" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Notification Duty ra" sap:quickinfo="Notification Duty rate"/><Property Name="advalrt" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Advalorem Rates"/><Property Name="waers" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:value-list="standard" sap:semantics="currency-code"/><Property Name="post_status" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Posting Status for FI posting"/><Property Name="fiscal_year" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal year of Posti"
+					sap:quickinfo="Fiscal year of Posting"/><Property Name="document_no" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number from"
+					sap:quickinfo="Document Number from FI posting"/><NavigationProperty Name="to_BOEHeader" Relationship="cds_xbrixsd_boeiid.assoc_E7925C545FBB3D673236FF28C3D55C49"
+					FromRole="FromRole_assoc_E7925C545FBB3D673236FF28C3D55C49" ToRole="ToRole_assoc_E7925C545FBB3D673236FF28C3D55C49"/><NavigationProperty Name="to_Currency" Relationship="cds_xbrixsd_boeiid.assoc_86077EE0FC5425D3A6B727F31F4474B6"
+					FromRole="FromRole_assoc_86077EE0FC5425D3A6B727F31F4474B6" ToRole="ToRole_assoc_86077EE0FC5425D3A6B727F31F4474B6"/><NavigationProperty Name="to_Unit" Relationship="cds_xbrixsd_boeiid.assoc_46E4FEFD3A68B4092BC8C6B090DDA6FF"
+					FromRole="FromRole_assoc_46E4FEFD3A68B4092BC8C6B090DDA6FF" ToRole="ToRole_assoc_46E4FEFD3A68B4092BC8C6B090DDA6FF"/></EntityType>
+			<EntityType Name="xBRIxi_iidbehdrType" sap:label="Imports Document BOE Header" sap:content-version="1">
+				<Key><PropertyRef Name="doctyp"/><PropertyRef Name="docno"/></Key><Property Name="doctyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Type of Document"/><Property Name="docno" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="BOE Number (Internal"
+					sap:quickinfo="BOE Number (Internal)" sap:creatable="false" sap:updatable="false"/><Property Name="asstyp" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Assessment type of B"
+					sap:quickinfo="Assessment type of BOE"/><Property Name="pdocno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Previous document no"
+					sap:quickinfo="Previous document number"/><Property Name="pdoccat" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Reference Doc cat"
+					sap:quickinfo="Reference document category" sap:value-list="standard"/><Property Name="docyear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Document year"/><Property Name="odocno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Original document no"
+					sap:quickinfo="Original document number"/><Property Name="odocyear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Original document yr"
+					sap:quickinfo="Original document year"/><Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/><Property Name="boestat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="BOE Status" sap:value-list="standard"/><Property Name="grnno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Grn Number"/><Property Name="grndat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Grn Date"/><Property Name="lifnr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Vendor"
+					sap:quickinfo="Account Number of Vendor or Creditor"/><Property Name="impdpsno" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Import department se"
+					sap:quickinfo="Import department serial number"/><Property Name="impdpdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Import department serial date"/><Property Name="bondno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Bond Reference No(in"
+					sap:quickinfo="Bond Reference Number (Internal)"/><Property Name="bonddat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Bond date"/><Property Name="rotno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Rotation number"/><Property Name="rotdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Rotation number date"/><Property Name="igmno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Importers general ma"
+					sap:quickinfo="Importers general manifesto number"/><Property Name="igmdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of manifesto no"
+					sap:quickinfo="Date of manifesto number"/><Property Name="totdtyval" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Total duty value"/><Property Name="actdtypyd" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Actual duty Paid"/><Property Name="totprotdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Duty paid under prot"
+					sap:quickinfo="Duty paid under protest (for MG)"/><Property Name="dutyadj" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Duty value adjusted"/><Property Name="depbdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="DEPB Credit"/><Property Name="totassval" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Total duty value"/><Property Name="hss_indi" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="High Sea Sale Indicator" sap:heading=""/><Property Name="custstn" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Customs Station"/><Property Name="curr_inr" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:value-list="standard" sap:semantics="currency-code"/><Property Name="def_duty_pay" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Deferred Duty paymen"
+					sap:quickinfo="Deferred Duty payment"/><Property Name="pay_due_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Payment Due Date"/><Property Name="challan_no" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="TR6 Challan Number"/><Property Name="challan_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Challan Date"/><Property Name="remit_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Remittance Date"/><Property Name="bankid" Type="Edm.String" MaxLength="5" sap:label="House bank" sap:quickinfo="Short key for a house bank"/><Property Name="cashrno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cash receipt number"/><Property Name="cashrdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of cash receipt"/><Property Name="cusfreno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customs free receipt"
+					sap:quickinfo="Customs free receipt number"/><Property Name="cusfredat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Customs free date"/><Property Name="pdaccno" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="PD account number"/><Property Name="chacode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="CHA code"/><Property Name="chacharges" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="CHA Charges"/><Property Name="linno" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Line number"/><Property Name="iecno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="IEC Code"/><Property Name="chadcldat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of CHA declarat"
+					sap:quickinfo="Date of CHA declaration"/><Property Name="currcode" Type="Edm.String" MaxLength="5" sap:label="Local currency code" sap:value-list="standard"
+					sap:semantics="currency-code"/><Property Name="trcno" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="TR challan number"/><Property Name="trcdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="TR challan date"/><Property Name="spcerno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Space certificate no"
+					sap:quickinfo="Space certificate number"/><Property Name="spcerdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of space certif"
+					sap:quickinfo="Date of space certificate"/><Property Name="wrhregno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Warehouse registrati"
+					sap:quickinfo="Warehouse registration number"/><Property Name="wrhprd" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Warehousing period"/><Property Name="wrhdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Warehouse registratn"
+					sap:quickinfo="Warehouse registration date"/><Property Name="cusclr" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Endorsement of Import clerk"/><Property Name="adduty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Additional Duty"/><Property Name="qboe" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="QBOE Indicator"/><Property Name="boedate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Bill Of Entry Date"/><Property Name="bondsubtyp" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Bond Sub Type"/><Property Name="shup_status" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Shipping Bill Upload Status"/><Property Name="boe_vend" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="BOE Vendor name"/><Property Name="boe_vend_dt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Sent to Vendor Date"/><Property Name="hbkid" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Short key for a house bank" sap:heading=""/><Property Name="pdoctype" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="BOE Preceeding Doc"
+					sap:quickinfo="BOE PrecedingDocument Type"/><Property Name="dem_chrg" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Demurrage Charges"/><Property Name="dem_rsn" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Demurrage Reason Cod"
+					sap:quickinfo="Demurrage Reason Code"/><Property Name="loadport" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Port of Loading"/><Property Name="arivport" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Port of arrival"/><Property Name="regnport" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Port of registration"/><Property Name="orgcntry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country of origin"/><Property Name="concntry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country of Consignor"/><Property Name="portship" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Port of shipping"/><Property Name="modtran" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Mode of transportati"
+					sap:quickinfo="Mode of transportation"/><Property Name="traty" Type="Edm.String" MaxLength="4" sap:label="Means-of-Transport" sap:quickinfo="Means-of-Transport Type"/><Property Name="port" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Port of filing of Bill of Entry (for MG)"/><Property Name="vessname" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Vessel's name"/><Property Name="deletion" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Deletion Indicator"/><Property Name="ernam" Type="Edm.String" MaxLength="12" sap:label="Created By"
+					sap:quickinfo="Name of Person Responsible for Creating the Object"/><Property Name="ersda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On"/><Property Name="aenam" Type="Edm.String" MaxLength="12" sap:label="Changed by" sap:quickinfo="Name of person who changed object"/><Property Name="laeda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Change"
+					sap:quickinfo="Date of Last Change"/><Property Name="timestamp" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp"
+					sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/><NavigationProperty Name="to_boestatus" Relationship="cds_xbrixsd_boeiid.assoc_07DD5E6332801820BC637070D94BA0B2"
+					FromRole="FromRole_assoc_07DD5E6332801820BC637070D94BA0B2" ToRole="ToRole_assoc_07DD5E6332801820BC637070D94BA0B2"/><NavigationProperty Name="to_Currencycurrcode" Relationship="cds_xbrixsd_boeiid.assoc_4607BF1835F5E67F7815433FE600CD61"
+					FromRole="FromRole_assoc_4607BF1835F5E67F7815433FE600CD61" ToRole="ToRole_assoc_4607BF1835F5E67F7815433FE600CD61"/><NavigationProperty Name="to_Currencyinr" Relationship="cds_xbrixsd_boeiid.assoc_A4F8B7456C44458D3BF5241CABE69D61"
+					FromRole="FromRole_assoc_A4F8B7456C44458D3BF5241CABE69D61" ToRole="ToRole_assoc_A4F8B7456C44458D3BF5241CABE69D61"/><NavigationProperty Name="to_doctype" Relationship="cds_xbrixsd_boeiid.assoc_30BFC0970448F3BBF32126712483C9BE"
+					FromRole="FromRole_assoc_30BFC0970448F3BBF32126712483C9BE" ToRole="ToRole_assoc_30BFC0970448F3BBF32126712483C9BE"/><NavigationProperty Name="to_itemdetails" Relationship="cds_xbrixsd_boeiid.assoc_A0856C91201AB937E077819F8CF95741"
+					FromRole="FromRole_assoc_A0856C91201AB937E077819F8CF95741" ToRole="ToRole_assoc_A0856C91201AB937E077819F8CF95741"/><NavigationProperty Name="to_shippingdetails" Relationship="cds_xbrixsd_boeiid.assoc_A19E5FE1B24492DE89A76B9B1C93B3F6"
+					FromRole="FromRole_assoc_A19E5FE1B24492DE89A76B9B1C93B3F6" ToRole="ToRole_assoc_A19E5FE1B24492DE89A76B9B1C93B3F6"/></EntityType>
+			<EntityType Name="xBRIxi_iidbeitmType" sap:label="Imports document BOE item details" sap:content-version="1">
+				<Key><PropertyRef Name="doctyp"/><PropertyRef Name="docno"/><PropertyRef Name="boeitno"/></Key><Property Name="doctyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Type of Document"
+					sap:creatable="false" sap:updatable="false"/><Property Name="docno" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="BOE Number (Internal"
+					sap:quickinfo="BOE Number (Internal)" sap:creatable="false" sap:updatable="false"/><Property Name="boeitno" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item no Bill of Entr"
+					sap:quickinfo="Item number of Bill of Entry"/><Property Name="refdocno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Reference docn no"
+					sap:quickinfo="Reference document number"/><Property Name="refdocitno" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Reference Document I"
+					sap:quickinfo="Reference Document Item"/><Property Name="clin" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="CLIN number"/><Property Name="zeile" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Item number"/><Property Name="invoicenr" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Invoice number"/><Property Name="invoicedt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Invoice date"/><Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/><Property Name="lgort" Type="Edm.String" MaxLength="4" sap:label="storage location" sap:heading=""/><Property Name="werks" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/><Property Name="siono" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SION number"/><Property Name="cthno" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Tariff/Nitification"/><Property Name="sel" Type="Edm.String" MaxLength="1"/><Property Name="matnr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material Number"/><Property Name="matldes" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Material description"
+					sap:quickinfo="Material description for BoE"/><Property Name="anln1" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Asset" sap:quickinfo="Main Asset Number"/><Property Name="anln2" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Asset subnumber" sap:heading=""/><Property Name="matkl" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group"/><Property Name="steuc" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="HSN Code"
+					sap:quickinfo="Control code for consumption taxes in foreign trade"/><Property Name="net_curr" Type="Edm.String" MaxLength="5" sap:label="Net Price Currency K" sap:quickinfo="Net Price Currency Key"
+					sap:value-list="standard" sap:semantics="currency-code"/><Property Name="netpr" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Invoice Item Amount"/><Property Name="net_exch" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Net price Exchange R"
+					sap:quickinfo="Net price Exchange Rate"/><Property Name="frgtamt" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Freight amount"/><Property Name="frgt_curr" Type="Edm.String" MaxLength="5" sap:label="Freight amount Curre" sap:quickinfo="Freight amount Currency"
+					sap:semantics="currency-code"/><Property Name="frgt_exch" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Freight amount Exch"
+					sap:quickinfo="Freight amount Exchange Rate"/><Property Name="insuamt" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Insurance amount"/><Property Name="insu_curr" Type="Edm.String" MaxLength="5" sap:label="Insurance amount Cur" sap:quickinfo="Insurance amount Currency"
+					sap:semantics="currency-code"/><Property Name="insu_exch" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Insurance amount Exc"
+					sap:quickinfo="Insurance amount Exchange Rate"/><Property Name="agcomm" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Agency commission amount"/><Property Name="agc_curr" Type="Edm.String" MaxLength="5" sap:label="Agency commission cu" sap:quickinfo="Agency commission currency"
+					sap:semantics="currency-code"/><Property Name="agc_exch" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Agency commission Ex"
+					sap:quickinfo="Agency commission Exchange Rate"/><Property Name="misschar" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Miscellaneous charge" sap:quickinfo="Miscellaneous charges"/><Property Name="msc_curr" Type="Edm.String" MaxLength="5" sap:label="Miscellaneous Curre" sap:quickinfo="Miscellaneous Currency"
+					sap:semantics="currency-code"/><Property Name="msc_exch" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Miscellaneous Exc ra" sap:quickinfo="Miscellaneous Exc rate"/><Property Name="landchar" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Landing charges"/><Property Name="inr_curr" Type="Edm.String" MaxLength="5" sap:label="Landing charges Curr" sap:quickinfo="Landing charges Currency"
+					sap:semantics="currency-code"/><Property Name="totval" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Total invoice value" sap:quickinfo="Total invoice value"/><Property Name="assval" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Assessable value"/><Property Name="sysassval" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="System calculated as"
+					sap:quickinfo="System calculated assessible value"/><Property Name="totdtyval" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Total duty value"/><Property Name="actdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Actual duty"/><Property Name="actdtypyd" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Actual duty Paid"/><Property Name="protdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Duty paid under prot"
+					sap:quickinfo="Duty paid under protest (for MG)"/><Property Name="depbdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="DEPB Credit"/><Property Name="hss_comchrg" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="High sea sale commis"
+					sap:quickinfo="High sea sale commission charge"/><Property Name="hss_curr" Type="Edm.String" MaxLength="5" sap:label="HSS currency" sap:semantics="currency-code"/><Property Name="adduty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Additional Duty"/><Property Name="cifval" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="CIF value"/><Property Name="andumpdty" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Anti-Dumping Duty"/><Property Name="packdesc" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Package description"/><Property Name="packmark" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Package marks"/><Property Name="packno" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Packing number"/><Property Name="ritcno" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Goods RITC number"/><Property Name="menge" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Invoice Item Quantit" sap:quickinfo="Invoice Item Quantity"/><Property Name="meins" Type="Edm.String" MaxLength="3" sap:label="meins" sap:heading="" sap:value-list="standard"
+					sap:semantics="unit-of-measure"/><Property Name="delqty" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Delivered quantity"/><Property Name="del_uom" Type="Edm.String" MaxLength="3" sap:label="Delivered quantity U" sap:quickinfo="Delivered quantity Unit"
+					sap:value-list="standard" sap:semantics="unit-of-measure"/><Property Name="recqty" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Received quantity"/><Property Name="rec_uom" Type="Edm.String" MaxLength="3" sap:label="Received quantity Un" sap:quickinfo="Received quantity Unit"
+					sap:value-list="standard" sap:semantics="unit-of-measure"/><Property Name="ullqty" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Ullage quantity"/><Property Name="ull_uom" Type="Edm.String" MaxLength="3" sap:label="Ullage quantity Unit" sap:value-list="standard"
+					sap:semantics="unit-of-measure"/><Property Name="dutycod" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Customs duty code"/><Property Name="licutin" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="License utilization"
+					sap:quickinfo="License utilization indicator"/><Property Name="warhpno" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Warehouse permission"
+					sap:quickinfo="Warehouse permission number"/><Property Name="werpdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Warehouse permission"
+					sap:quickinfo="Warehouse permission date"/><Property Name="rewarequan" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Rewarehoused Quantit"
+					sap:quickinfo="Rewarehoused Quantity"/><Property Name="clearquan" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Cleared quantity"/><Property Name="grnno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Grn Number"/><Property Name="grndat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Grn Date"/><Property Name="meins01" Type="Edm.String" MaxLength="3" sap:label="meins" sap:heading="" sap:value-list="standard"
+					sap:semantics="unit-of-measure"/><NavigationProperty Name="to_BOEHeader" Relationship="cds_xbrixsd_boeiid.assoc_7BC86621A3366CD0DAC10A357C8FE85D"
+					FromRole="FromRole_assoc_7BC86621A3366CD0DAC10A357C8FE85D" ToRole="ToRole_assoc_7BC86621A3366CD0DAC10A357C8FE85D"/><NavigationProperty Name="to_Currency" Relationship="cds_xbrixsd_boeiid.assoc_216D6763D0F7D97FE084A25E1916D8B9"
+					FromRole="FromRole_assoc_216D6763D0F7D97FE084A25E1916D8B9" ToRole="ToRole_assoc_216D6763D0F7D97FE084A25E1916D8B9"/><NavigationProperty Name="to_Currencyagc" Relationship="cds_xbrixsd_boeiid.assoc_1E2C0096705A68E0A563338D263F9931"
+					FromRole="FromRole_assoc_1E2C0096705A68E0A563338D263F9931" ToRole="ToRole_assoc_1E2C0096705A68E0A563338D263F9931"/><NavigationProperty Name="to_Currencyfur" Relationship="cds_xbrixsd_boeiid.assoc_6EA913D2FEC14E33A6EFE22A79A65564"
+					FromRole="FromRole_assoc_6EA913D2FEC14E33A6EFE22A79A65564" ToRole="ToRole_assoc_6EA913D2FEC14E33A6EFE22A79A65564"/><NavigationProperty Name="to_Currencyhss" Relationship="cds_xbrixsd_boeiid.assoc_F788E47A6BCEE37AE7FABBD1C983DDBB"
+					FromRole="FromRole_assoc_F788E47A6BCEE37AE7FABBD1C983DDBB" ToRole="ToRole_assoc_F788E47A6BCEE37AE7FABBD1C983DDBB"/><NavigationProperty Name="to_Currencyinr" Relationship="cds_xbrixsd_boeiid.assoc_316928683280F0934394E3D993F6CF7A"
+					FromRole="FromRole_assoc_316928683280F0934394E3D993F6CF7A" ToRole="ToRole_assoc_316928683280F0934394E3D993F6CF7A"/><NavigationProperty Name="to_Currencyinsu" Relationship="cds_xbrixsd_boeiid.assoc_D1CC1407AD9D96EC7A688F0F900799E8"
+					FromRole="FromRole_assoc_D1CC1407AD9D96EC7A688F0F900799E8" ToRole="ToRole_assoc_D1CC1407AD9D96EC7A688F0F900799E8"/><NavigationProperty Name="to_Currencymsc" Relationship="cds_xbrixsd_boeiid.assoc_799E4889271B5221173D05E29CCFD9C7"
+					FromRole="FromRole_assoc_799E4889271B5221173D05E29CCFD9C7" ToRole="ToRole_assoc_799E4889271B5221173D05E29CCFD9C7"/><NavigationProperty Name="to_dutydetails" Relationship="cds_xbrixsd_boeiid.assoc_73ABC7BA82687578869221BF3C58F882"
+					FromRole="FromRole_assoc_73ABC7BA82687578869221BF3C58F882" ToRole="ToRole_assoc_73ABC7BA82687578869221BF3C58F882"/><NavigationProperty Name="to_Salo" Relationship="cds_xbrixsd_boeiid.assoc_63945701110410B3752397890D55E72C"
+					FromRole="FromRole_assoc_63945701110410B3752397890D55E72C" ToRole="ToRole_assoc_63945701110410B3752397890D55E72C"/><NavigationProperty Name="to_Unitdel" Relationship="cds_xbrixsd_boeiid.assoc_6E7FDA9F450A203F4CD5158C968C87CA"
+					FromRole="FromRole_assoc_6E7FDA9F450A203F4CD5158C968C87CA" ToRole="ToRole_assoc_6E7FDA9F450A203F4CD5158C968C87CA"/><NavigationProperty Name="to_Unitmein" Relationship="cds_xbrixsd_boeiid.assoc_AAD28CB33C6C7C747D5F5F6DF53F9735"
+					FromRole="FromRole_assoc_AAD28CB33C6C7C747D5F5F6DF53F9735" ToRole="ToRole_assoc_AAD28CB33C6C7C747D5F5F6DF53F9735"/><NavigationProperty Name="to_Unitmeins01" Relationship="cds_xbrixsd_boeiid.assoc_27A86CA2AA8CEB8F4543E5F0FECD929D"
+					FromRole="FromRole_assoc_27A86CA2AA8CEB8F4543E5F0FECD929D" ToRole="ToRole_assoc_27A86CA2AA8CEB8F4543E5F0FECD929D"/><NavigationProperty Name="to_Unitrec" Relationship="cds_xbrixsd_boeiid.assoc_5799B14757D208B619F18802A522BB82"
+					FromRole="FromRole_assoc_5799B14757D208B619F18802A522BB82" ToRole="ToRole_assoc_5799B14757D208B619F18802A522BB82"/><NavigationProperty Name="to_Unitull" Relationship="cds_xbrixsd_boeiid.assoc_A051AA5696183704B32B854A9E7D973A"
+					FromRole="FromRole_assoc_A051AA5696183704B32B854A9E7D973A" ToRole="ToRole_assoc_A051AA5696183704B32B854A9E7D973A"/></EntityType>
+			<EntityType Name="xBRIxI_PRE_DOC_TYPEType" sap:label="cds for previous document type" sap:content-version="1">
+				<Key><PropertyRef Name="code"/></Key><Property Name="code" Type="Edm.String" Nullable="false" MaxLength="5"/><Property Name="description" Type="Edm.String" MaxLength="30"/></EntityType>
+			<EntityType Name="I_CurrencyType" sap:label="Currency" sap:content-version="1">
+				<Key><PropertyRef Name="Currency"/></Key><Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="Currency_Text" sap:label="Currency"
+					sap:quickinfo="Currency Key" sap:semantics="currency-code"/><Property Name="Currency_Text" Type="Edm.String" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false"/><Property Name="Decimals" Type="Edm.Byte" sap:label="Decimal Places" sap:quickinfo="Number of decimal places"/><Property Name="CurrencyISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code"
+					sap:quickinfo="ISO Currency Code"/><Property Name="AlternativeCurrencyKey" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Alternative Key"/><Property Name="IsPrimaryCurrencyForISOCrcy" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Primary"
+					sap:quickinfo="Primary SAP Currency Code for ISO Code"/></EntityType>
+			<EntityType Name="I_UnitOfMeasureType" sap:label="Unit of Measure" sap:content-version="1">
+				<Key><PropertyRef Name="UnitOfMeasure"/></Key><Property Name="UnitOfMeasure" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="UnitOfMeasure_Text" sap:label="Internal UoM"
+					sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/><Property Name="UnitOfMeasure_Text" Type="Edm.String" MaxLength="30" sap:label="UoM Text"
+					sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)" sap:creatable="false" sap:updatable="false"/><Property Name="UnitOfMeasureDimension" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Dimension"
+					sap:quickinfo="Dimension key"/><Property Name="UnitOfMeasureISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO code"
+					sap:quickinfo="ISO code for unit of measurement"/><Property Name="UnitOfMeasureNumberOfDecimals" Type="Edm.Int16" sap:label="Decimal Rounding"
+					sap:quickinfo="No. of decimal places for rounding"/><Property Name="UnitOfMeasureDspNmbrOfDcmls" Type="Edm.Int16" sap:label="Decimal Places"
+					sap:quickinfo="Number of decimal places for number display"/></EntityType>
+			<Association Name="assoc_7BC86621A3366CD0DAC10A357C8FE85D" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_7BC86621A3366CD0DAC10A357C8FE85D"/><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType" Multiplicity="1" Role="ToRole_assoc_7BC86621A3366CD0DAC10A357C8FE85D"/></Association>
+			<Association Name="assoc_216D6763D0F7D97FE084A25E1916D8B9" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_216D6763D0F7D97FE084A25E1916D8B9"/><End Type="cds_xbrixsd_boeiid.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_216D6763D0F7D97FE084A25E1916D8B9"/></Association>
+			<Association Name="assoc_1E2C0096705A68E0A563338D263F9931" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_1E2C0096705A68E0A563338D263F9931"/><End Type="cds_xbrixsd_boeiid.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_1E2C0096705A68E0A563338D263F9931"/></Association>
+			<Association Name="assoc_6EA913D2FEC14E33A6EFE22A79A65564" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_6EA913D2FEC14E33A6EFE22A79A65564"/><End Type="cds_xbrixsd_boeiid.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_6EA913D2FEC14E33A6EFE22A79A65564"/></Association>
+			<Association Name="assoc_F788E47A6BCEE37AE7FABBD1C983DDBB" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_F788E47A6BCEE37AE7FABBD1C983DDBB"/><End Type="cds_xbrixsd_boeiid.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_F788E47A6BCEE37AE7FABBD1C983DDBB"/></Association>
+			<Association Name="assoc_316928683280F0934394E3D993F6CF7A" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_316928683280F0934394E3D993F6CF7A"/><End Type="cds_xbrixsd_boeiid.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_316928683280F0934394E3D993F6CF7A"/></Association>
+			<Association Name="assoc_D1CC1407AD9D96EC7A688F0F900799E8" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_D1CC1407AD9D96EC7A688F0F900799E8"/><End Type="cds_xbrixsd_boeiid.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_D1CC1407AD9D96EC7A688F0F900799E8"/></Association>
+			<Association Name="assoc_799E4889271B5221173D05E29CCFD9C7" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_799E4889271B5221173D05E29CCFD9C7"/><End Type="cds_xbrixsd_boeiid.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_799E4889271B5221173D05E29CCFD9C7"/></Association>
+			<Association Name="assoc_73ABC7BA82687578869221BF3C58F882" sap:content-version="1">
+				<End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_73ABC7BA82687578869221BF3C58F882"><OnDelete Action="Cascade"/></End><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbedutType" Multiplicity="*" Role="ToRole_assoc_73ABC7BA82687578869221BF3C58F882"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_assoc_73ABC7BA82687578869221BF3C58F882"><PropertyRef Name="boeitno"/><PropertyRef Name="doctyp"/><PropertyRef Name="docno"/></Principal>
+					<Dependent Role="ToRole_assoc_73ABC7BA82687578869221BF3C58F882"><PropertyRef Name="boeitno"/><PropertyRef Name="doctyp"/><PropertyRef Name="docno"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_63945701110410B3752397890D55E72C" sap:content-version="1">
+				<End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_63945701110410B3752397890D55E72C"><OnDelete Action="Cascade"/></End><End Type="cds_xbrixsd_boeiid.xBRIxiiidbsaloType" Multiplicity="*" Role="ToRole_assoc_63945701110410B3752397890D55E72C"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_assoc_63945701110410B3752397890D55E72C"><PropertyRef Name="boeitno"/><PropertyRef Name="doctyp"/><PropertyRef Name="docno"/></Principal>
+					<Dependent Role="ToRole_assoc_63945701110410B3752397890D55E72C"><PropertyRef Name="docitem"/><PropertyRef Name="doctyp"/><PropertyRef Name="docnr"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_6E7FDA9F450A203F4CD5158C968C87CA" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_6E7FDA9F450A203F4CD5158C968C87CA"/><End Type="cds_xbrixsd_boeiid.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_6E7FDA9F450A203F4CD5158C968C87CA"/></Association>
+			<Association Name="assoc_AAD28CB33C6C7C747D5F5F6DF53F9735" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_AAD28CB33C6C7C747D5F5F6DF53F9735"/><End Type="cds_xbrixsd_boeiid.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_AAD28CB33C6C7C747D5F5F6DF53F9735"/></Association>
+			<Association Name="assoc_27A86CA2AA8CEB8F4543E5F0FECD929D" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_27A86CA2AA8CEB8F4543E5F0FECD929D"/><End Type="cds_xbrixsd_boeiid.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_27A86CA2AA8CEB8F4543E5F0FECD929D"/></Association>
+			<Association Name="assoc_5799B14757D208B619F18802A522BB82" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_5799B14757D208B619F18802A522BB82"/><End Type="cds_xbrixsd_boeiid.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_5799B14757D208B619F18802A522BB82"/></Association>
+			<Association Name="assoc_A051AA5696183704B32B854A9E7D973A" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="FromRole_assoc_A051AA5696183704B32B854A9E7D973A"/><End Type="cds_xbrixsd_boeiid.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_A051AA5696183704B32B854A9E7D973A"/></Association>
+			<Association Name="assoc_07DD5E6332801820BC637070D94BA0B2" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType" Multiplicity="1" Role="FromRole_assoc_07DD5E6332801820BC637070D94BA0B2"/><End Type="cds_xbrixsd_boeiid.xBRIxI_CE_BOE_STATUSType" Multiplicity="0..1" Role="ToRole_assoc_07DD5E6332801820BC637070D94BA0B2"/></Association>
+			<Association Name="assoc_4607BF1835F5E67F7815433FE600CD61" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType" Multiplicity="1" Role="FromRole_assoc_4607BF1835F5E67F7815433FE600CD61"/><End Type="cds_xbrixsd_boeiid.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_4607BF1835F5E67F7815433FE600CD61"/></Association>
+			<Association Name="assoc_A4F8B7456C44458D3BF5241CABE69D61" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType" Multiplicity="1" Role="FromRole_assoc_A4F8B7456C44458D3BF5241CABE69D61"/><End Type="cds_xbrixsd_boeiid.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_A4F8B7456C44458D3BF5241CABE69D61"/></Association>
+			<Association Name="assoc_30BFC0970448F3BBF32126712483C9BE" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType" Multiplicity="1" Role="FromRole_assoc_30BFC0970448F3BBF32126712483C9BE"/><End Type="cds_xbrixsd_boeiid.xBRIxI_PRE_DOC_TYPEType" Multiplicity="0..1" Role="ToRole_assoc_30BFC0970448F3BBF32126712483C9BE"/></Association>
+			<Association Name="assoc_A0856C91201AB937E077819F8CF95741" sap:content-version="1">
+				<End Type="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType" Multiplicity="1" Role="FromRole_assoc_A0856C91201AB937E077819F8CF95741"><OnDelete Action="Cascade"/></End><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="*" Role="ToRole_assoc_A0856C91201AB937E077819F8CF95741"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_assoc_A0856C91201AB937E077819F8CF95741"><PropertyRef Name="doctyp"/><PropertyRef Name="docno"/></Principal>
+					<Dependent Role="ToRole_assoc_A0856C91201AB937E077819F8CF95741"><PropertyRef Name="doctyp"/><PropertyRef Name="docno"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_A19E5FE1B24492DE89A76B9B1C93B3F6" sap:content-version="1">
+				<End Type="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType" Multiplicity="1" Role="FromRole_assoc_A19E5FE1B24492DE89A76B9B1C93B3F6"><OnDelete Action="Cascade"/></End><End Type="cds_xbrixsd_boeiid.xBRIxiiidbeshdType" Multiplicity="*" Role="ToRole_assoc_A19E5FE1B24492DE89A76B9B1C93B3F6"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_assoc_A19E5FE1B24492DE89A76B9B1C93B3F6"><PropertyRef Name="docno"/><PropertyRef Name="doctyp"/></Principal>
+					<Dependent Role="ToRole_assoc_A19E5FE1B24492DE89A76B9B1C93B3F6"><PropertyRef Name="boerefno"/><PropertyRef Name="doctyp"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_BB814FE772D8331FD6D736525BA99CDE" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxiiidbeshdType" Multiplicity="1" Role="FromRole_assoc_BB814FE772D8331FD6D736525BA99CDE"/><End Type="cds_xbrixsd_boeiid.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_BB814FE772D8331FD6D736525BA99CDE"/></Association>
+			<Association Name="assoc_46CFB437BC8263B6A09BB42545C736E2" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxiiidbeshdType" Multiplicity="1" Role="FromRole_assoc_46CFB437BC8263B6A09BB42545C736E2"/><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType" Multiplicity="1" Role="ToRole_assoc_46CFB437BC8263B6A09BB42545C736E2"/></Association>
+			<Association Name="assoc_4935F8FD4872E58330E58C973D6AC3AC" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxiiidbsaloType" Multiplicity="1" Role="FromRole_assoc_4935F8FD4872E58330E58C973D6AC3AC"/><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="ToRole_assoc_4935F8FD4872E58330E58C973D6AC3AC"/></Association>
+			<Association Name="assoc_E7925C545FBB3D673236FF28C3D55C49" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbedutType" Multiplicity="1" Role="FromRole_assoc_E7925C545FBB3D673236FF28C3D55C49"/><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" Multiplicity="1" Role="ToRole_assoc_E7925C545FBB3D673236FF28C3D55C49"/></Association>
+			<Association Name="assoc_86077EE0FC5425D3A6B727F31F4474B6" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbedutType" Multiplicity="1" Role="FromRole_assoc_86077EE0FC5425D3A6B727F31F4474B6"/><End Type="cds_xbrixsd_boeiid.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_86077EE0FC5425D3A6B727F31F4474B6"/></Association>
+			<Association Name="assoc_46E4FEFD3A68B4092BC8C6B090DDA6FF" sap:content-version="1"><End Type="cds_xbrixsd_boeiid.xBRIxi_iidbedutType" Multiplicity="1" Role="FromRole_assoc_46E4FEFD3A68B4092BC8C6B090DDA6FF"/><End Type="cds_xbrixsd_boeiid.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_46E4FEFD3A68B4092BC8C6B090DDA6FF"/></Association>
+			<EntityContainer Name="cds_xbrixsd_boeiid_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="xBRIxiiidbeshd" EntityType="cds_xbrixsd_boeiid.xBRIxiiidbeshdType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxiiidbsalo" EntityType="cds_xbrixsd_boeiid.xBRIxiiidbsaloType" sap:content-version="1"/><EntitySet Name="xBRIxI_CE_BOE_STATUS" EntityType="cds_xbrixsd_boeiid.xBRIxI_CE_BOE_STATUSType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxi_iidbedut" EntityType="cds_xbrixsd_boeiid.xBRIxi_iidbedutType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxi_iidbehdr" EntityType="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxi_iidbeitm" EntityType="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_PRE_DOC_TYPE" EntityType="cds_xbrixsd_boeiid.xBRIxI_PRE_DOC_TYPEType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="I_Currency" EntityType="cds_xbrixsd_boeiid.I_CurrencyType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="I_UnitOfMeasure" EntityType="cds_xbrixsd_boeiid.I_UnitOfMeasureType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+				<AssociationSet Name="assoc_7BC86621A3366CD0DAC10A357C8FE85D" Association="cds_xbrixsd_boeiid.assoc_7BC86621A3366CD0DAC10A357C8FE85D"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_7BC86621A3366CD0DAC10A357C8FE85D"/><End EntitySet="xBRIxi_iidbehdr" Role="ToRole_assoc_7BC86621A3366CD0DAC10A357C8FE85D"/></AssociationSet>
+				<AssociationSet Name="assoc_46CFB437BC8263B6A09BB42545C736E2" Association="cds_xbrixsd_boeiid.assoc_46CFB437BC8263B6A09BB42545C736E2"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxiiidbeshd" Role="FromRole_assoc_46CFB437BC8263B6A09BB42545C736E2"/><End EntitySet="xBRIxi_iidbehdr" Role="ToRole_assoc_46CFB437BC8263B6A09BB42545C736E2"/></AssociationSet>
+				<AssociationSet Name="assoc_D1CC1407AD9D96EC7A688F0F900799E8" Association="cds_xbrixsd_boeiid.assoc_D1CC1407AD9D96EC7A688F0F900799E8"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_D1CC1407AD9D96EC7A688F0F900799E8"/><End EntitySet="I_Currency" Role="ToRole_assoc_D1CC1407AD9D96EC7A688F0F900799E8"/></AssociationSet>
+				<AssociationSet Name="assoc_216D6763D0F7D97FE084A25E1916D8B9" Association="cds_xbrixsd_boeiid.assoc_216D6763D0F7D97FE084A25E1916D8B9"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_216D6763D0F7D97FE084A25E1916D8B9"/><End EntitySet="I_Currency" Role="ToRole_assoc_216D6763D0F7D97FE084A25E1916D8B9"/></AssociationSet>
+				<AssociationSet Name="assoc_07DD5E6332801820BC637070D94BA0B2" Association="cds_xbrixsd_boeiid.assoc_07DD5E6332801820BC637070D94BA0B2"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbehdr" Role="FromRole_assoc_07DD5E6332801820BC637070D94BA0B2"/><End EntitySet="xBRIxI_CE_BOE_STATUS" Role="ToRole_assoc_07DD5E6332801820BC637070D94BA0B2"/></AssociationSet>
+				<AssociationSet Name="assoc_5799B14757D208B619F18802A522BB82" Association="cds_xbrixsd_boeiid.assoc_5799B14757D208B619F18802A522BB82"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_5799B14757D208B619F18802A522BB82"/><End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_5799B14757D208B619F18802A522BB82"/></AssociationSet>
+				<AssociationSet Name="assoc_30BFC0970448F3BBF32126712483C9BE" Association="cds_xbrixsd_boeiid.assoc_30BFC0970448F3BBF32126712483C9BE"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbehdr" Role="FromRole_assoc_30BFC0970448F3BBF32126712483C9BE"/><End EntitySet="xBRIxI_PRE_DOC_TYPE" Role="ToRole_assoc_30BFC0970448F3BBF32126712483C9BE"/></AssociationSet>
+				<AssociationSet Name="assoc_A051AA5696183704B32B854A9E7D973A" Association="cds_xbrixsd_boeiid.assoc_A051AA5696183704B32B854A9E7D973A"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_A051AA5696183704B32B854A9E7D973A"/><End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_A051AA5696183704B32B854A9E7D973A"/></AssociationSet>
+				<AssociationSet Name="assoc_1E2C0096705A68E0A563338D263F9931" Association="cds_xbrixsd_boeiid.assoc_1E2C0096705A68E0A563338D263F9931"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_1E2C0096705A68E0A563338D263F9931"/><End EntitySet="I_Currency" Role="ToRole_assoc_1E2C0096705A68E0A563338D263F9931"/></AssociationSet>
+				<AssociationSet Name="assoc_46E4FEFD3A68B4092BC8C6B090DDA6FF" Association="cds_xbrixsd_boeiid.assoc_46E4FEFD3A68B4092BC8C6B090DDA6FF"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbedut" Role="FromRole_assoc_46E4FEFD3A68B4092BC8C6B090DDA6FF"/><End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_46E4FEFD3A68B4092BC8C6B090DDA6FF"/></AssociationSet>
+				<AssociationSet Name="assoc_F788E47A6BCEE37AE7FABBD1C983DDBB" Association="cds_xbrixsd_boeiid.assoc_F788E47A6BCEE37AE7FABBD1C983DDBB"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_F788E47A6BCEE37AE7FABBD1C983DDBB"/><End EntitySet="I_Currency" Role="ToRole_assoc_F788E47A6BCEE37AE7FABBD1C983DDBB"/></AssociationSet>
+				<AssociationSet Name="assoc_63945701110410B3752397890D55E72C" Association="cds_xbrixsd_boeiid.assoc_63945701110410B3752397890D55E72C"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_63945701110410B3752397890D55E72C"/><End EntitySet="xBRIxiiidbsalo" Role="ToRole_assoc_63945701110410B3752397890D55E72C"/></AssociationSet>
+				<AssociationSet Name="assoc_6E7FDA9F450A203F4CD5158C968C87CA" Association="cds_xbrixsd_boeiid.assoc_6E7FDA9F450A203F4CD5158C968C87CA"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_6E7FDA9F450A203F4CD5158C968C87CA"/><End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_6E7FDA9F450A203F4CD5158C968C87CA"/></AssociationSet>
+				<AssociationSet Name="assoc_E7925C545FBB3D673236FF28C3D55C49" Association="cds_xbrixsd_boeiid.assoc_E7925C545FBB3D673236FF28C3D55C49"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbedut" Role="FromRole_assoc_E7925C545FBB3D673236FF28C3D55C49"/><End EntitySet="xBRIxi_iidbeitm" Role="ToRole_assoc_E7925C545FBB3D673236FF28C3D55C49"/></AssociationSet>
+				<AssociationSet Name="assoc_A4F8B7456C44458D3BF5241CABE69D61" Association="cds_xbrixsd_boeiid.assoc_A4F8B7456C44458D3BF5241CABE69D61"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbehdr" Role="FromRole_assoc_A4F8B7456C44458D3BF5241CABE69D61"/><End EntitySet="I_Currency" Role="ToRole_assoc_A4F8B7456C44458D3BF5241CABE69D61"/></AssociationSet>
+				<AssociationSet Name="assoc_316928683280F0934394E3D993F6CF7A" Association="cds_xbrixsd_boeiid.assoc_316928683280F0934394E3D993F6CF7A"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_316928683280F0934394E3D993F6CF7A"/><End EntitySet="I_Currency" Role="ToRole_assoc_316928683280F0934394E3D993F6CF7A"/></AssociationSet>
+				<AssociationSet Name="assoc_73ABC7BA82687578869221BF3C58F882" Association="cds_xbrixsd_boeiid.assoc_73ABC7BA82687578869221BF3C58F882"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_73ABC7BA82687578869221BF3C58F882"/><End EntitySet="xBRIxi_iidbedut" Role="ToRole_assoc_73ABC7BA82687578869221BF3C58F882"/></AssociationSet>
+				<AssociationSet Name="assoc_BB814FE772D8331FD6D736525BA99CDE" Association="cds_xbrixsd_boeiid.assoc_BB814FE772D8331FD6D736525BA99CDE"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxiiidbeshd" Role="FromRole_assoc_BB814FE772D8331FD6D736525BA99CDE"/><End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_BB814FE772D8331FD6D736525BA99CDE"/></AssociationSet>
+				<AssociationSet Name="assoc_6EA913D2FEC14E33A6EFE22A79A65564" Association="cds_xbrixsd_boeiid.assoc_6EA913D2FEC14E33A6EFE22A79A65564"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_6EA913D2FEC14E33A6EFE22A79A65564"/><End EntitySet="I_Currency" Role="ToRole_assoc_6EA913D2FEC14E33A6EFE22A79A65564"/></AssociationSet>
+				<AssociationSet Name="assoc_A0856C91201AB937E077819F8CF95741" Association="cds_xbrixsd_boeiid.assoc_A0856C91201AB937E077819F8CF95741"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbehdr" Role="FromRole_assoc_A0856C91201AB937E077819F8CF95741"/><End EntitySet="xBRIxi_iidbeitm" Role="ToRole_assoc_A0856C91201AB937E077819F8CF95741"/></AssociationSet>
+				<AssociationSet Name="assoc_4935F8FD4872E58330E58C973D6AC3AC" Association="cds_xbrixsd_boeiid.assoc_4935F8FD4872E58330E58C973D6AC3AC"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxiiidbsalo" Role="FromRole_assoc_4935F8FD4872E58330E58C973D6AC3AC"/><End EntitySet="xBRIxi_iidbeitm" Role="ToRole_assoc_4935F8FD4872E58330E58C973D6AC3AC"/></AssociationSet>
+				<AssociationSet Name="assoc_4607BF1835F5E67F7815433FE600CD61" Association="cds_xbrixsd_boeiid.assoc_4607BF1835F5E67F7815433FE600CD61"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbehdr" Role="FromRole_assoc_4607BF1835F5E67F7815433FE600CD61"/><End EntitySet="I_Currency" Role="ToRole_assoc_4607BF1835F5E67F7815433FE600CD61"/></AssociationSet>
+				<AssociationSet Name="assoc_AAD28CB33C6C7C747D5F5F6DF53F9735" Association="cds_xbrixsd_boeiid.assoc_AAD28CB33C6C7C747D5F5F6DF53F9735"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_AAD28CB33C6C7C747D5F5F6DF53F9735"/><End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_AAD28CB33C6C7C747D5F5F6DF53F9735"/></AssociationSet>
+				<AssociationSet Name="assoc_86077EE0FC5425D3A6B727F31F4474B6" Association="cds_xbrixsd_boeiid.assoc_86077EE0FC5425D3A6B727F31F4474B6"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbedut" Role="FromRole_assoc_86077EE0FC5425D3A6B727F31F4474B6"/><End EntitySet="I_Currency" Role="ToRole_assoc_86077EE0FC5425D3A6B727F31F4474B6"/></AssociationSet>
+				<AssociationSet Name="assoc_27A86CA2AA8CEB8F4543E5F0FECD929D" Association="cds_xbrixsd_boeiid.assoc_27A86CA2AA8CEB8F4543E5F0FECD929D"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_27A86CA2AA8CEB8F4543E5F0FECD929D"/><End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_27A86CA2AA8CEB8F4543E5F0FECD929D"/></AssociationSet>
+				<AssociationSet Name="assoc_A19E5FE1B24492DE89A76B9B1C93B3F6" Association="cds_xbrixsd_boeiid.assoc_A19E5FE1B24492DE89A76B9B1C93B3F6"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbehdr" Role="FromRole_assoc_A19E5FE1B24492DE89A76B9B1C93B3F6"/><End EntitySet="xBRIxiiidbeshd" Role="ToRole_assoc_A19E5FE1B24492DE89A76B9B1C93B3F6"/></AssociationSet>
+				<AssociationSet Name="assoc_799E4889271B5221173D05E29CCFD9C7" Association="cds_xbrixsd_boeiid.assoc_799E4889271B5221173D05E29CCFD9C7"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxi_iidbeitm" Role="FromRole_assoc_799E4889271B5221173D05E29CCFD9C7"/><End EntitySet="I_Currency" Role="ToRole_assoc_799E4889271B5221173D05E29CCFD9C7"/></AssociationSet>
+			</EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxiiidbeshdType/unit">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Unit of Measure"/><PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="unit"/><PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureNumberOfDecimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDspNmbrOfDcmls"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbedutType/baseunt">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Unit of Measure"/><PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="baseunt"/><PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureNumberOfDecimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDspNmbrOfDcmls"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbedutType/waers">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="waers"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType/pdoccat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="cds for previous document type"/><PropertyValue Property="CollectionPath" String="xBRIxI_PRE_DOC_TYPE"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="pdoccat"/><PropertyValue Property="ValueListProperty" String="code"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType/boestat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Custom entity for boe status"/><PropertyValue Property="CollectionPath" String="xBRIxI_CE_BOE_STATUS"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="boestat"/><PropertyValue Property="ValueListProperty" String="code"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType/curr_inr">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="curr_inr"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbehdrType/currcode">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="currcode"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType/net_curr">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="net_curr"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType/meins">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Unit of Measure"/><PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="meins"/><PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureNumberOfDecimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDspNmbrOfDcmls"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType/del_uom">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Unit of Measure"/><PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="del_uom"/><PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureNumberOfDecimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDspNmbrOfDcmls"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType/rec_uom">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Unit of Measure"/><PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="rec_uom"/><PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureNumberOfDecimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDspNmbrOfDcmls"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType/ull_uom">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Unit of Measure"/><PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="ull_uom"/><PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureNumberOfDecimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDspNmbrOfDcmls"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.xBRIxi_iidbeitmType/meins01">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Unit of Measure"/><PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="meins01"/><PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureNumberOfDecimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDspNmbrOfDcmls"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.cds_xbrixsd_boeiid_Entities">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.cds_xbrixsd_boeiid_Entities/xBRIxi_iidbehdr">
+				<Annotation Term="Capabilities.NavigationRestrictions">
+					<Record>
+						<PropertyValue Property="RestrictedProperties">
+							<Collection>
+								<Record><PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_itemdetails"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Property="Insertable" Bool="true"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_shippingdetails"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Property="Insertable" Bool="true"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Salo"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Property="Insertable" Bool="true"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_dutydetails"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Property="Insertable" Bool="true"/></Record>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.cds_xbrixsd_boeiid_Entities/xBRIxi_iidbeitm">
+				<Annotation Term="Capabilities.NavigationRestrictions"><Record/></Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.I_CurrencyType/Currency"><Annotation Term="Common.UnitSpecificScale" Path="Decimals"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_boeiid.I_UnitOfMeasureType/UnitOfMeasure"><Annotation Term="Common.UnitSpecificScale" Path="UnitOfMeasureDspNmbrOfDcmls"/></Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self"
+				href="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/BRI/SB_BOEIID/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
+				href="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/BRI/SB_BOEIID/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

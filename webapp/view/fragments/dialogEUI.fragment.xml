@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="End Use Of Item" class="sapUiPopupWithPadding" items="{path:'BOEDOCList>/xBRIxI_EUCO_CODTYP',sorter:{path:'param1',descending:true}}" 
+	cancel="_handleValueHelpClose_Vendor" confirm="_handleValueHelpClose_Vendor" liveChange="handleValueHelpSearchEUI">
+		<StandardListItem title="{BOEDOCList>param1}" description="{BOEDOCList>value1}">
+			
+		</StandardListItem>
+	</SelectDialog>
+</core:FragmentDefinition>

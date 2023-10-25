@@ -1,0 +1,844 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_xbrixoptieximc" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="xBRIxICE_EPCGTYPEType" sap:label="epcgtype" sap:content-version="1">
+				<Key><PropertyRef Name="epcgtyp"/></Key><Property Name="epcgtyp" Type="Edm.String" Nullable="false" MaxLength="1"/><Property Name="description" Type="Edm.String" MaxLength="30"/></EntityType>
+			<EntityType Name="xBRIxice_GUARANTEETYPEType" sap:label="GUARANTEETYPE" sap:content-version="1">
+				<Key><PropertyRef Name="GUARANTEETYPE"/></Key><Property Name="GUARANTEETYPE" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="description" Type="Edm.String" MaxLength="30"/></EntityType>
+			<EntityType Name="xBRIxICE_IBSCNTYGRPType" sap:label="CNTYGRP" sap:content-version="1">
+				<Key><PropertyRef Name="cntygrp"/></Key><Property Name="cntygrp" Type="Edm.String" Nullable="false" MaxLength="3"/><Property Name="description" Type="Edm.String" MaxLength="30"/></EntityType>
+			<EntityType Name="xBRIxice_IMPUNITType" sap:label="IMPUNIT" sap:content-version="1">
+				<Key><PropertyRef Name="impunit"/></Key><Property Name="impunit" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="description" Type="Edm.String" MaxLength="30"/></EntityType>
+			<EntityType Name="xBRIxICE_ITEMCATType" sap:label="Custom Entitiy /BRI/ICE_ITEMCAT" sap:content-version="1">
+				<Key><PropertyRef Name="itmcat"/></Key><Property Name="itmcat" Type="Edm.String" Nullable="false" MaxLength="1"/><Property Name="itmcat_desc" Type="Edm.String" MaxLength="30"/></EntityType>
+			<EntityType Name="xBRIxI_AIBSMATGRPType" sap:label="Association Export item to SION" sap:content-version="1">
+				<Key><PropertyRef Name="matkl"/></Key><Property Name="matkl" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group"/><Property Name="coddesc" Type="Edm.String" MaxLength="35" sap:label="Code description"/><Property Name="itmcat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Item category"
+					sap:quickinfo="Material group category"/></EntityType>
+			<EntityType Name="xBRIxI_AMATKLTARIFFType" sap:label="Association Tariff to material group" sap:content-version="1">
+				<Key><PropertyRef Name="matkl"/></Key><Property Name="matkl" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group"/><Property Name="coddesc" Type="Edm.String" MaxLength="35" sap:label="Code description"/><Property Name="itmcat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Item category"
+					sap:quickinfo="Material group category"/></EntityType>
+			<EntityType Name="xBRIxI_CODMASType" sap:label="Maintain Code Master" sap:content-version="1">
+				<Key><PropertyRef Name="codtyp"/></Key><Property Name="codtyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Code type"
+					sap:quickinfo="Abbrevation of a code type , Eg , PORT will be the code for"/><Property Name="coddesc" Type="Edm.String" MaxLength="35" sap:label="Code description"/></EntityType>
+			<EntityType Name="xBRIxI_CODTYPType" sap:label="Maintain Code type" sap:content-version="1">
+				<Key><PropertyRef Name="code"/><PropertyRef Name="codtyp"/></Key><Property Name="code" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Code type"
+					sap:quickinfo="Abbrevation of a code type , Eg , PORT will be the code for" sap:value-list="standard"/><Property Name="codtyp" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Specific code for th"
+					sap:quickinfo="Specific code for the entity Eg : BOM1 Will be maitained for"/><Property Name="coddesc" Type="Edm.String" MaxLength="35" sap:label="Code description"/><NavigationProperty Name="to_Code" Relationship="cds_xbrixoptieximc.assoc_33595BAE2BA84B444CED64250F62D6C1"
+					FromRole="FromRole_assoc_33595BAE2BA84B444CED64250F62D6C1" ToRole="ToRole_assoc_33595BAE2BA84B444CED64250F62D6C1"/></EntityType>
+			<EntityType Name="xBRIxI_COMNYCODEType" sap:label="Custom Entity - Query implemented" sap:content-version="1">
+				<Key><PropertyRef Name="bukrs"/></Key><Property Name="bukrs" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="Butxt" Type="Edm.String" MaxLength="25"/><Property Name="Ort01" Type="Edm.String" MaxLength="25"/><Property Name="Land1" Type="Edm.String" MaxLength="3"/><Property Name="Waers" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/></EntityType>
+			<EntityType Name="xBRIxI_IBSANVAVERAType" sap:label="EPCG Annual Average" sap:content-version="1">
+				<Key><PropertyRef Name="matkl"/><PropertyRef Name="finyear"/></Key><Property Name="matkl" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group"
+					sap:value-list="standard"/><Property Name="finyear" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Financial Year"/><Property Name="cukyrs" Type="Edm.String" MaxLength="5" sap:label="Currency Key - LC" sap:value-list="standard"
+					sap:semantics="currency-code"/><Property Name="avgamtlc" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="cukyrs" sap:label="Obligation Amt INR"
+					sap:quickinfo="Obligation Amount in INR"/><Property Name="cukyfc" Type="Edm.String" MaxLength="5" sap:label="Currency Key - FC" sap:value-list="standard"
+					sap:semantics="currency-code"/><Property Name="avamtusd" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="cukyfc" sap:label="Obligation Amt USD"
+					sap:quickinfo="Obligation Amount in USD"/><NavigationProperty Name="to_Currency" Relationship="cds_xbrixoptieximc.assoc_915D3EB4A72F378BBAC98BC85F8430CC"
+					FromRole="FromRole_assoc_915D3EB4A72F378BBAC98BC85F8430CC" ToRole="ToRole_assoc_915D3EB4A72F378BBAC98BC85F8430CC"/><NavigationProperty Name="to_MATGRP" Relationship="cds_xbrixoptieximc.assoc_D0362A3EB7B0ECCC5F821847856273E6"
+					FromRole="FromRole_assoc_D0362A3EB7B0ECCC5F821847856273E6" ToRole="ToRole_assoc_D0362A3EB7B0ECCC5F821847856273E6"/></EntityType>
+			<EntityType Name="xBRIxI_IBSAPPLFEEType" sap:label="Maintain Application Profile" sap:content-version="1">
+				<Key><PropertyRef Name="bnftyp"/><PropertyRef Name="validfr"/></Key><Property Name="bnftyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Benefit schemes"
+					sap:quickinfo="Benefit schemes as per FTP" sap:value-list="standard"/><Property Name="validfr" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Valid From"/><Property Name="validto" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid To"/><Property Name="rate" Type="Edm.Decimal" Precision="4" Scale="2" sap:label="Ref Amount in Rs"/><Property Name="minvalue" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="waers" sap:label="Minimum application"
+					sap:quickinfo="Minimum application fees amount"/><Property Name="limit" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="waers" sap:label="Rate For"
+					sap:quickinfo="Rate calculation base amount"/><Property Name="maxvalue" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="waers" sap:label="Max application fees"
+					sap:quickinfo="Max application fees amount"/><Property Name="waers" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:value-list="standard" sap:semantics="currency-code"/><NavigationProperty Name="to_btype" Relationship="cds_xbrixoptieximc.assoc_F0AEEEA0A8002F985883B8FFE17AB7BE"
+					FromRole="FromRole_assoc_F0AEEEA0A8002F985883B8FFE17AB7BE" ToRole="ToRole_assoc_F0AEEEA0A8002F985883B8FFE17AB7BE"/><NavigationProperty Name="to_Currency" Relationship="cds_xbrixoptieximc.assoc_CB0B25D088AE370E41C62370F90D6C78"
+					FromRole="FromRole_assoc_CB0B25D088AE370E41C62370F90D6C78" ToRole="ToRole_assoc_CB0B25D088AE370E41C62370F90D6C78"/></EntityType>
+			<EntityType Name="xBRIxI_IBSAPPRAUTHType" sap:label="Define Approval Hierarchy" sap:content-version="1">
+				<Key><PropertyRef Name="ernam"/></Key><Property Name="ernam" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Created By"
+					sap:quickinfo="Name of Person Responsible for Creating the Object"/><Property Name="verify" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Verify"
+					sap:quickinfo="Verify option needs to be displayed"/><Property Name="approve" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Approve"
+					sap:quickinfo="Approve option needs to be displayed"/><Property Name="sdgft" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="DGFT"
+					sap:quickinfo="Send to DGFT option needs to be displayed"/><Property Name="allauth" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="All"
+					sap:quickinfo="All authorization permitted - Super user"/></EntityType>
+			<EntityType Name="xBRIxI_IBSATTRIBUTType" sap:label="Maintain Scheme attribute Details" sap:content-version="1">
+				<Key><PropertyRef Name="classif"/><PropertyRef Name="bnftyp"/><PropertyRef Name="epcgtyp"/><PropertyRef Name="validfr"/></Key><Property Name="classif" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Classification"
+					sap:quickinfo="Chapter wise classification for the schemes" sap:value-list="standard"/><Property Name="bnftyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Benefit schemes"
+					sap:quickinfo="Benefit schemes as per FTP" sap:value-list="standard"/><Property Name="epcgtyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Type of EPCG scheme"
+					sap:value-list="standard"/><Property Name="validfr" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Valid From"/><Property Name="validto" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid To"/><Property Name="impval" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Import Validity"/><Property Name="impunit" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Validity unit : Mont"
+					sap:quickinfo="Validity unit : Month / Year / Days" sap:value-list="standard"/><Property Name="obligper" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Obligation Validity"
+					sap:quickinfo="Obligation Validity period"/><Property Name="obligunit" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="OblUnit"
+					sap:quickinfo="Obligation unit : Month / Year / Days" sap:value-list="standard"/><Property Name="obgtims" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Obligation times"/><Property Name="valadlimit" Type="Edm.Decimal" Precision="8" Scale="4" sap:label="Value Addition perce"
+					sap:quickinfo="Value Addition percentage"/><Property Name="latecut1" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Late cut percentage"
+					sap:quickinfo="Late cut percentage if the let export date is prior to 6 mon"/><Property Name="latecut2" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Lt cut prcnt"
+					sap:quickinfo="Late cut percentage if the let exp date is prior to 12 mon"/><Property Name="latecut3" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Lt cut prcnt"
+					sap:quickinfo="Late cut percentage if the let exp date is prior to 18 mon"/><Property Name="trans_eligible" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Transfer eligible sc"
+					sap:quickinfo="Transfer eligible scheme"/><Property Name="guaranteetype" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Type of guarantee pr"
+					sap:quickinfo="Type of guarantee produced in case of EPCG" sap:value-list="standard"/><NavigationProperty Name="to_CLASSIFICATION" Relationship="cds_xbrixoptieximc.assoc_C528399075BA045D7B06BF3B15F58A6F"
+					FromRole="FromRole_assoc_C528399075BA045D7B06BF3B15F58A6F" ToRole="ToRole_assoc_C528399075BA045D7B06BF3B15F58A6F"/><NavigationProperty Name="to_epcgtype" Relationship="cds_xbrixoptieximc.assoc_B27F9A67AF26A81BBCDF89BBE7CB1563"
+					FromRole="FromRole_assoc_B27F9A67AF26A81BBCDF89BBE7CB1563" ToRole="ToRole_assoc_B27F9A67AF26A81BBCDF89BBE7CB1563"/><NavigationProperty Name="to_GUARANTEETYPE" Relationship="cds_xbrixoptieximc.assoc_03A1A956E6B99088CC52C2786DB8EB76"
+					FromRole="FromRole_assoc_03A1A956E6B99088CC52C2786DB8EB76" ToRole="ToRole_assoc_03A1A956E6B99088CC52C2786DB8EB76"/><NavigationProperty Name="to_IMPUNIT" Relationship="cds_xbrixoptieximc.assoc_56A369D8E9A82784C18AFD5F3D0B4DB0"
+					FromRole="FromRole_assoc_56A369D8E9A82784C18AFD5F3D0B4DB0" ToRole="ToRole_assoc_56A369D8E9A82784C18AFD5F3D0B4DB0"/><NavigationProperty Name="to_OBLIGUNIT" Relationship="cds_xbrixoptieximc.assoc_6424A46E492EBD172659421C44438100"
+					FromRole="FromRole_assoc_6424A46E492EBD172659421C44438100" ToRole="ToRole_assoc_6424A46E492EBD172659421C44438100"/></EntityType>
+			<EntityType Name="xBRIxI_IBSCLASSType" sap:label=" Benefit Scheme Classification" sap:content-version="1">
+				<Key><PropertyRef Name="classif"/></Key><Property Name="classif" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Classification"
+					sap:quickinfo="Chapter wise classification for the schemes"/><Property Name="classifdesc" Type="Edm.String" MaxLength="40" sap:label="Description"
+					sap:quickinfo="Description of the scheme classification"/></EntityType>
+			<EntityType Name="xBRIxI_IBSEXPSIONType" sap:label="Assign Export Item to SION" sap:content-version="1">
+				<Key><PropertyRef Name="siono"/></Key><Property Name="siono" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SION number"/><Property Name="quant" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="unit" sap:label="Imp/Expo item qnty"
+					sap:quickinfo="Import / Export item quantity"/><Property Name="matkl" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group" sap:value-list="standard"/><Property Name="unit" Type="Edm.String" MaxLength="3" sap:label="Imp/Exp item UOM" sap:quickinfo="Import/Export item UOM"
+					sap:value-list="standard" sap:semantics="unit-of-measure"/><Property Name="cukyfc" Type="Edm.String" MaxLength="5" sap:label="Currency Key - FC" sap:value-list="standard"
+					sap:semantics="currency-code"/><Property Name="prcunit" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="cukyfc" sap:label="Price / Unit"/><Property Name="sionact" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Actual SION number"/><NavigationProperty Name="to_Currency" Relationship="cds_xbrixoptieximc.assoc_72E7C6EFB63E2E162C7895A66A206A44"
+					FromRole="FromRole_assoc_72E7C6EFB63E2E162C7895A66A206A44" ToRole="ToRole_assoc_72E7C6EFB63E2E162C7895A66A206A44"/><NavigationProperty Name="to_Matg" Relationship="cds_xbrixoptieximc.assoc_FA98F55AC92154E14404743A22230C6E"
+					FromRole="FromRole_assoc_FA98F55AC92154E14404743A22230C6E" ToRole="ToRole_assoc_FA98F55AC92154E14404743A22230C6E"/><NavigationProperty Name="to_Measure" Relationship="cds_xbrixoptieximc.assoc_41E38BE586B3889C340E9DE68B0BD9B9"
+					FromRole="FromRole_assoc_41E38BE586B3889C340E9DE68B0BD9B9" ToRole="ToRole_assoc_41E38BE586B3889C340E9DE68B0BD9B9"/></EntityType>
+			<EntityType Name="xBRIxI_IBSEXRATEType" sap:label="Maintain Exchange rate type" sap:content-version="1">
+				<Key><PropertyRef Name="bukrs"/></Key><Property Name="bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/><Property Name="expexchrt" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Imp/Exp CIF ex rt."
+					sap:quickinfo="Import / Export CIF value calculation exchange rate"/><Property Name="impexchrt" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Import itm exchg rt"
+					sap:quickinfo="Import item exchge rate"/><Property Name="cddefault" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Dft exchg rate pair"
+					sap:quickinfo="Default exchange rate pair"/></EntityType>
+			<EntityType Name="xBRIxI_IBSHSNGRPASType" sap:label="Assign HSN Code to Material group" sap:content-version="1">
+				<Key><PropertyRef Name="steuc"/></Key><Property Name="steuc" Type="Edm.String" Nullable="false" MaxLength="16" sap:display-format="UpperCase" sap:label="HSN Code"
+					sap:quickinfo="Control code for consumption taxes in foreign trade"/><Property Name="itchscode" Type="Edm.String" MaxLength="40" sap:label="ITCHS Code"/><Property Name="matkl" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group" sap:value-list="standard"/><NavigationProperty Name="to_MATGRP" Relationship="cds_xbrixoptieximc.assoc_9622035110613D58B674DD62C917AF18"
+					FromRole="FromRole_assoc_9622035110613D58B674DD62C917AF18" ToRole="ToRole_assoc_9622035110613D58B674DD62C917AF18"/></EntityType>
+			<EntityType Name="xBRIxI_IBSIMPSIONType" sap:label="Assign Import Item to SION" sap:content-version="1">
+				<Key><PropertyRef Name="siono"/><PropertyRef Name="matkl"/></Key><Property Name="siono" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SION number"
+					sap:value-list="standard"/><Property Name="matkl" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group"
+					sap:value-list="standard"/><Property Name="quant" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Imp/Expo item qnty"
+					sap:quickinfo="Import / Export item quantity"/><Property Name="unit" Type="Edm.String" MaxLength="3" sap:label="Imp/Exp item UOM" sap:quickinfo="Import/Export item UOM"
+					sap:semantics="unit-of-measure"/><Property Name="cukyfc" Type="Edm.String" MaxLength="5" sap:label="Currency Key - FC" sap:value-list="standard"
+					sap:semantics="currency-code"/><Property Name="prcunit" Type="Edm.Decimal" Precision="18" Scale="3" sap:label="Price / Unit"/><Property Name="ratifdratio" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="unit" sap:label="Ratified Ratio"/><Property Name="proctyp" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Procurement type"/><Property Name="wastage" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Wastage percentage"/><NavigationProperty Name="to_Currency" Relationship="cds_xbrixoptieximc.assoc_B7C4B50379CB37538ACBB57EF02B1398"
+					FromRole="FromRole_assoc_B7C4B50379CB37538ACBB57EF02B1398" ToRole="ToRole_assoc_B7C4B50379CB37538ACBB57EF02B1398"/><NavigationProperty Name="to_EXPSION" Relationship="cds_xbrixoptieximc.assoc_B5623F9079C15A6B796FAA98A400DA57"
+					FromRole="FromRole_assoc_B5623F9079C15A6B796FAA98A400DA57" ToRole="ToRole_assoc_B5623F9079C15A6B796FAA98A400DA57"/><NavigationProperty Name="to_Matgrp" Relationship="cds_xbrixoptieximc.assoc_FC161432A2880B1EB1225836FFD368A6"
+					FromRole="FromRole_assoc_FC161432A2880B1EB1225836FFD368A6" ToRole="ToRole_assoc_FC161432A2880B1EB1225836FFD368A6"/></EntityType>
+			<EntityType Name="xBRIxI_IBSMATGRPType" sap:label="Maintain Material groups" sap:content-version="1">
+				<Key><PropertyRef Name="matkl"/></Key><Property Name="matkl" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group"/><Property Name="coddesc" Type="Edm.String" MaxLength="35" sap:label="Code description"/><Property Name="itmcat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Item category"
+					sap:quickinfo="Material group category" sap:value-list="standard"/><NavigationProperty Name="to_ITMCAT" Relationship="cds_xbrixoptieximc.assoc_A0D6EBF8743B814CD7D22C5C98C6E5AA"
+					FromRole="FromRole_assoc_A0D6EBF8743B814CD7D22C5C98C6E5AA" ToRole="ToRole_assoc_A0D6EBF8743B814CD7D22C5C98C6E5AA"/></EntityType>
+			<EntityType Name="xBRIxI_IBSMATGRPASType" sap:label="Assign Material to Material group" sap:content-version="1">
+				<Key><PropertyRef Name="matnr"/></Key><Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material Number"/><Property Name="itchscode" Type="Edm.String" MaxLength="40" sap:label="ITCHS Code"/><Property Name="matkl" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group" sap:value-list="standard"/><NavigationProperty Name="to_MATGRP" Relationship="cds_xbrixoptieximc.assoc_A424382C5861B311671125067AE9E3C0"
+					FromRole="FromRole_assoc_A424382C5861B311671125067AE9E3C0" ToRole="ToRole_assoc_A424382C5861B311671125067AE9E3C0"/></EntityType>
+			<EntityType Name="xBRIxI_IBSMEISType" sap:label="Maintain MEIS Country grouping" sap:content-version="1">
+				<Key><PropertyRef Name="cntry"/></Key><Property Name="cntry" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country Key"
+					sap:value-list="standard"/><Property Name="slno" Type="Edm.String" MaxLength="5" sap:label="Country Serial No" sap:quickinfo="Benefit Scheme : MEIS Country Serial No"/><Property Name="cntygrp" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Country Group id"
+					sap:quickinfo="Benefit Scheme : MEIS Scheme Country Group id" sap:value-list="standard"/><NavigationProperty Name="to_CNTYGRP" Relationship="cds_xbrixoptieximc.assoc_6ACC5885104DADBF8D0327DAACE3D002"
+					FromRole="FromRole_assoc_6ACC5885104DADBF8D0327DAACE3D002" ToRole="ToRole_assoc_6ACC5885104DADBF8D0327DAACE3D002"/><NavigationProperty Name="to_Country" Relationship="cds_xbrixoptieximc.assoc_B19341A1FFE6CA15D8FDE5B6DE9C0BE8"
+					FromRole="FromRole_assoc_B19341A1FFE6CA15D8FDE5B6DE9C0BE8" ToRole="ToRole_assoc_B19341A1FFE6CA15D8FDE5B6DE9C0BE8"/></EntityType>
+			<EntityType Name="xbrixI_ibsmeishsnType" sap:label="MEIS Rates – HSN Code Wise" sap:content-version="1">
+				<Key><PropertyRef Name="steuc"/><PropertyRef Name="validfr"/></Key><Property Name="steuc" Type="Edm.String" Nullable="false" MaxLength="16" sap:display-format="UpperCase" sap:label="HSN Code"
+					sap:quickinfo="Control code for consumption taxes in foreign trade"/><Property Name="validfr" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Valid From"/><Property Name="ihscode" Type="Edm.String" MaxLength="10" sap:label="ITC (HS) Code" sap:quickinfo="Benefit Scheme : ITC (HS) Code"/><Property Name="slno" Type="Edm.String" MaxLength="5" sap:label="Country Serial No" sap:quickinfo="Benefit Scheme : MEIS Country Serial No"/><Property Name="rategrpa" Type="Edm.Decimal" Precision="4" Scale="2" sap:label="Rate Group A"
+					sap:quickinfo="Benefit Scheme : MEIS Rate for Country Group A"/><Property Name="rategrpb" Type="Edm.Decimal" Precision="4" Scale="2" sap:label="Rate Group B"
+					sap:quickinfo="Benefit Scheme :MEIS Rates - ITC HS Code Wise"/><Property Name="rategrpc" Type="Edm.Decimal" Precision="4" Scale="2" sap:label="Rate Group C"
+					sap:quickinfo="Benefit Scheme :MEIS Rate for Country Group C"/></EntityType>
+			<EntityType Name="xBRIxI_IBSMEISRTSType" sap:label="Maintain Material wise MEIS rates" sap:content-version="1">
+				<Key><PropertyRef Name="matnr"/><PropertyRef Name="validfr"/></Key><Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material Number"/><Property Name="validfr" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Valid From"/><Property Name="ihscode" Type="Edm.String" MaxLength="10" sap:label="ITC (HS) Code" sap:quickinfo="Benefit Scheme : ITC (HS) Code"/><Property Name="slno" Type="Edm.String" MaxLength="5" sap:label="Country Serial No" sap:quickinfo="Benefit Scheme : MEIS Country Serial No"/><Property Name="rategrpa" Type="Edm.Decimal" Precision="4" Scale="2" sap:label="Rate Group A"
+					sap:quickinfo="Benefit Scheme : MEIS Rate for Country Group A"/><Property Name="rategrpb" Type="Edm.Decimal" Precision="4" Scale="2" sap:label="Rate Group B"
+					sap:quickinfo="Benefit Scheme :MEIS Rates - ITC HS Code Wise"/><Property Name="rategrpc" Type="Edm.Decimal" Precision="4" Scale="2" sap:label="Rate Group C"
+					sap:quickinfo="Benefit Scheme :MEIS Rate for Country Group C"/></EntityType>
+			<EntityType Name="xBRIxI_IBSPROFILType" sap:label="Maintain profile" sap:content-version="1">
+				<Key><PropertyRef Name="profno"/></Key><Property Name="profno" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Profile no"/><Property Name="profdesc" Type="Edm.String" MaxLength="30" sap:label="Profile description"/><Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/><Property Name="firmdesc" Type="Edm.String" MaxLength="35" sap:label="Firm Description"/><Property Name="estbdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of establishmen"
+					sap:quickinfo="Date of establishment of business/factory in India"/><Property Name="iecno" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="IEC Code"/><Property Name="iecdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of issue of IEC"
+					sap:quickinfo="Date of issue of IEC code"/><Property Name="iecauth" Type="Edm.String" MaxLength="63" sap:label="Issuing authority of" sap:quickinfo="Issuing authority of IEC code"/><Property Name="brnchno" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of establishmen"
+					sap:quickinfo="Date of establishment of business/factory in India"/><Property Name="ssiregno" Type="Edm.String" MaxLength="20" sap:label="SSI Registration / I"
+					sap:quickinfo="SSI Registration / Industrial license no."/><Property Name="ssiregdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="SSI Registration / I"
+					sap:quickinfo="SSI Registration / Industrial license date"/><Property Name="ssiauth" Type="Edm.String" MaxLength="50" sap:label="SSI Registration / I"
+					sap:quickinfo="SSI Registration / Industrial license issuing authority"/><Property Name="panno" Type="Edm.String" MaxLength="10" sap:label="PAN"/><Property Name="pandate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of issue of PAN"/><Property Name="panauth" Type="Edm.String" MaxLength="50" sap:label="PAN Issuing authorit" sap:quickinfo="PAN Issuing authority"/><Property Name="certno" Type="Edm.String" MaxLength="20" sap:label="EH/TH/STH/SSTH Certi" sap:quickinfo="EH/TH/STH/SSTH Certificate no."/><Property Name="certdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="EH/TH/STH/SSTH Certi"
+					sap:quickinfo="EH/TH/STH/SSTH Certificate date"/><Property Name="cerauth" Type="Edm.String" MaxLength="50" sap:label="EH/TH/STH/SSTH Cert"
+					sap:quickinfo="EH/TH/STH/SSTH Certificate issuing authority"/><Property Name="certvldt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="EH/TH/STH/SSTH Cert"
+					sap:quickinfo="EH/TH/STH/SSTH Certificate valid date"/><Property Name="rcmcno" Type="Edm.String" MaxLength="30" sap:label="RCMC no"/><Property Name="rcmcdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="RCMC issue date"/><Property Name="rcmcvldt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="RCMC valid upto / ex"
+					sap:quickinfo="RCMC valid upto / expiry date"/><Property Name="rcmcaut" Type="Edm.String" MaxLength="70" sap:label="RCMC issuing authori" sap:quickinfo="RCMC issuing authority"/><Property Name="taxauth" Type="Edm.String" MaxLength="20" sap:label="Tax collection / sta"
+					sap:quickinfo="Tax collection / stamping authority"/><Property Name="servreg" Type="Edm.String" MaxLength="50" sap:label="Service tax - regist"
+					sap:quickinfo="Service tax - registration unit name"/><Property Name="exnum" Type="Edm.String" MaxLength="30" sap:label="Excise seal no"/><Property Name="exauth" Type="Edm.String" MaxLength="50" sap:label="Excise seal issuing" sap:quickinfo="Excise seal issuing authority"/><Property Name="servtaxregno" Type="Edm.String" MaxLength="50" sap:label="Service tax registra"
+					sap:quickinfo="Service tax registration number"/><Property Name="servtaxregdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Service tax Reg date"
+					sap:quickinfo="Service tax registration date"/><Property Name="exregnum" Type="Edm.String" MaxLength="50" sap:label="Excise registration" sap:quickinfo="Excise registration number"/><Property Name="exregdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Excise registration"
+					sap:quickinfo="Excise registration date"/><Property Name="gstregno" Type="Edm.String" MaxLength="15" sap:label="GST registration num" sap:quickinfo="GST registration number"/><Property Name="gstregdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="GST registration dat"
+					sap:quickinfo="GST registration date"/><Property Name="statsno" Type="Edm.String" MaxLength="50" sap:label="Status Number"/><Property Name="stissuedt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label=""
+					sap:quickinfo="Issue date of status certificate"/><Property Name="stexpdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Effective To date of"
+					sap:quickinfo="Effective To date of status certificate"/><Property Name="stissueauth" Type="Edm.String" MaxLength="50" sap:label="Status Certificate I"
+					sap:quickinfo="Status Certificate Issuing Authority"/><Property Name="steffecdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Effective From date"
+					sap:quickinfo="Effective From date of status certificate"/></EntityType>
+			<EntityType Name="xBRIxI_IBSTARIFFType" sap:label="Assign Tariff to material group" sap:content-version="1">
+				<Key><PropertyRef Name="matkl"/><PropertyRef Name="tarntno"/></Key><Property Name="matkl" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:label="Material group"
+					sap:value-list="standard"/><Property Name="tarntno" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Tariff number"
+					sap:value-list="standard"/><Property Name="valdtto" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Tariff / Notification To Date"/><Property Name="ctryorg" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country of Origin"
+					sap:value-list="standard"/><Property Name="prcname" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Procedure name" sap:value-list="standard"/><NavigationProperty Name="to_Country" Relationship="cds_xbrixoptieximc.assoc_5565867EB5D6E947414017B94324F94D"
+					FromRole="FromRole_assoc_5565867EB5D6E947414017B94324F94D" ToRole="ToRole_assoc_5565867EB5D6E947414017B94324F94D"/><NavigationProperty Name="to_Matkl" Relationship="cds_xbrixoptieximc.assoc_04BB23D91B2D59904D28694DEBE7F0FF"
+					FromRole="FromRole_assoc_04BB23D91B2D59904D28694DEBE7F0FF" ToRole="ToRole_assoc_04BB23D91B2D59904D28694DEBE7F0FF"/><NavigationProperty Name="to_Prcname" Relationship="cds_xbrixoptieximc.assoc_3C5656A66672B05ACAEB76BDA9F309E3"
+					FromRole="FromRole_assoc_3C5656A66672B05ACAEB76BDA9F309E3" ToRole="ToRole_assoc_3C5656A66672B05ACAEB76BDA9F309E3"/><NavigationProperty Name="to_Tarntno" Relationship="cds_xbrixoptieximc.assoc_DF9AE8BF7BF3CBC3BEFEBC920B97640C"
+					FromRole="FromRole_assoc_DF9AE8BF7BF3CBC3BEFEBC920B97640C" ToRole="ToRole_assoc_DF9AE8BF7BF3CBC3BEFEBC920B97640C"/></EntityType>
+			<EntityType Name="xBRIxI_IBSTYPEType" sap:label="Scheme type in Classification" sap:content-version="1">
+				<Key><PropertyRef Name="classif"/><PropertyRef Name="bnftyp"/></Key><Property Name="classif" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Classification"
+					sap:quickinfo="Chapter wise classification for the schemes" sap:value-list="standard"/><Property Name="bnftyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Benefit schemes"
+					sap:quickinfo="Benefit schemes as per FTP"/><Property Name="typedesc" Type="Edm.String" MaxLength="40" sap:label="Description of schem" sap:quickinfo="Description of the scheme Type"/><NavigationProperty Name="to_ibsclass" Relationship="cds_xbrixoptieximc.assoc_B1221996979A1C494A708A4B4ADDC65E"
+					FromRole="FromRole_assoc_B1221996979A1C494A708A4B4ADDC65E" ToRole="ToRole_assoc_B1221996979A1C494A708A4B4ADDC65E"/></EntityType>
+			<EntityType Name="xBRIxI_IBS_PO_TYPEType" sap:label="EPCG PO type Configuration" sap:content-version="1">
+				<Key><PropertyRef Name="slno"/><PropertyRef Name="bsart"/></Key><Property Name="slno" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="Serial No"/><Property Name="bsart" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Order Type" sap:quickinfo="Order Type (Purchasing)"/></EntityType>
+			<EntityType Name="xBRIxI_IIDCTMATType" sap:label="Procedure/Tariff Assignment to Material" sap:content-version="1">
+				<Key><PropertyRef Name="matnr"/><PropertyRef Name="tarntno"/><PropertyRef Name="tarntid"/><PropertyRef Name="valdtfr"/><PropertyRef Name="ctryorg"/></Key><Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material Number"/><Property Name="tarntno" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Tariff number"/><Property Name="tarntid" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Tariff or Notificati"
+					sap:quickinfo="Tariff or Notification identification"/><Property Name="valdtfr" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Valid from date"/><Property Name="ctryorg" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country of Origin"/><Property Name="prcname" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Procedure name" sap:value-list="standard"/><NavigationProperty Name="to_Prc" Relationship="cds_xbrixoptieximc.assoc_BC08EF3121C646637EC029BBCF05FB7E"
+					FromRole="FromRole_assoc_BC08EF3121C646637EC029BBCF05FB7E" ToRole="ToRole_assoc_BC08EF3121C646637EC029BBCF05FB7E"/></EntityType>
+			<EntityType Name="xBRIxI_IIDDTPRCType" sap:label="Master Data - Duty Calculation Procedure" sap:content-version="1">
+				<Key><PropertyRef Name="prcname"/></Key><Property Name="prcname" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Procedure name"/><Property Name="descrip" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Description"/></EntityType>
+			<EntityType Name="xBRIxI_I_IIDTARNTType" sap:label="For testing" sap:content-version="1">
+				<Key><PropertyRef Name="tarntno"/><PropertyRef Name="tarntid"/><PropertyRef Name="dutcode"/><PropertyRef Name="valdtfr"/><PropertyRef Name="valdtto"/><PropertyRef Name="ctryorg"/></Key><Property Name="tarntno" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Tariff number"/><Property Name="tarntid" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Tariff or Notificati"
+					sap:quickinfo="Tariff or Notification identification"/><Property Name="dutcode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Duty Code"/><Property Name="valdtfr" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Valid from date"/><Property Name="valdtto" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"
+					sap:label="Tariff / Notification To Date"/><Property Name="ctryorg" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country of Origin"
+					sap:value-list="standard"/><Property Name="spcrate" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="baseunt" sap:label="Advalorem Rates"/><Property Name="advalrt" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="baseunt" sap:label="Specific Duty Rates"/><Property Name="baseunt" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:value-list="standard" sap:semantics="currency-code"/><NavigationProperty Name="to_Country" Relationship="cds_xbrixoptieximc.assoc_7335BE1198D486E93A02A5F397A88583"
+					FromRole="FromRole_assoc_7335BE1198D486E93A02A5F397A88583" ToRole="ToRole_assoc_7335BE1198D486E93A02A5F397A88583"/><NavigationProperty Name="to_Currency" Relationship="cds_xbrixoptieximc.assoc_D5B149378F247834A32F76992EF64878"
+					FromRole="FromRole_assoc_D5B149378F247834A32F76992EF64878" ToRole="ToRole_assoc_D5B149378F247834A32F76992EF64878"/></EntityType>
+			<EntityType Name="xBRIxI_MAT_HSNMASTType" sap:label="Material/HSN settings" sap:content-version="1">
+				<Key><PropertyRef Name="bukrs"/><PropertyRef Name="table_name"/></Key><Property Name="bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"
+					sap:value-list="standard"/><Property Name="table_name" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Type"/><Property Name="material_hsn" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Material/HSN"/><NavigationProperty Name="to_COMPANYCODE" Relationship="cds_xbrixoptieximc.assoc_A89BFCE0544A0EE196B73FAB710B8A84"
+					FromRole="FromRole_assoc_A89BFCE0544A0EE196B73FAB710B8A84" ToRole="ToRole_assoc_A89BFCE0544A0EE196B73FAB710B8A84"/></EntityType>
+			<EntityType Name="xBRIxI_T001Type" sap:label="Company Code" sap:content-version="1">
+				<Key><PropertyRef Name="bukrs"/></Key><Property Name="bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/><Property Name="butxt" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/><Property Name="land1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country Key"
+					sap:value-list="standard"/><Property Name="waers" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:value-list="standard" sap:semantics="currency-code"/><NavigationProperty Name="to_Country" Relationship="cds_xbrixoptieximc.assoc_B1491656FEC5F2FD239EA551B0A62344"
+					FromRole="FromRole_assoc_B1491656FEC5F2FD239EA551B0A62344" ToRole="ToRole_assoc_B1491656FEC5F2FD239EA551B0A62344"/><NavigationProperty Name="to_Currency" Relationship="cds_xbrixoptieximc.assoc_CF435A20917F61D8EC6AE8D1E591A71D"
+					FromRole="FromRole_assoc_CF435A20917F61D8EC6AE8D1E591A71D" ToRole="ToRole_assoc_CF435A20917F61D8EC6AE8D1E591A71D"/></EntityType>
+			<EntityType Name="I_CountryType" sap:label="Country" sap:content-version="1">
+				<Key><PropertyRef Name="Country"/></Key><Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Country_Text"
+					sap:label="Country Key"/><Property Name="Country_Text" Type="Edm.String" MaxLength="50" sap:label="Long name" sap:quickinfo="Country Name (Max. 50 Characters)"
+					sap:creatable="false" sap:updatable="false"/><Property Name="CountryThreeLetterISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code 3 Char"
+					sap:quickinfo="ISO country code 3 char"/><Property Name="CountryThreeDigitISOCode" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="ISO Code Num. 3"
+					sap:quickinfo="ISO Country Code Numeric 3-Characters"/></EntityType>
+			<EntityType Name="I_CurrencyType" sap:label="Currency" sap:content-version="1">
+				<Key><PropertyRef Name="Currency"/></Key><Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="Currency_Text" sap:label="Currency"
+					sap:quickinfo="Currency Key" sap:semantics="currency-code"/><Property Name="Currency_Text" Type="Edm.String" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false"/><Property Name="Decimals" Type="Edm.Byte" sap:label="Decimal Places" sap:quickinfo="Number of decimal places"/><Property Name="CurrencyISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code"
+					sap:quickinfo="ISO Currency Code"/><Property Name="AlternativeCurrencyKey" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Alternative Key"/><Property Name="IsPrimaryCurrencyForISOCrcy" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Primary"
+					sap:quickinfo="Primary SAP Currency Code for ISO Code"/></EntityType>
+			<EntityType Name="I_UnitOfMeasureType" sap:label="Unit of Measure" sap:content-version="1">
+				<Key><PropertyRef Name="UnitOfMeasure"/></Key><Property Name="UnitOfMeasure" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="UnitOfMeasure_Text" sap:label="Internal UoM"
+					sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/><Property Name="UnitOfMeasure_Text" Type="Edm.String" MaxLength="30" sap:label="UoM Text"
+					sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)" sap:creatable="false" sap:updatable="false"/><Property Name="UnitOfMeasureDimension" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Dimension"
+					sap:quickinfo="Dimension key"/><Property Name="UnitOfMeasureISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO code"
+					sap:quickinfo="ISO code for unit of measurement"/><Property Name="UnitOfMeasureNumberOfDecimals" Type="Edm.Int16" sap:label="Decimal Rounding"
+					sap:quickinfo="No. of decimal places for rounding"/><Property Name="UnitOfMeasureDspNmbrOfDcmls" Type="Edm.Int16" sap:label="Decimal Places"
+					sap:quickinfo="Number of decimal places for number display"/></EntityType>
+			<Association Name="assoc_9622035110613D58B674DD62C917AF18" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSHSNGRPASType" Multiplicity="1" Role="FromRole_assoc_9622035110613D58B674DD62C917AF18"/><End Type="cds_xbrixoptieximc.xBRIxI_IBSMATGRPType" Multiplicity="0..1" Role="ToRole_assoc_9622035110613D58B674DD62C917AF18"/></Association>
+			<Association Name="assoc_BC08EF3121C646637EC029BBCF05FB7E" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IIDCTMATType" Multiplicity="1" Role="FromRole_assoc_BC08EF3121C646637EC029BBCF05FB7E"/><End Type="cds_xbrixoptieximc.xBRIxI_IIDDTPRCType" Multiplicity="0..1" Role="ToRole_assoc_BC08EF3121C646637EC029BBCF05FB7E"/></Association>
+			<Association Name="assoc_5565867EB5D6E947414017B94324F94D" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSTARIFFType" Multiplicity="1" Role="FromRole_assoc_5565867EB5D6E947414017B94324F94D"/><End Type="cds_xbrixoptieximc.I_CountryType" Multiplicity="0..1" Role="ToRole_assoc_5565867EB5D6E947414017B94324F94D"/></Association>
+			<Association Name="assoc_04BB23D91B2D59904D28694DEBE7F0FF" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSTARIFFType" Multiplicity="1" Role="FromRole_assoc_04BB23D91B2D59904D28694DEBE7F0FF"/><End Type="cds_xbrixoptieximc.xBRIxI_AMATKLTARIFFType" Multiplicity="0..1" Role="ToRole_assoc_04BB23D91B2D59904D28694DEBE7F0FF"/></Association>
+			<Association Name="assoc_3C5656A66672B05ACAEB76BDA9F309E3" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSTARIFFType" Multiplicity="1" Role="FromRole_assoc_3C5656A66672B05ACAEB76BDA9F309E3"/><End Type="cds_xbrixoptieximc.xBRIxI_IIDDTPRCType" Multiplicity="0..1" Role="ToRole_assoc_3C5656A66672B05ACAEB76BDA9F309E3"/></Association>
+			<Association Name="assoc_DF9AE8BF7BF3CBC3BEFEBC920B97640C" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSTARIFFType" Multiplicity="1" Role="FromRole_assoc_DF9AE8BF7BF3CBC3BEFEBC920B97640C"/><End Type="cds_xbrixoptieximc.xBRIxI_IIDCTMATType" Multiplicity="0..1" Role="ToRole_assoc_DF9AE8BF7BF3CBC3BEFEBC920B97640C"/></Association>
+			<Association Name="assoc_915D3EB4A72F378BBAC98BC85F8430CC" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSANVAVERAType" Multiplicity="1" Role="FromRole_assoc_915D3EB4A72F378BBAC98BC85F8430CC"/><End Type="cds_xbrixoptieximc.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_915D3EB4A72F378BBAC98BC85F8430CC"/></Association>
+			<Association Name="assoc_D0362A3EB7B0ECCC5F821847856273E6" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSANVAVERAType" Multiplicity="1" Role="FromRole_assoc_D0362A3EB7B0ECCC5F821847856273E6"/><End Type="cds_xbrixoptieximc.xBRIxI_IBSMATGRPType" Multiplicity="0..1" Role="ToRole_assoc_D0362A3EB7B0ECCC5F821847856273E6"/></Association>
+			<Association Name="assoc_A424382C5861B311671125067AE9E3C0" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSMATGRPASType" Multiplicity="1" Role="FromRole_assoc_A424382C5861B311671125067AE9E3C0"/><End Type="cds_xbrixoptieximc.xBRIxI_IBSMATGRPType" Multiplicity="0..1" Role="ToRole_assoc_A424382C5861B311671125067AE9E3C0"/></Association>
+			<Association Name="assoc_B1221996979A1C494A708A4B4ADDC65E" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSTYPEType" Multiplicity="1" Role="FromRole_assoc_B1221996979A1C494A708A4B4ADDC65E"/><End Type="cds_xbrixoptieximc.xBRIxI_IBSCLASSType" Multiplicity="0..1" Role="ToRole_assoc_B1221996979A1C494A708A4B4ADDC65E"/></Association>
+			<Association Name="assoc_F0AEEEA0A8002F985883B8FFE17AB7BE" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSAPPLFEEType" Multiplicity="1" Role="FromRole_assoc_F0AEEEA0A8002F985883B8FFE17AB7BE"/><End Type="cds_xbrixoptieximc.xBRIxI_IBSTYPEType" Multiplicity="0..1" Role="ToRole_assoc_F0AEEEA0A8002F985883B8FFE17AB7BE"/></Association>
+			<Association Name="assoc_CB0B25D088AE370E41C62370F90D6C78" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSAPPLFEEType" Multiplicity="1" Role="FromRole_assoc_CB0B25D088AE370E41C62370F90D6C78"/><End Type="cds_xbrixoptieximc.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_CB0B25D088AE370E41C62370F90D6C78"/></Association>
+			<Association Name="assoc_C528399075BA045D7B06BF3B15F58A6F" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType" Multiplicity="1" Role="FromRole_assoc_C528399075BA045D7B06BF3B15F58A6F"/><End Type="cds_xbrixoptieximc.xBRIxI_IBSTYPEType" Multiplicity="0..1" Role="ToRole_assoc_C528399075BA045D7B06BF3B15F58A6F"/></Association>
+			<Association Name="assoc_B27F9A67AF26A81BBCDF89BBE7CB1563" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType" Multiplicity="1" Role="FromRole_assoc_B27F9A67AF26A81BBCDF89BBE7CB1563"/><End Type="cds_xbrixoptieximc.xBRIxICE_EPCGTYPEType" Multiplicity="0..1" Role="ToRole_assoc_B27F9A67AF26A81BBCDF89BBE7CB1563"/></Association>
+			<Association Name="assoc_03A1A956E6B99088CC52C2786DB8EB76" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType" Multiplicity="1" Role="FromRole_assoc_03A1A956E6B99088CC52C2786DB8EB76"/><End Type="cds_xbrixoptieximc.xBRIxice_GUARANTEETYPEType" Multiplicity="0..1" Role="ToRole_assoc_03A1A956E6B99088CC52C2786DB8EB76"/></Association>
+			<Association Name="assoc_56A369D8E9A82784C18AFD5F3D0B4DB0" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType" Multiplicity="1" Role="FromRole_assoc_56A369D8E9A82784C18AFD5F3D0B4DB0"/><End Type="cds_xbrixoptieximc.xBRIxice_IMPUNITType" Multiplicity="0..1" Role="ToRole_assoc_56A369D8E9A82784C18AFD5F3D0B4DB0"/></Association>
+			<Association Name="assoc_6424A46E492EBD172659421C44438100" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType" Multiplicity="1" Role="FromRole_assoc_6424A46E492EBD172659421C44438100"/><End Type="cds_xbrixoptieximc.xBRIxice_IMPUNITType" Multiplicity="0..1" Role="ToRole_assoc_6424A46E492EBD172659421C44438100"/></Association>
+			<Association Name="assoc_7335BE1198D486E93A02A5F397A88583" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_I_IIDTARNTType" Multiplicity="1" Role="FromRole_assoc_7335BE1198D486E93A02A5F397A88583"/><End Type="cds_xbrixoptieximc.I_CountryType" Multiplicity="0..1" Role="ToRole_assoc_7335BE1198D486E93A02A5F397A88583"/></Association>
+			<Association Name="assoc_D5B149378F247834A32F76992EF64878" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_I_IIDTARNTType" Multiplicity="1" Role="FromRole_assoc_D5B149378F247834A32F76992EF64878"/><End Type="cds_xbrixoptieximc.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_D5B149378F247834A32F76992EF64878"/></Association>
+			<Association Name="assoc_A0D6EBF8743B814CD7D22C5C98C6E5AA" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSMATGRPType" Multiplicity="1" Role="FromRole_assoc_A0D6EBF8743B814CD7D22C5C98C6E5AA"/><End Type="cds_xbrixoptieximc.xBRIxICE_ITEMCATType" Multiplicity="0..1" Role="ToRole_assoc_A0D6EBF8743B814CD7D22C5C98C6E5AA"/></Association>
+			<Association Name="assoc_33595BAE2BA84B444CED64250F62D6C1" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_CODTYPType" Multiplicity="1" Role="FromRole_assoc_33595BAE2BA84B444CED64250F62D6C1"/><End Type="cds_xbrixoptieximc.xBRIxI_CODMASType" Multiplicity="0..1" Role="ToRole_assoc_33595BAE2BA84B444CED64250F62D6C1"/></Association>
+			<Association Name="assoc_B1491656FEC5F2FD239EA551B0A62344" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_T001Type" Multiplicity="1" Role="FromRole_assoc_B1491656FEC5F2FD239EA551B0A62344"/><End Type="cds_xbrixoptieximc.I_CountryType" Multiplicity="0..1" Role="ToRole_assoc_B1491656FEC5F2FD239EA551B0A62344"/></Association>
+			<Association Name="assoc_CF435A20917F61D8EC6AE8D1E591A71D" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_T001Type" Multiplicity="1" Role="FromRole_assoc_CF435A20917F61D8EC6AE8D1E591A71D"/><End Type="cds_xbrixoptieximc.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_CF435A20917F61D8EC6AE8D1E591A71D"/></Association>
+			<Association Name="assoc_A89BFCE0544A0EE196B73FAB710B8A84" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_MAT_HSNMASTType" Multiplicity="1" Role="FromRole_assoc_A89BFCE0544A0EE196B73FAB710B8A84"/><End Type="cds_xbrixoptieximc.xBRIxI_T001Type" Multiplicity="0..1" Role="ToRole_assoc_A89BFCE0544A0EE196B73FAB710B8A84"/></Association>
+			<Association Name="assoc_72E7C6EFB63E2E162C7895A66A206A44" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSEXPSIONType" Multiplicity="1" Role="FromRole_assoc_72E7C6EFB63E2E162C7895A66A206A44"/><End Type="cds_xbrixoptieximc.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_72E7C6EFB63E2E162C7895A66A206A44"/></Association>
+			<Association Name="assoc_FA98F55AC92154E14404743A22230C6E" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSEXPSIONType" Multiplicity="1" Role="FromRole_assoc_FA98F55AC92154E14404743A22230C6E"/><End Type="cds_xbrixoptieximc.xBRIxI_AIBSMATGRPType" Multiplicity="0..1" Role="ToRole_assoc_FA98F55AC92154E14404743A22230C6E"/></Association>
+			<Association Name="assoc_41E38BE586B3889C340E9DE68B0BD9B9" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSEXPSIONType" Multiplicity="1" Role="FromRole_assoc_41E38BE586B3889C340E9DE68B0BD9B9"/><End Type="cds_xbrixoptieximc.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_41E38BE586B3889C340E9DE68B0BD9B9"/></Association>
+			<Association Name="assoc_B7C4B50379CB37538ACBB57EF02B1398" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSIMPSIONType" Multiplicity="1" Role="FromRole_assoc_B7C4B50379CB37538ACBB57EF02B1398"/><End Type="cds_xbrixoptieximc.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_B7C4B50379CB37538ACBB57EF02B1398"/></Association>
+			<Association Name="assoc_B5623F9079C15A6B796FAA98A400DA57" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSIMPSIONType" Multiplicity="1" Role="FromRole_assoc_B5623F9079C15A6B796FAA98A400DA57"/><End Type="cds_xbrixoptieximc.xBRIxI_IBSEXPSIONType" Multiplicity="0..1" Role="ToRole_assoc_B5623F9079C15A6B796FAA98A400DA57"/></Association>
+			<Association Name="assoc_FC161432A2880B1EB1225836FFD368A6" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSIMPSIONType" Multiplicity="1" Role="FromRole_assoc_FC161432A2880B1EB1225836FFD368A6"/><End Type="cds_xbrixoptieximc.xBRIxI_AIBSMATGRPType" Multiplicity="0..1" Role="ToRole_assoc_FC161432A2880B1EB1225836FFD368A6"/></Association>
+			<Association Name="assoc_6ACC5885104DADBF8D0327DAACE3D002" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSMEISType" Multiplicity="1" Role="FromRole_assoc_6ACC5885104DADBF8D0327DAACE3D002"/><End Type="cds_xbrixoptieximc.xBRIxICE_IBSCNTYGRPType" Multiplicity="0..1" Role="ToRole_assoc_6ACC5885104DADBF8D0327DAACE3D002"/></Association>
+			<Association Name="assoc_B19341A1FFE6CA15D8FDE5B6DE9C0BE8" sap:content-version="1"><End Type="cds_xbrixoptieximc.xBRIxI_IBSMEISType" Multiplicity="1" Role="FromRole_assoc_B19341A1FFE6CA15D8FDE5B6DE9C0BE8"/><End Type="cds_xbrixoptieximc.I_CountryType" Multiplicity="0..1" Role="ToRole_assoc_B19341A1FFE6CA15D8FDE5B6DE9C0BE8"/></Association>
+			<EntityContainer Name="cds_xbrixoptieximc_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="xBRIxICE_EPCGTYPE" EntityType="cds_xbrixoptieximc.xBRIxICE_EPCGTYPEType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxice_GUARANTEETYPE" EntityType="cds_xbrixoptieximc.xBRIxice_GUARANTEETYPEType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxICE_IBSCNTYGRP" EntityType="cds_xbrixoptieximc.xBRIxICE_IBSCNTYGRPType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxice_IMPUNIT" EntityType="cds_xbrixoptieximc.xBRIxice_IMPUNITType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxICE_ITEMCAT" EntityType="cds_xbrixoptieximc.xBRIxICE_ITEMCATType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxI_AIBSMATGRP" EntityType="cds_xbrixoptieximc.xBRIxI_AIBSMATGRPType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxI_AMATKLTARIFF" EntityType="cds_xbrixoptieximc.xBRIxI_AMATKLTARIFFType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxI_CODMAS" EntityType="cds_xbrixoptieximc.xBRIxI_CODMASType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_CODTYP" EntityType="cds_xbrixoptieximc.xBRIxI_CODTYPType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_COMNYCODE" EntityType="cds_xbrixoptieximc.xBRIxI_COMNYCODEType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSANVAVERA" EntityType="cds_xbrixoptieximc.xBRIxI_IBSANVAVERAType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSAPPLFEE" EntityType="cds_xbrixoptieximc.xBRIxI_IBSAPPLFEEType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSAPPRAUTH" EntityType="cds_xbrixoptieximc.xBRIxI_IBSAPPRAUTHType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSATTRIBUT" EntityType="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSCLASS" EntityType="cds_xbrixoptieximc.xBRIxI_IBSCLASSType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSEXPSION" EntityType="cds_xbrixoptieximc.xBRIxI_IBSEXPSIONType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSEXRATE" EntityType="cds_xbrixoptieximc.xBRIxI_IBSEXRATEType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSHSNGRPAS" EntityType="cds_xbrixoptieximc.xBRIxI_IBSHSNGRPASType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSIMPSION" EntityType="cds_xbrixoptieximc.xBRIxI_IBSIMPSIONType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSMATGRP" EntityType="cds_xbrixoptieximc.xBRIxI_IBSMATGRPType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSMATGRPAS" EntityType="cds_xbrixoptieximc.xBRIxI_IBSMATGRPASType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSMEIS" EntityType="cds_xbrixoptieximc.xBRIxI_IBSMEISType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xbrixI_ibsmeishsn" EntityType="cds_xbrixoptieximc.xbrixI_ibsmeishsnType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSMEISRTS" EntityType="cds_xbrixoptieximc.xBRIxI_IBSMEISRTSType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSPROFIL" EntityType="cds_xbrixoptieximc.xBRIxI_IBSPROFILType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSTARIFF" EntityType="cds_xbrixoptieximc.xBRIxI_IBSTARIFFType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBSTYPE" EntityType="cds_xbrixoptieximc.xBRIxI_IBSTYPEType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IBS_PO_TYPE" EntityType="cds_xbrixoptieximc.xBRIxI_IBS_PO_TYPEType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_IIDCTMAT" EntityType="cds_xbrixoptieximc.xBRIxI_IIDCTMATType" sap:content-version="1"/><EntitySet Name="xBRIxI_IIDDTPRC" EntityType="cds_xbrixoptieximc.xBRIxI_IIDDTPRCType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_I_IIDTARNT" EntityType="cds_xbrixoptieximc.xBRIxI_I_IIDTARNTType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_MAT_HSNMAST" EntityType="cds_xbrixoptieximc.xBRIxI_MAT_HSNMASTType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_T001" EntityType="cds_xbrixoptieximc.xBRIxI_T001Type" sap:searchable="true" sap:content-version="1"/><EntitySet Name="I_Country" EntityType="cds_xbrixoptieximc.I_CountryType" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:content-version="1"/><EntitySet Name="I_Currency" EntityType="cds_xbrixoptieximc.I_CurrencyType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="I_UnitOfMeasure" EntityType="cds_xbrixoptieximc.I_UnitOfMeasureType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+				<AssociationSet Name="assoc_33595BAE2BA84B444CED64250F62D6C1" Association="cds_xbrixoptieximc.assoc_33595BAE2BA84B444CED64250F62D6C1"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_CODTYP" Role="FromRole_assoc_33595BAE2BA84B444CED64250F62D6C1"/><End EntitySet="xBRIxI_CODMAS" Role="ToRole_assoc_33595BAE2BA84B444CED64250F62D6C1"/></AssociationSet>
+				<AssociationSet Name="assoc_04BB23D91B2D59904D28694DEBE7F0FF" Association="cds_xbrixoptieximc.assoc_04BB23D91B2D59904D28694DEBE7F0FF"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSTARIFF" Role="FromRole_assoc_04BB23D91B2D59904D28694DEBE7F0FF"/><End EntitySet="xBRIxI_AMATKLTARIFF" Role="ToRole_assoc_04BB23D91B2D59904D28694DEBE7F0FF"/></AssociationSet>
+				<AssociationSet Name="assoc_B27F9A67AF26A81BBCDF89BBE7CB1563" Association="cds_xbrixoptieximc.assoc_B27F9A67AF26A81BBCDF89BBE7CB1563"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSATTRIBUT" Role="FromRole_assoc_B27F9A67AF26A81BBCDF89BBE7CB1563"/><End EntitySet="xBRIxICE_EPCGTYPE" Role="ToRole_assoc_B27F9A67AF26A81BBCDF89BBE7CB1563"/></AssociationSet>
+				<AssociationSet Name="assoc_6ACC5885104DADBF8D0327DAACE3D002" Association="cds_xbrixoptieximc.assoc_6ACC5885104DADBF8D0327DAACE3D002"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSMEIS" Role="FromRole_assoc_6ACC5885104DADBF8D0327DAACE3D002"/><End EntitySet="xBRIxICE_IBSCNTYGRP" Role="ToRole_assoc_6ACC5885104DADBF8D0327DAACE3D002"/></AssociationSet>
+				<AssociationSet Name="assoc_A424382C5861B311671125067AE9E3C0" Association="cds_xbrixoptieximc.assoc_A424382C5861B311671125067AE9E3C0"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSMATGRPAS" Role="FromRole_assoc_A424382C5861B311671125067AE9E3C0"/><End EntitySet="xBRIxI_IBSMATGRP" Role="ToRole_assoc_A424382C5861B311671125067AE9E3C0"/></AssociationSet>
+				<AssociationSet Name="assoc_A0D6EBF8743B814CD7D22C5C98C6E5AA" Association="cds_xbrixoptieximc.assoc_A0D6EBF8743B814CD7D22C5C98C6E5AA"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSMATGRP" Role="FromRole_assoc_A0D6EBF8743B814CD7D22C5C98C6E5AA"/><End EntitySet="xBRIxICE_ITEMCAT" Role="ToRole_assoc_A0D6EBF8743B814CD7D22C5C98C6E5AA"/></AssociationSet>
+				<AssociationSet Name="assoc_B19341A1FFE6CA15D8FDE5B6DE9C0BE8" Association="cds_xbrixoptieximc.assoc_B19341A1FFE6CA15D8FDE5B6DE9C0BE8"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSMEIS" Role="FromRole_assoc_B19341A1FFE6CA15D8FDE5B6DE9C0BE8"/><End EntitySet="I_Country" Role="ToRole_assoc_B19341A1FFE6CA15D8FDE5B6DE9C0BE8"/></AssociationSet>
+				<AssociationSet Name="assoc_CB0B25D088AE370E41C62370F90D6C78" Association="cds_xbrixoptieximc.assoc_CB0B25D088AE370E41C62370F90D6C78"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSAPPLFEE" Role="FromRole_assoc_CB0B25D088AE370E41C62370F90D6C78"/><End EntitySet="I_Currency" Role="ToRole_assoc_CB0B25D088AE370E41C62370F90D6C78"/></AssociationSet>
+				<AssociationSet Name="assoc_FC161432A2880B1EB1225836FFD368A6" Association="cds_xbrixoptieximc.assoc_FC161432A2880B1EB1225836FFD368A6"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSIMPSION" Role="FromRole_assoc_FC161432A2880B1EB1225836FFD368A6"/><End EntitySet="xBRIxI_AIBSMATGRP" Role="ToRole_assoc_FC161432A2880B1EB1225836FFD368A6"/></AssociationSet>
+				<AssociationSet Name="assoc_DF9AE8BF7BF3CBC3BEFEBC920B97640C" Association="cds_xbrixoptieximc.assoc_DF9AE8BF7BF3CBC3BEFEBC920B97640C"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSTARIFF" Role="FromRole_assoc_DF9AE8BF7BF3CBC3BEFEBC920B97640C"/><End EntitySet="xBRIxI_IIDCTMAT" Role="ToRole_assoc_DF9AE8BF7BF3CBC3BEFEBC920B97640C"/></AssociationSet>
+				<AssociationSet Name="assoc_D0362A3EB7B0ECCC5F821847856273E6" Association="cds_xbrixoptieximc.assoc_D0362A3EB7B0ECCC5F821847856273E6"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSANVAVERA" Role="FromRole_assoc_D0362A3EB7B0ECCC5F821847856273E6"/><End EntitySet="xBRIxI_IBSMATGRP" Role="ToRole_assoc_D0362A3EB7B0ECCC5F821847856273E6"/></AssociationSet>
+				<AssociationSet Name="assoc_3C5656A66672B05ACAEB76BDA9F309E3" Association="cds_xbrixoptieximc.assoc_3C5656A66672B05ACAEB76BDA9F309E3"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSTARIFF" Role="FromRole_assoc_3C5656A66672B05ACAEB76BDA9F309E3"/><End EntitySet="xBRIxI_IIDDTPRC" Role="ToRole_assoc_3C5656A66672B05ACAEB76BDA9F309E3"/></AssociationSet>
+				<AssociationSet Name="assoc_7335BE1198D486E93A02A5F397A88583" Association="cds_xbrixoptieximc.assoc_7335BE1198D486E93A02A5F397A88583"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_I_IIDTARNT" Role="FromRole_assoc_7335BE1198D486E93A02A5F397A88583"/><End EntitySet="I_Country" Role="ToRole_assoc_7335BE1198D486E93A02A5F397A88583"/></AssociationSet>
+				<AssociationSet Name="assoc_CF435A20917F61D8EC6AE8D1E591A71D" Association="cds_xbrixoptieximc.assoc_CF435A20917F61D8EC6AE8D1E591A71D"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_T001" Role="FromRole_assoc_CF435A20917F61D8EC6AE8D1E591A71D"/><End EntitySet="I_Currency" Role="ToRole_assoc_CF435A20917F61D8EC6AE8D1E591A71D"/></AssociationSet>
+				<AssociationSet Name="assoc_6424A46E492EBD172659421C44438100" Association="cds_xbrixoptieximc.assoc_6424A46E492EBD172659421C44438100"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSATTRIBUT" Role="FromRole_assoc_6424A46E492EBD172659421C44438100"/><End EntitySet="xBRIxice_IMPUNIT" Role="ToRole_assoc_6424A46E492EBD172659421C44438100"/></AssociationSet>
+				<AssociationSet Name="assoc_56A369D8E9A82784C18AFD5F3D0B4DB0" Association="cds_xbrixoptieximc.assoc_56A369D8E9A82784C18AFD5F3D0B4DB0"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSATTRIBUT" Role="FromRole_assoc_56A369D8E9A82784C18AFD5F3D0B4DB0"/><End EntitySet="xBRIxice_IMPUNIT" Role="ToRole_assoc_56A369D8E9A82784C18AFD5F3D0B4DB0"/></AssociationSet>
+				<AssociationSet Name="assoc_5565867EB5D6E947414017B94324F94D" Association="cds_xbrixoptieximc.assoc_5565867EB5D6E947414017B94324F94D"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSTARIFF" Role="FromRole_assoc_5565867EB5D6E947414017B94324F94D"/><End EntitySet="I_Country" Role="ToRole_assoc_5565867EB5D6E947414017B94324F94D"/></AssociationSet>
+				<AssociationSet Name="assoc_B1491656FEC5F2FD239EA551B0A62344" Association="cds_xbrixoptieximc.assoc_B1491656FEC5F2FD239EA551B0A62344"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_T001" Role="FromRole_assoc_B1491656FEC5F2FD239EA551B0A62344"/><End EntitySet="I_Country" Role="ToRole_assoc_B1491656FEC5F2FD239EA551B0A62344"/></AssociationSet>
+				<AssociationSet Name="assoc_41E38BE586B3889C340E9DE68B0BD9B9" Association="cds_xbrixoptieximc.assoc_41E38BE586B3889C340E9DE68B0BD9B9"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSEXPSION" Role="FromRole_assoc_41E38BE586B3889C340E9DE68B0BD9B9"/><End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_41E38BE586B3889C340E9DE68B0BD9B9"/></AssociationSet>
+				<AssociationSet Name="assoc_B5623F9079C15A6B796FAA98A400DA57" Association="cds_xbrixoptieximc.assoc_B5623F9079C15A6B796FAA98A400DA57"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSIMPSION" Role="FromRole_assoc_B5623F9079C15A6B796FAA98A400DA57"/><End EntitySet="xBRIxI_IBSEXPSION" Role="ToRole_assoc_B5623F9079C15A6B796FAA98A400DA57"/></AssociationSet>
+				<AssociationSet Name="assoc_C528399075BA045D7B06BF3B15F58A6F" Association="cds_xbrixoptieximc.assoc_C528399075BA045D7B06BF3B15F58A6F"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSATTRIBUT" Role="FromRole_assoc_C528399075BA045D7B06BF3B15F58A6F"/><End EntitySet="xBRIxI_IBSTYPE" Role="ToRole_assoc_C528399075BA045D7B06BF3B15F58A6F"/></AssociationSet>
+				<AssociationSet Name="assoc_D5B149378F247834A32F76992EF64878" Association="cds_xbrixoptieximc.assoc_D5B149378F247834A32F76992EF64878"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_I_IIDTARNT" Role="FromRole_assoc_D5B149378F247834A32F76992EF64878"/><End EntitySet="I_Currency" Role="ToRole_assoc_D5B149378F247834A32F76992EF64878"/></AssociationSet>
+				<AssociationSet Name="assoc_A89BFCE0544A0EE196B73FAB710B8A84" Association="cds_xbrixoptieximc.assoc_A89BFCE0544A0EE196B73FAB710B8A84"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_MAT_HSNMAST" Role="FromRole_assoc_A89BFCE0544A0EE196B73FAB710B8A84"/><End EntitySet="xBRIxI_T001" Role="ToRole_assoc_A89BFCE0544A0EE196B73FAB710B8A84"/></AssociationSet>
+				<AssociationSet Name="assoc_F0AEEEA0A8002F985883B8FFE17AB7BE" Association="cds_xbrixoptieximc.assoc_F0AEEEA0A8002F985883B8FFE17AB7BE"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSAPPLFEE" Role="FromRole_assoc_F0AEEEA0A8002F985883B8FFE17AB7BE"/><End EntitySet="xBRIxI_IBSTYPE" Role="ToRole_assoc_F0AEEEA0A8002F985883B8FFE17AB7BE"/></AssociationSet>
+				<AssociationSet Name="assoc_B1221996979A1C494A708A4B4ADDC65E" Association="cds_xbrixoptieximc.assoc_B1221996979A1C494A708A4B4ADDC65E"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSTYPE" Role="FromRole_assoc_B1221996979A1C494A708A4B4ADDC65E"/><End EntitySet="xBRIxI_IBSCLASS" Role="ToRole_assoc_B1221996979A1C494A708A4B4ADDC65E"/></AssociationSet>
+				<AssociationSet Name="assoc_FA98F55AC92154E14404743A22230C6E" Association="cds_xbrixoptieximc.assoc_FA98F55AC92154E14404743A22230C6E"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSEXPSION" Role="FromRole_assoc_FA98F55AC92154E14404743A22230C6E"/><End EntitySet="xBRIxI_AIBSMATGRP" Role="ToRole_assoc_FA98F55AC92154E14404743A22230C6E"/></AssociationSet>
+				<AssociationSet Name="assoc_72E7C6EFB63E2E162C7895A66A206A44" Association="cds_xbrixoptieximc.assoc_72E7C6EFB63E2E162C7895A66A206A44"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSEXPSION" Role="FromRole_assoc_72E7C6EFB63E2E162C7895A66A206A44"/><End EntitySet="I_Currency" Role="ToRole_assoc_72E7C6EFB63E2E162C7895A66A206A44"/></AssociationSet>
+				<AssociationSet Name="assoc_915D3EB4A72F378BBAC98BC85F8430CC" Association="cds_xbrixoptieximc.assoc_915D3EB4A72F378BBAC98BC85F8430CC"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSANVAVERA" Role="FromRole_assoc_915D3EB4A72F378BBAC98BC85F8430CC"/><End EntitySet="I_Currency" Role="ToRole_assoc_915D3EB4A72F378BBAC98BC85F8430CC"/></AssociationSet>
+				<AssociationSet Name="assoc_BC08EF3121C646637EC029BBCF05FB7E" Association="cds_xbrixoptieximc.assoc_BC08EF3121C646637EC029BBCF05FB7E"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IIDCTMAT" Role="FromRole_assoc_BC08EF3121C646637EC029BBCF05FB7E"/><End EntitySet="xBRIxI_IIDDTPRC" Role="ToRole_assoc_BC08EF3121C646637EC029BBCF05FB7E"/></AssociationSet>
+				<AssociationSet Name="assoc_9622035110613D58B674DD62C917AF18" Association="cds_xbrixoptieximc.assoc_9622035110613D58B674DD62C917AF18"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSHSNGRPAS" Role="FromRole_assoc_9622035110613D58B674DD62C917AF18"/><End EntitySet="xBRIxI_IBSMATGRP" Role="ToRole_assoc_9622035110613D58B674DD62C917AF18"/></AssociationSet>
+				<AssociationSet Name="assoc_B7C4B50379CB37538ACBB57EF02B1398" Association="cds_xbrixoptieximc.assoc_B7C4B50379CB37538ACBB57EF02B1398"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSIMPSION" Role="FromRole_assoc_B7C4B50379CB37538ACBB57EF02B1398"/><End EntitySet="I_Currency" Role="ToRole_assoc_B7C4B50379CB37538ACBB57EF02B1398"/></AssociationSet>
+				<AssociationSet Name="assoc_03A1A956E6B99088CC52C2786DB8EB76" Association="cds_xbrixoptieximc.assoc_03A1A956E6B99088CC52C2786DB8EB76"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_IBSATTRIBUT" Role="FromRole_assoc_03A1A956E6B99088CC52C2786DB8EB76"/><End EntitySet="xBRIxice_GUARANTEETYPE" Role="ToRole_assoc_03A1A956E6B99088CC52C2786DB8EB76"/></AssociationSet>
+			</EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_CODTYPType/code">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Maintain Code Master"/><PropertyValue Property="CollectionPath" String="xBRIxI_CODMAS"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="code"/><PropertyValue Property="ValueListProperty" String="codtyp"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="coddesc"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSANVAVERAType/matkl">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Maintain Material groups"/><PropertyValue Property="CollectionPath" String="xBRIxI_IBSMATGRP"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="matkl"/><PropertyValue Property="ValueListProperty" String="matkl"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="coddesc"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="itmcat"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSANVAVERAType/cukyrs">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="cukyrs"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSANVAVERAType/cukyfc">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="cukyfc"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSAPPLFEEType/bnftyp">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Scheme type in Classification"/><PropertyValue Property="CollectionPath" String="xBRIxI_IBSTYPE"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="bnftyp"/><PropertyValue Property="ValueListProperty" String="bnftyp"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="classif"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="typedesc"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSAPPLFEEType/waers">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="waers"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType/classif">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Scheme type in Classification"/><PropertyValue Property="CollectionPath" String="xBRIxI_IBSTYPE"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="classif"/><PropertyValue Property="ValueListProperty" String="classif"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="bnftyp"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="typedesc"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType/bnftyp">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Scheme type in Classification"/><PropertyValue Property="CollectionPath" String="xBRIxI_IBSTYPE"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="bnftyp"/><PropertyValue Property="ValueListProperty" String="bnftyp"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="classif"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="typedesc"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType/epcgtyp">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="epcgtype"/><PropertyValue Property="CollectionPath" String="xBRIxICE_EPCGTYPE"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="epcgtyp"/><PropertyValue Property="ValueListProperty" String="epcgtyp"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType/impunit">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="IMPUNIT"/><PropertyValue Property="CollectionPath" String="xBRIxice_IMPUNIT"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="impunit"/><PropertyValue Property="ValueListProperty" String="impunit"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType/obligunit">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="IMPUNIT"/><PropertyValue Property="CollectionPath" String="xBRIxice_IMPUNIT"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="obligunit"/><PropertyValue Property="ValueListProperty" String="impunit"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSATTRIBUTType/guaranteetype">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="GUARANTEETYPE"/><PropertyValue Property="CollectionPath" String="xBRIxice_GUARANTEETYPE"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="guaranteetype"/><PropertyValue Property="ValueListProperty" String="GUARANTEETYPE"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSEXPSIONType/matkl">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Association Export item to SION"/><PropertyValue Property="CollectionPath" String="xBRIxI_AIBSMATGRP"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="matkl"/><PropertyValue Property="ValueListProperty" String="matkl"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="coddesc"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="itmcat"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSEXPSIONType/unit">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Unit of Measure"/><PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="unit"/><PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureNumberOfDecimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="UnitOfMeasureDspNmbrOfDcmls"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSEXPSIONType/cukyfc">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="cukyfc"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSHSNGRPASType/matkl">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Maintain Material groups"/><PropertyValue Property="CollectionPath" String="xBRIxI_IBSMATGRP"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="matkl"/><PropertyValue Property="ValueListProperty" String="matkl"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="coddesc"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="itmcat"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSIMPSIONType/siono">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Assign Export Item to SION "/><PropertyValue Property="CollectionPath" String="xBRIxI_IBSEXPSION"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="siono"/><PropertyValue Property="ValueListProperty" String="siono"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="quant"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="matkl"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="unit"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="cukyfc"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="prcunit"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="sionact"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSIMPSIONType/matkl">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Association Export item to SION"/><PropertyValue Property="CollectionPath" String="xBRIxI_AIBSMATGRP"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="matkl"/><PropertyValue Property="ValueListProperty" String="matkl"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="coddesc"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="itmcat"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSIMPSIONType/cukyfc">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="cukyfc"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSMATGRPType/itmcat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Custom Entitiy /BRI/ICE_ITEMCAT"/><PropertyValue Property="CollectionPath" String="xBRIxICE_ITEMCAT"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="itmcat"/><PropertyValue Property="ValueListProperty" String="itmcat"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="itmcat_desc"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSMATGRPASType/matkl">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Maintain Material groups"/><PropertyValue Property="CollectionPath" String="xBRIxI_IBSMATGRP"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="matkl"/><PropertyValue Property="ValueListProperty" String="matkl"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="coddesc"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="itmcat"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSMEISType/cntry">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Country"/><PropertyValue Property="CollectionPath" String="I_Country"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="cntry"/><PropertyValue Property="ValueListProperty" String="Country"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Country_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CountryThreeLetterISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CountryThreeDigitISOCode"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSMEISType/cntygrp">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CNTYGRP"/><PropertyValue Property="CollectionPath" String="xBRIxICE_IBSCNTYGRP"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="cntygrp"/><PropertyValue Property="ValueListProperty" String="cntygrp"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSTARIFFType/matkl">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Association Tariff to material group"/><PropertyValue Property="CollectionPath" String="xBRIxI_AMATKLTARIFF"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="matkl"/><PropertyValue Property="ValueListProperty" String="matkl"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="coddesc"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="itmcat"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSTARIFFType/tarntno">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Procedure/Tariff Assignment to Material"/><PropertyValue Property="CollectionPath" String="xBRIxI_IIDCTMAT"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="tarntno"/><PropertyValue Property="ValueListProperty" String="tarntno"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="matnr"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="tarntid"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="valdtfr"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ctryorg"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="prcname"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSTARIFFType/ctryorg">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Country"/><PropertyValue Property="CollectionPath" String="I_Country"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="ctryorg"/><PropertyValue Property="ValueListProperty" String="Country"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Country_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CountryThreeLetterISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CountryThreeDigitISOCode"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSTARIFFType/prcname">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Master Data - Duty Calculation Procedure"/><PropertyValue Property="CollectionPath" String="xBRIxI_IIDDTPRC"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="prcname"/><PropertyValue Property="ValueListProperty" String="prcname"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descrip"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSTYPEType/classif">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String=" Benefit Scheme Classification "/><PropertyValue Property="CollectionPath" String="xBRIxI_IBSCLASS"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="classif"/><PropertyValue Property="ValueListProperty" String="classif"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="classifdesc"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IIDCTMATType/prcname">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Master Data - Duty Calculation Procedure"/><PropertyValue Property="CollectionPath" String="xBRIxI_IIDDTPRC"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="prcname"/><PropertyValue Property="ValueListProperty" String="prcname"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descrip"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_I_IIDTARNTType/ctryorg">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Country"/><PropertyValue Property="CollectionPath" String="I_Country"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="ctryorg"/><PropertyValue Property="ValueListProperty" String="Country"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Country_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CountryThreeLetterISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CountryThreeDigitISOCode"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_I_IIDTARNTType/baseunt">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="baseunt"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_MAT_HSNMASTType/bukrs">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Company Code"/><PropertyValue Property="CollectionPath" String="xBRIxI_T001"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="bukrs"/><PropertyValue Property="ValueListProperty" String="bukrs"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="butxt"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="land1"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="waers"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_T001Type/land1">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Country"/><PropertyValue Property="CollectionPath" String="I_Country"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="land1"/><PropertyValue Property="ValueListProperty" String="Country"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Country_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CountryThreeLetterISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CountryThreeDigitISOCode"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_T001Type/waers">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="waers"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Decimals"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.cds_xbrixoptieximc_Entities">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_CODMASType/codtyp"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSAPPLFEEType/validfr"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSCLASSType/classif"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSEXPSIONType/siono"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSMATGRPASType/matnr"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSMATGRPType/matkl"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSMEISRTSType/matnr"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBSMEISRTSType/validfr"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBS_PO_TYPEType/bsart"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IBS_PO_TYPEType/slno"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_IIDDTPRCType/prcname"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xBRIxI_MAT_HSNMASTType/table_name"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xbrixI_ibsmeishsnType/steuc"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.xbrixI_ibsmeishsnType/validfr"><Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.cds_xbrixoptieximc_Entities/xBRIxI_COMNYCODE">
+				<Annotation Term="Capabilities.FilterRestrictions">
+					<Record>
+						<PropertyValue Property="FilterExpressionRestrictions">
+							<Collection>
+								<Record><PropertyValue Property="Property" PropertyPath="Butxt"/><PropertyValue Property="AllowedExpressions" String="SearchExpression"/></Record>
+								<Record><PropertyValue Property="Property" PropertyPath="Ort01"/><PropertyValue Property="AllowedExpressions" String="SearchExpression"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.SortRestrictions">
+					<Record>
+						<PropertyValue Property="NonSortableProperties">
+							<Collection>
+								<PropertyPath>Butxt</PropertyPath>
+								<PropertyPath>Ort01</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.I_CurrencyType/Currency"><Annotation Term="Common.UnitSpecificScale" Path="Decimals"/></Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixoptieximc.I_UnitOfMeasureType/UnitOfMeasure"><Annotation Term="Common.UnitSpecificScale" Path="UnitOfMeasureDspNmbrOfDcmls"/></Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self"
+				href="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/BRI/B_OPTIEXIMC/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
+				href="https://a0692a47-06d2-45eb-b049-90443e034899.abap.eu10.hana.ondemand.com:443/sap/opu/odata/BRI/B_OPTIEXIMC/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

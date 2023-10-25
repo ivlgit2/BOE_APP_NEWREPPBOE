@@ -1,0 +1,459 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_xbrixbs_tconfig" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="xBRIxCE_ERRSTATType" sap:label="Error status" sap:value-list="true" sap:content-version="1">
+				<Key><PropertyRef Name="code"/></Key><Property Name="code" Type="Edm.String" Nullable="false" MaxLength="1"/><Property Name="description" Type="Edm.String" MaxLength="30"/></EntityType>
+			<EntityType Name="xbrixi_docflowstatType" sap:label="Document Flow Status" sap:content-version="1">
+				<Key><PropertyRef Name="modid"/><PropertyRef Name="curstat"/><PropertyRef Name="nexstat"/></Key><Property Name="modid" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Module Id"
+					sap:value-list="standard"/><Property Name="curstat" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="nexstat" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="prestat" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="canstat" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="chknndo" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="nndoupstat" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="chkclin" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="clinupstat" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="chkboe" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status" sap:value-list="standard"/><Property Name="boeupstat" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><NavigationProperty Name="to_docstat" Relationship="cds_xbrixbs_tconfig.assoc_5DEC3A0D813B985C9D62982DBCA0C277"
+					FromRole="FromRole_assoc_5DEC3A0D813B985C9D62982DBCA0C277" ToRole="ToRole_assoc_5DEC3A0D813B985C9D62982DBCA0C277"/><NavigationProperty Name="to_docstatboec" Relationship="cds_xbrixbs_tconfig.assoc_5D84DE60447755FEBBEBC8E72FE1FDC0"
+					FromRole="FromRole_assoc_5D84DE60447755FEBBEBC8E72FE1FDC0" ToRole="ToRole_assoc_5D84DE60447755FEBBEBC8E72FE1FDC0"/><NavigationProperty Name="to_docstatboeup" Relationship="cds_xbrixbs_tconfig.assoc_A15F38A21BE5BC1FC004387898E5F288"
+					FromRole="FromRole_assoc_A15F38A21BE5BC1FC004387898E5F288" ToRole="ToRole_assoc_A15F38A21BE5BC1FC004387898E5F288"/><NavigationProperty Name="to_docstatcan" Relationship="cds_xbrixbs_tconfig.assoc_79B3478D009297E9A9358BD32263B94F"
+					FromRole="FromRole_assoc_79B3478D009297E9A9358BD32263B94F" ToRole="ToRole_assoc_79B3478D009297E9A9358BD32263B94F"/><NavigationProperty Name="to_docstatclinc" Relationship="cds_xbrixbs_tconfig.assoc_2AF8363A3FAD84AE03DC7A039EAE2B3A"
+					FromRole="FromRole_assoc_2AF8363A3FAD84AE03DC7A039EAE2B3A" ToRole="ToRole_assoc_2AF8363A3FAD84AE03DC7A039EAE2B3A"/><NavigationProperty Name="to_docstatclinup" Relationship="cds_xbrixbs_tconfig.assoc_70E8F841A695E006B2B10FCFDBE92EC0"
+					FromRole="FromRole_assoc_70E8F841A695E006B2B10FCFDBE92EC0" ToRole="ToRole_assoc_70E8F841A695E006B2B10FCFDBE92EC0"/><NavigationProperty Name="to_docstatcnndo" Relationship="cds_xbrixbs_tconfig.assoc_FA8F61FCB074D01130684C95644031E4"
+					FromRole="FromRole_assoc_FA8F61FCB074D01130684C95644031E4" ToRole="ToRole_assoc_FA8F61FCB074D01130684C95644031E4"/><NavigationProperty Name="to_docstatn" Relationship="cds_xbrixbs_tconfig.assoc_DFDE1B6E5E53C53B2B6CE82743112880"
+					FromRole="FromRole_assoc_DFDE1B6E5E53C53B2B6CE82743112880" ToRole="ToRole_assoc_DFDE1B6E5E53C53B2B6CE82743112880"/><NavigationProperty Name="to_docstatp" Relationship="cds_xbrixbs_tconfig.assoc_A20D4128926F5958921C26F8FE8E7C48"
+					FromRole="FromRole_assoc_A20D4128926F5958921C26F8FE8E7C48" ToRole="ToRole_assoc_A20D4128926F5958921C26F8FE8E7C48"/><NavigationProperty Name="to_docstatupnndo" Relationship="cds_xbrixbs_tconfig.assoc_7C71A74E98FE6360C7C78E691E9D3049"
+					FromRole="FromRole_assoc_7C71A74E98FE6360C7C78E691E9D3049" ToRole="ToRole_assoc_7C71A74E98FE6360C7C78E691E9D3049"/><NavigationProperty Name="to_module" Relationship="cds_xbrixbs_tconfig.assoc_13F777FC10F0370BD5A144187E512F9F"
+					FromRole="FromRole_assoc_13F777FC10F0370BD5A144187E512F9F" ToRole="ToRole_assoc_13F777FC10F0370BD5A144187E512F9F"/></EntityType>
+			<EntityType Name="xBRIxI_DOCSTATType" sap:label="CDS for Document Status" sap:value-list="true" sap:content-version="1">
+				<Key><PropertyRef Name="status"/></Key><Property Name="status" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"/><Property Name="descr" Type="Edm.String" MaxLength="55"/></EntityType>
+			<EntityType Name="xbrixi_modulesType" sap:label="Module Id And Description" sap:value-list="true" sap:content-version="1">
+				<Key><PropertyRef Name="modid"/></Key><Property Name="modid" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Module Id"/><Property Name="descr" Type="Edm.String" MaxLength="55"/></EntityType>
+			<EntityType Name="xBRIxI_UICONFIGType" sap:label="UI Configuration" sap:content-version="1">
+				<Key><PropertyRef Name="modid"/><PropertyRef Name="status"/><PropertyRef Name="actvt"/><PropertyRef Name="usertyp"/><PropertyRef Name="entityset"/><PropertyRef Name="fldnam"/></Key><Property Name="modid" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Module Id"
+					sap:value-list="standard"/><Property Name="status" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="actvt" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Activity"/><Property Name="usertyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="User Type"
+					sap:value-list="standard"/><Property Name="entityset" Type="Edm.String" Nullable="false" MaxLength="100"/><Property Name="fldnam" Type="Edm.String" Nullable="false" MaxLength="20"/><Property Name="flddescr" Type="Edm.String" MaxLength="60"/><Property Name="editable" Type="Edm.String" MaxLength="5"/><Property Name="visible" Type="Edm.String" MaxLength="5"/><Property Name="enable" Type="Edm.String" MaxLength="5"/><Property Name="required" Type="Edm.String" MaxLength="5"/><Property Name="incomplog" Type="Edm.String" MaxLength="5"/><Property Name="errstat" Type="Edm.String" MaxLength="1" sap:value-list="standard"/><Property Name="tbl" Type="Edm.String" MaxLength="5"/><NavigationProperty Name="to_docstat" Relationship="cds_xbrixbs_tconfig.assoc_B1DF8BC458CD79918715CC9AAAC859A1"
+					FromRole="FromRole_assoc_B1DF8BC458CD79918715CC9AAAC859A1" ToRole="ToRole_assoc_B1DF8BC458CD79918715CC9AAAC859A1"/><NavigationProperty Name="to_errstat" Relationship="cds_xbrixbs_tconfig.assoc_EF0105EABDA85A8AAF052E01D903528B"
+					FromRole="FromRole_assoc_EF0105EABDA85A8AAF052E01D903528B" ToRole="ToRole_assoc_EF0105EABDA85A8AAF052E01D903528B"/><NavigationProperty Name="to_module" Relationship="cds_xbrixbs_tconfig.assoc_156641E32246BEAAC16693D4E570ECF5"
+					FromRole="FromRole_assoc_156641E32246BEAAC16693D4E570ECF5" ToRole="ToRole_assoc_156641E32246BEAAC16693D4E570ECF5"/><NavigationProperty Name="to_user" Relationship="cds_xbrixbs_tconfig.assoc_CBF4A7344287650DDD36C0496AAB6991"
+					FromRole="FromRole_assoc_CBF4A7344287650DDD36C0496AAB6991" ToRole="ToRole_assoc_CBF4A7344287650DDD36C0496AAB6991"/></EntityType>
+			<EntityType Name="xBRIxI_UICONFIG01Type" sap:label="UI Configuration for Create" sap:content-version="1">
+				<Key><PropertyRef Name="modid"/><PropertyRef Name="status"/><PropertyRef Name="actvt"/><PropertyRef Name="usertyp"/><PropertyRef Name="entityset"/><PropertyRef Name="fldnam"/></Key><Property Name="modid" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Module Id"
+					sap:value-list="standard"/><Property Name="status" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="actvt" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Activity"/><Property Name="usertyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="User Type"
+					sap:value-list="standard"/><Property Name="entityset" Type="Edm.String" Nullable="false" MaxLength="100"/><Property Name="fldnam" Type="Edm.String" Nullable="false" MaxLength="20"/><Property Name="flddescr" Type="Edm.String" MaxLength="60"/><Property Name="editable" Type="Edm.String" MaxLength="5"/><Property Name="visible" Type="Edm.String" MaxLength="5"/><Property Name="enable" Type="Edm.String" MaxLength="5"/><Property Name="required" Type="Edm.String" MaxLength="5"/><Property Name="incomplog" Type="Edm.String" MaxLength="5"/><Property Name="errstat" Type="Edm.String" MaxLength="1" sap:value-list="standard"/><Property Name="tbl" Type="Edm.String" MaxLength="5"/></EntityType>
+			<EntityType Name="xBRIxI_UICONFIG02Type" sap:label="UI Configuration for Edit" sap:content-version="1">
+				<Key><PropertyRef Name="modid"/><PropertyRef Name="status"/><PropertyRef Name="actvt"/><PropertyRef Name="usertyp"/><PropertyRef Name="entityset"/><PropertyRef Name="fldnam"/></Key><Property Name="modid" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Module Id"
+					sap:value-list="standard"/><Property Name="status" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="actvt" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Activity"/><Property Name="usertyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="User Type"
+					sap:value-list="standard"/><Property Name="entityset" Type="Edm.String" Nullable="false" MaxLength="100"/><Property Name="fldnam" Type="Edm.String" Nullable="false" MaxLength="20"/><Property Name="flddescr" Type="Edm.String" MaxLength="60"/><Property Name="editable" Type="Edm.String" MaxLength="5"/><Property Name="visible" Type="Edm.String" MaxLength="5"/><Property Name="enable" Type="Edm.String" MaxLength="5"/><Property Name="required" Type="Edm.String" MaxLength="5"/><Property Name="incomplog" Type="Edm.String" MaxLength="5"/><Property Name="errstat" Type="Edm.String" MaxLength="1" sap:value-list="standard"/><Property Name="tbl" Type="Edm.String" MaxLength="5"/></EntityType>
+			<EntityType Name="xBRIxI_UICONFIG03Type" sap:label="UI Configuration for Display" sap:content-version="1">
+				<Key><PropertyRef Name="modid"/><PropertyRef Name="status"/><PropertyRef Name="actvt"/><PropertyRef Name="usertyp"/><PropertyRef Name="entityset"/><PropertyRef Name="fldnam"/></Key><Property Name="modid" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Module Id"
+					sap:value-list="standard"/><Property Name="status" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Document Status"
+					sap:value-list="standard"/><Property Name="actvt" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Activity"/><Property Name="usertyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="User Type"
+					sap:value-list="standard"/><Property Name="entityset" Type="Edm.String" Nullable="false" MaxLength="100"/><Property Name="fldnam" Type="Edm.String" Nullable="false" MaxLength="20"/><Property Name="flddescr" Type="Edm.String" MaxLength="60"/><Property Name="editable" Type="Edm.String" MaxLength="5"/><Property Name="visible" Type="Edm.String" MaxLength="5"/><Property Name="enable" Type="Edm.String" MaxLength="5"/><Property Name="required" Type="Edm.String" MaxLength="5"/><Property Name="incomplog" Type="Edm.String" MaxLength="5"/><Property Name="errstat" Type="Edm.String" MaxLength="1" sap:value-list="standard"/><Property Name="tbl" Type="Edm.String" MaxLength="5"/></EntityType>
+			<EntityType Name="xBRIxI_USERSType" sap:label="CDS for User Type and Description" sap:value-list="true" sap:content-version="1">
+				<Key><PropertyRef Name="usertyp"/></Key><Property Name="usertyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="User Type"/><Property Name="descr" Type="Edm.String" MaxLength="55"/></EntityType>
+			<Association Name="assoc_5D84DE60447755FEBBEBC8E72FE1FDC0" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_5D84DE60447755FEBBEBC8E72FE1FDC0"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_5D84DE60447755FEBBEBC8E72FE1FDC0"/></Association>
+			<Association Name="assoc_A15F38A21BE5BC1FC004387898E5F288" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_A15F38A21BE5BC1FC004387898E5F288"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_A15F38A21BE5BC1FC004387898E5F288"/></Association>
+			<Association Name="assoc_79B3478D009297E9A9358BD32263B94F" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_79B3478D009297E9A9358BD32263B94F"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_79B3478D009297E9A9358BD32263B94F"/></Association>
+			<Association Name="assoc_2AF8363A3FAD84AE03DC7A039EAE2B3A" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_2AF8363A3FAD84AE03DC7A039EAE2B3A"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_2AF8363A3FAD84AE03DC7A039EAE2B3A"/></Association>
+			<Association Name="assoc_70E8F841A695E006B2B10FCFDBE92EC0" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_70E8F841A695E006B2B10FCFDBE92EC0"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_70E8F841A695E006B2B10FCFDBE92EC0"/></Association>
+			<Association Name="assoc_FA8F61FCB074D01130684C95644031E4" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_FA8F61FCB074D01130684C95644031E4"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_FA8F61FCB074D01130684C95644031E4"/></Association>
+			<Association Name="assoc_DFDE1B6E5E53C53B2B6CE82743112880" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_DFDE1B6E5E53C53B2B6CE82743112880"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_DFDE1B6E5E53C53B2B6CE82743112880"/></Association>
+			<Association Name="assoc_A20D4128926F5958921C26F8FE8E7C48" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_A20D4128926F5958921C26F8FE8E7C48"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_A20D4128926F5958921C26F8FE8E7C48"/></Association>
+			<Association Name="assoc_7C71A74E98FE6360C7C78E691E9D3049" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_7C71A74E98FE6360C7C78E691E9D3049"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_7C71A74E98FE6360C7C78E691E9D3049"/></Association>
+			<Association Name="assoc_13F777FC10F0370BD5A144187E512F9F" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_13F777FC10F0370BD5A144187E512F9F"/><End Type="cds_xbrixbs_tconfig.xbrixi_modulesType" Multiplicity="1" Role="ToRole_assoc_13F777FC10F0370BD5A144187E512F9F"/></Association>
+			<Association Name="assoc_5DEC3A0D813B985C9D62982DBCA0C277" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xbrixi_docflowstatType" Multiplicity="1" Role="FromRole_assoc_5DEC3A0D813B985C9D62982DBCA0C277"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_5DEC3A0D813B985C9D62982DBCA0C277"/></Association>
+			<Association Name="assoc_B1DF8BC458CD79918715CC9AAAC859A1" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xBRIxI_UICONFIGType" Multiplicity="1" Role="FromRole_assoc_B1DF8BC458CD79918715CC9AAAC859A1"/><End Type="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" Multiplicity="1" Role="ToRole_assoc_B1DF8BC458CD79918715CC9AAAC859A1"/></Association>
+			<Association Name="assoc_EF0105EABDA85A8AAF052E01D903528B" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xBRIxI_UICONFIGType" Multiplicity="1" Role="FromRole_assoc_EF0105EABDA85A8AAF052E01D903528B"/><End Type="cds_xbrixbs_tconfig.xBRIxCE_ERRSTATType" Multiplicity="1" Role="ToRole_assoc_EF0105EABDA85A8AAF052E01D903528B"/></Association>
+			<Association Name="assoc_156641E32246BEAAC16693D4E570ECF5" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xBRIxI_UICONFIGType" Multiplicity="1" Role="FromRole_assoc_156641E32246BEAAC16693D4E570ECF5"/><End Type="cds_xbrixbs_tconfig.xbrixi_modulesType" Multiplicity="1" Role="ToRole_assoc_156641E32246BEAAC16693D4E570ECF5"/></Association>
+			<Association Name="assoc_CBF4A7344287650DDD36C0496AAB6991" sap:content-version="1"><End Type="cds_xbrixbs_tconfig.xBRIxI_UICONFIGType" Multiplicity="1" Role="FromRole_assoc_CBF4A7344287650DDD36C0496AAB6991"/><End Type="cds_xbrixbs_tconfig.xBRIxI_USERSType" Multiplicity="1" Role="ToRole_assoc_CBF4A7344287650DDD36C0496AAB6991"/></Association>
+			<EntityContainer Name="cds_xbrixbs_tconfig_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true"
+				sap:supported-formats="atom json xlsx"><EntitySet Name="xBRIxCE_ERRSTAT" EntityType="cds_xbrixbs_tconfig.xBRIxCE_ERRSTATType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xbrixi_docflowstat" EntityType="cds_xbrixbs_tconfig.xbrixi_docflowstatType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_DOCSTAT" EntityType="cds_xbrixbs_tconfig.xBRIxI_DOCSTATType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xbrixi_modules" EntityType="cds_xbrixbs_tconfig.xbrixi_modulesType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_UICONFIG" EntityType="cds_xbrixbs_tconfig.xBRIxI_UICONFIGType" sap:searchable="true" sap:content-version="1"/><EntitySet Name="xBRIxI_UICONFIG01" EntityType="cds_xbrixbs_tconfig.xBRIxI_UICONFIG01Type" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxI_UICONFIG02" EntityType="cds_xbrixbs_tconfig.xBRIxI_UICONFIG02Type" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxI_UICONFIG03" EntityType="cds_xbrixbs_tconfig.xBRIxI_UICONFIG03Type" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="xBRIxI_USERS" EntityType="cds_xbrixbs_tconfig.xBRIxI_USERSType" sap:searchable="true" sap:content-version="1"/>
+				<AssociationSet Name="assoc_CBF4A7344287650DDD36C0496AAB6991" Association="cds_xbrixbs_tconfig.assoc_CBF4A7344287650DDD36C0496AAB6991"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_UICONFIG" Role="FromRole_assoc_CBF4A7344287650DDD36C0496AAB6991"/><End EntitySet="xBRIxI_USERS" Role="ToRole_assoc_CBF4A7344287650DDD36C0496AAB6991"/></AssociationSet>
+				<AssociationSet Name="assoc_156641E32246BEAAC16693D4E570ECF5" Association="cds_xbrixbs_tconfig.assoc_156641E32246BEAAC16693D4E570ECF5"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_UICONFIG" Role="FromRole_assoc_156641E32246BEAAC16693D4E570ECF5"/><End EntitySet="xbrixi_modules" Role="ToRole_assoc_156641E32246BEAAC16693D4E570ECF5"/></AssociationSet>
+				<AssociationSet Name="assoc_A15F38A21BE5BC1FC004387898E5F288" Association="cds_xbrixbs_tconfig.assoc_A15F38A21BE5BC1FC004387898E5F288"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_A15F38A21BE5BC1FC004387898E5F288"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_A15F38A21BE5BC1FC004387898E5F288"/></AssociationSet>
+				<AssociationSet Name="assoc_7C71A74E98FE6360C7C78E691E9D3049" Association="cds_xbrixbs_tconfig.assoc_7C71A74E98FE6360C7C78E691E9D3049"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_7C71A74E98FE6360C7C78E691E9D3049"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_7C71A74E98FE6360C7C78E691E9D3049"/></AssociationSet>
+				<AssociationSet Name="assoc_DFDE1B6E5E53C53B2B6CE82743112880" Association="cds_xbrixbs_tconfig.assoc_DFDE1B6E5E53C53B2B6CE82743112880"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_DFDE1B6E5E53C53B2B6CE82743112880"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_DFDE1B6E5E53C53B2B6CE82743112880"/></AssociationSet>
+				<AssociationSet Name="assoc_EF0105EABDA85A8AAF052E01D903528B" Association="cds_xbrixbs_tconfig.assoc_EF0105EABDA85A8AAF052E01D903528B"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_UICONFIG" Role="FromRole_assoc_EF0105EABDA85A8AAF052E01D903528B"/><End EntitySet="xBRIxCE_ERRSTAT" Role="ToRole_assoc_EF0105EABDA85A8AAF052E01D903528B"/></AssociationSet>
+				<AssociationSet Name="assoc_2AF8363A3FAD84AE03DC7A039EAE2B3A" Association="cds_xbrixbs_tconfig.assoc_2AF8363A3FAD84AE03DC7A039EAE2B3A"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_2AF8363A3FAD84AE03DC7A039EAE2B3A"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_2AF8363A3FAD84AE03DC7A039EAE2B3A"/></AssociationSet>
+				<AssociationSet Name="assoc_13F777FC10F0370BD5A144187E512F9F" Association="cds_xbrixbs_tconfig.assoc_13F777FC10F0370BD5A144187E512F9F"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_13F777FC10F0370BD5A144187E512F9F"/><End EntitySet="xbrixi_modules" Role="ToRole_assoc_13F777FC10F0370BD5A144187E512F9F"/></AssociationSet>
+				<AssociationSet Name="assoc_A20D4128926F5958921C26F8FE8E7C48" Association="cds_xbrixbs_tconfig.assoc_A20D4128926F5958921C26F8FE8E7C48"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_A20D4128926F5958921C26F8FE8E7C48"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_A20D4128926F5958921C26F8FE8E7C48"/></AssociationSet>
+				<AssociationSet Name="assoc_79B3478D009297E9A9358BD32263B94F" Association="cds_xbrixbs_tconfig.assoc_79B3478D009297E9A9358BD32263B94F"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_79B3478D009297E9A9358BD32263B94F"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_79B3478D009297E9A9358BD32263B94F"/></AssociationSet>
+				<AssociationSet Name="assoc_B1DF8BC458CD79918715CC9AAAC859A1" Association="cds_xbrixbs_tconfig.assoc_B1DF8BC458CD79918715CC9AAAC859A1"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxI_UICONFIG" Role="FromRole_assoc_B1DF8BC458CD79918715CC9AAAC859A1"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_B1DF8BC458CD79918715CC9AAAC859A1"/></AssociationSet>
+				<AssociationSet Name="assoc_5DEC3A0D813B985C9D62982DBCA0C277" Association="cds_xbrixbs_tconfig.assoc_5DEC3A0D813B985C9D62982DBCA0C277"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_5DEC3A0D813B985C9D62982DBCA0C277"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_5DEC3A0D813B985C9D62982DBCA0C277"/></AssociationSet>
+				<AssociationSet Name="assoc_5D84DE60447755FEBBEBC8E72FE1FDC0" Association="cds_xbrixbs_tconfig.assoc_5D84DE60447755FEBBEBC8E72FE1FDC0"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_5D84DE60447755FEBBEBC8E72FE1FDC0"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_5D84DE60447755FEBBEBC8E72FE1FDC0"/></AssociationSet>
+				<AssociationSet Name="assoc_FA8F61FCB074D01130684C95644031E4" Association="cds_xbrixbs_tconfig.assoc_FA8F61FCB074D01130684C95644031E4"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_FA8F61FCB074D01130684C95644031E4"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_FA8F61FCB074D01130684C95644031E4"/></AssociationSet>
+				<AssociationSet Name="assoc_70E8F841A695E006B2B10FCFDBE92EC0" Association="cds_xbrixbs_tconfig.assoc_70E8F841A695E006B2B10FCFDBE92EC0"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xbrixi_docflowstat" Role="FromRole_assoc_70E8F841A695E006B2B10FCFDBE92EC0"/><End EntitySet="xBRIxI_DOCSTAT" Role="ToRole_assoc_70E8F841A695E006B2B10FCFDBE92EC0"/></AssociationSet>
+			</EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/modid">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Module Id And Description"/><PropertyValue Property="CollectionPath" String="xbrixi_modules"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="modid"/><PropertyValue Property="ValueListProperty" String="modid"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/curstat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="curstat"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/nexstat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="nexstat"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/prestat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="prestat"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/canstat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="canstat"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/chknndo">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="chknndo"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/nndoupstat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="nndoupstat"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/chkclin">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="chkclin"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/clinupstat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="clinupstat"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/chkboe">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="chkboe"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xbrixi_docflowstatType/boeupstat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="boeupstat"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIGType/modid">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Module Id And Description"/><PropertyValue Property="CollectionPath" String="xbrixi_modules"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="modid"/><PropertyValue Property="ValueListProperty" String="modid"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIGType/status">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="status"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIGType/usertyp">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for User Type and Description"/><PropertyValue Property="CollectionPath" String="xBRIxI_USERS"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="usertyp"/><PropertyValue Property="ValueListProperty" String="usertyp"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIGType/errstat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Error status"/><PropertyValue Property="CollectionPath" String="xBRIxCE_ERRSTAT"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="errstat"/><PropertyValue Property="ValueListProperty" String="code"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG01Type/modid">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Module Id And Description"/><PropertyValue Property="CollectionPath" String="xbrixi_modules"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="modid"/><PropertyValue Property="ValueListProperty" String="modid"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG01Type/status">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="status"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG01Type/usertyp">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for User Type and Description"/><PropertyValue Property="CollectionPath" String="xBRIxI_USERS"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="usertyp"/><PropertyValue Property="ValueListProperty" String="usertyp"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG01Type/errstat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Error status"/><PropertyValue Property="CollectionPath" String="xBRIxCE_ERRSTAT"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="errstat"/><PropertyValue Property="ValueListProperty" String="code"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG02Type/modid">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Module Id And Description"/><PropertyValue Property="CollectionPath" String="xbrixi_modules"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="modid"/><PropertyValue Property="ValueListProperty" String="modid"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG02Type/status">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="status"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG02Type/usertyp">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for User Type and Description"/><PropertyValue Property="CollectionPath" String="xBRIxI_USERS"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="usertyp"/><PropertyValue Property="ValueListProperty" String="usertyp"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG02Type/errstat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Error status"/><PropertyValue Property="CollectionPath" String="xBRIxCE_ERRSTAT"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="errstat"/><PropertyValue Property="ValueListProperty" String="code"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG03Type/modid">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Module Id And Description"/><PropertyValue Property="CollectionPath" String="xbrixi_modules"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="modid"/><PropertyValue Property="ValueListProperty" String="modid"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG03Type/status">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for Document Status"/><PropertyValue Property="CollectionPath" String="xBRIxI_DOCSTAT"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="status"/><PropertyValue Property="ValueListProperty" String="status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG03Type/usertyp">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="CDS for User Type and Description"/><PropertyValue Property="CollectionPath" String="xBRIxI_USERS"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="usertyp"/><PropertyValue Property="ValueListProperty" String="usertyp"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="descr"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.xBRIxI_UICONFIG03Type/errstat">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Error status"/><PropertyValue Property="CollectionPath" String="xBRIxCE_ERRSTAT"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="errstat"/><PropertyValue Property="ValueListProperty" String="code"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixbs_tconfig.cds_xbrixbs_tconfig_Entities">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/opu/odata/BRI/SB_TCONFIG/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/opu/odata/BRI/SB_TCONFIG/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

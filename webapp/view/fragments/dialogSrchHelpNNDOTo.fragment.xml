@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+	id="DocNumberListTo"
+		title="Reference Document Number"
+		class="sapUiPopupWithPadding"
+		items="{path:'NNDOnosearchHelp>/results',sorter:{path:'docno',descending:true}}"
+		liveChange="_handleValueHelpSearch_NNDOTo"
+		confirm="_handleValueHelpClose_NNDOTo"
+		cancel="_handleValueHelpClose_NNDOTo">
+	<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{NNDOnosearchHelp>docno}" description="{NNDOnosearchHelp>chacode}"
+			/>
+	</SelectDialog>
+</core:FragmentDefinition>

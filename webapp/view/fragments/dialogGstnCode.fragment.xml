@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="GSTN State Code" class="sapUiPopupWithPadding"
+		items="{path: 'GSTN_StateCodeData>/xBRIxI_GSTINSTCODE',sorter:{path:'statedescr',descending: true}}" confirm="_handleValueHelpClose_Vendor"
+		cancel="_handleValueHelpClose_Vendor" liveChange="_handleSearchGstn">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{GSTN_StateCodeData>statecode}" description="{GSTN_StateCodeData>statedescr}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

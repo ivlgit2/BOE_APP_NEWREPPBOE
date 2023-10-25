@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+	id="BOECustno"
+		title="Customs BOE Number"
+		class="sapUiPopupWithPadding"
+	
+		items="{path:'NNDOnosearchHelp>/results',sorter:{path:'impdpsno',descending:true}}"
+		liveChange="_handleValueHelpSearch_CustBOENo"
+		confirm="_handleValueHelpClose_CustBOENo"
+		cancel="_handleValueHelpClose_CustBOENo">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{NNDOnosearchHelp>impdpsno}" description="{NNDOnosearchHelp>impdpsno}"
+			/>
+	</SelectDialog>
+</core:FragmentDefinition>

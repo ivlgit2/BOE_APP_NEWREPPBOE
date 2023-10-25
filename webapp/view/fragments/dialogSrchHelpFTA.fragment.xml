@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="FTA No"
+		class="sapUiPopupWithPadding"
+		items="{path : 'FTAModel>/results',sorter : {path:'tarntno',ascending: true}}"
+		liveChange="_handleValueHelpSearch_FTA"
+		confirm="_handleValueHelpClose_FTA">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{FTAModel>tarntno}"
+			description="{FTAModel>serialno}"
+			/>
+	</SelectDialog>
+</core:FragmentDefinition>

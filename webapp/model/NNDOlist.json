@@ -1,0 +1,222 @@
+{
+	"dataCollection": [
+		{
+				"NNDONo":"1140000100",
+				"NNDODate":"04/04/2018",
+				"BankrefNo":"100000000045",
+				"vendorName":"Vendor1",
+				"vendorCountry":"US",
+				"BL":"1210",
+				"OCountry":"India",
+				"CCountry":"US",
+				"DCountry":"UK",
+				"POL":"",
+				"POD":"",
+				"PODS":"",
+				"Freight":"0.00",
+				"Flname":"Jet AirWays",
+				"clinStatus":"100000208",
+				"clin": "YES",
+				"PoDetails": [{
+				"RefDoNo":"1000",
+				"RefDoNoDesc":"Material01",
+				"RefDoDate":"04/04/2018",
+				"invDetails": [{
+								"Invname" :"Invoice1",
+								"InvDate":"04/04/2018"
+								},
+								{
+								"Invname" :"Invoice2",
+								"InvDate":"04/04/2018"
+								},
+								{
+								"Invname" :"Invoice3",
+								"InvDate":"04/04/2018"
+								}],
+				"itemDetails": [{
+							"item": "600000161",
+							"material": "",
+							"TotalAmount": "",
+							"POQuantity": 2,
+							"netAmt": 100,
+							"currency":"INR",
+							"AppliedQuality": "",
+							"MaterialDesc": "",
+							"FOB": "",
+							"Frieght": "",
+							"Insurance": "",
+							"LocalQuality": "",
+							"InvName":"Inv1"
+						},
+						{
+							"item": "600000164",
+							"material": "",
+							"TotalAmount": "",
+							"POQuantity": 2,
+							"netAmt": 250,
+							"currency":"INR",
+							"AppliedQuality": "",
+							"MaterialDesc": "",
+							"FOB": "",
+							"Frieght": "",
+							"Insurance": "",
+							"LocalQuality": "",
+							"InvName":"Inv1"
+						},
+						{
+							"item": "600000222",
+							"material": "",
+							"TotalAmount": "",
+							"POQuantity": 2,
+							"netAmt": 600,
+							"currency":"INR",
+							"AppliedQuality": "",
+							"MaterialDesc": "",
+							"FOB": "",
+							"Frieght": "",
+							"Insurance": "",
+							"LocalQuality": "",
+							"InvName":"Inv1"
+						},
+						{
+							"item": "600000333",
+							"material": "",
+							"TotalAmount": "",
+							"POQuantity": 2,
+							"netAmt": 800,
+							"currency":"INR",
+							"AppliedQuality": "",
+							"MaterialDesc": "",
+							"FOB": "",
+							"Frieght": "",
+							"Insurance": "",
+							"LocalQuality": "",
+							"InvName":"Inv1"
+						}]
+						
+				},
+				{
+				"RefDoNo":"1001",
+				"RefDoNoDesc":"Material02",
+				"RefDoDate":"04/04/2018",
+				"BL":"1210",
+				"OCountry":"India",
+				"CCountry":"US",
+				"DCountry":"UK",
+				"POL":"",
+				"POD":"",
+				"PODS":"",
+				"Freight":"0.00",
+				"Flname":"Jet AirWays",
+				"itemDetails": [{
+							"item": "600000161",
+							"material": "",
+							"TotalAmount": "",
+							"POQuantity": 2,
+							"netAmt": 100,
+							"currency":"INR",
+							"AppliedQuality": "",
+							"MaterialDesc": "",
+							"FOB": "",
+							"Frieght": "",
+							"Insurance": "",
+							"LocalQuality": "",
+							"InvName":"Inv1"
+						},
+						{
+							"item": "600000164",
+							"material": "",
+							"TotalAmount": "",
+							"POQuantity": 2,
+							"netAmt": 250,
+							"currency":"INR",
+							"AppliedQuality": "",
+							"MaterialDesc": "",
+							"FOB": "",
+							"Frieght": "",
+							"Insurance": "",
+							"LocalQuality": "",
+							"InvName":"Inv1"
+						}]
+				},
+				{
+				"RefDoNo":"1002",
+				"RefDoNoDesc":"Material03",
+				"RefDoDate":"04/04/2018",
+				"BL":"1210"
+				},
+				{
+				"RefDoNo":"1003",
+				"RefDoNoDesc":"Material04",
+				"RefDoDate":"04/04/2018",
+				"BL":"1210"
+				}]
+		},
+		{
+				"NNDONo":"1140000101",
+				"NNDODate":"04/04/2019",
+				"vendorName":"Vendor2",
+				"vendorCountry":"US",
+				"clinStatus":"To be created",
+				"clin": "NO",
+				"PoDetails": [{
+				"RefDoNo":"4200000006",
+				"RefDoDate":"04/04/2018",
+				"BL":"1210",
+				"itemDetails": [{
+							"item": "600000161",
+							"material": "",
+							"TotalAmount": "",
+							"POQuantity": 2,
+							"netAmt": 100,
+							"currency":"INR",
+							"AppliedQuality": "",
+							"MaterialDesc": "",
+							"FOB": "",
+							"Frieght": "",
+							"Insurance": "",
+							"LocalQuality": "",
+							"InvName":"Inv1"
+						},
+						{
+							"item": "600000164",
+							"material": "",
+							"TotalAmount": "",
+							"POQuantity": 2,
+							"netAmt": 250,
+							"currency":"INR",
+							"AppliedQuality": "",
+							"MaterialDesc": "",
+							"FOB": "",
+							"Frieght": "",
+							"Insurance": "",
+							"LocalQuality": "",
+							"InvName":"Inv1"
+						}]
+				},
+				{
+				"RefDoNo":"001",
+				"RefDoDate":"04/04/2018",
+				"BL":"1210"
+				}]
+		},
+		{
+				"NNDONo":"1140000102",
+				"NNDODate":"04/04/2017",
+				"vendorName":"Vendor3",
+				"vendorCountry":"US",
+				"clinStatus":"To be created",
+				"clin": "NO",
+				"PoDetails": [{
+				"RefDoNo":"001",
+				"RefDoDate":"04/04/2018",
+				"BL":"1210"
+				},
+				{
+				"RefDoNo":"001",
+				"RefDoDate":"04/04/2018",
+				"BL":"1210"
+				}]
+		}
+	]
+}

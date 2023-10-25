@@ -1,0 +1,56 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:t="sap.ui.table">
+	<Dialog title="Check .be" contentWidth="86%">
+		<f:SimpleForm id="dutycompDiss">
+			<f:content>
+				<t:Table id="idInvTable" visibleRowCount="10" rows="{CheckBEdetails>/results}" title=".be Details" selectionMode="None">
+					<t:columns>
+						<t:Column id="bolnr" filterProperty="BL" width="10rem">
+							<Label text="BOE No." tooltip="BOE No."/>
+							<t:template>
+								<Text text="{CheckBEdetails>BOE_No}" tooltip="{CheckBEdetails>bolnr}" wrapping="false"/>
+							</t:template>
+						</t:Column>
+						<t:Column id="segment" filterProperty="BL" width="10rem">
+							<Label text="Segment" tooltip="Segment"/>
+							<t:template>
+								<Text text="{CheckBEdetails>segment}"/>
+							</t:template>
+						</t:Column>
+						<t:Column id="field" filterProperty="BL" width="10rem">
+							<Label text="Field" tooltip="Field"/>
+							<t:template>
+								<Text text="{CheckBEdetails>field}" tooltip="{CheckBEdetails>hawbno}" wrapping="false"/>
+							</t:template>
+						</t:Column>
+						<t:Column id="sl" filterProperty="BL" width="8rem">
+							<Label text="Serial No" tooltip="Serial No"/>
+							<t:template>
+								<Text text="{CheckBEdetails>sl}"/>
+							</t:template>
+						</t:Column>
+						<t:Column id="field_dec" filterProperty="BL" width="17rem">
+							<Label text="Field Description" tooltip="Field Description"/>
+							<t:template>
+								<Text text="{CheckBEdetails>field_dec}" tooltip="{CheckBEdetails>field_dec}" wrapping="false"/>
+							</t:template>
+						</t:Column>
+						<t:Column id="field_pos" filterProperty="BL" width="9rem">
+							<Label text="Field Position" tooltip="Field Position"/>
+							<t:template>
+								<Text text="{CheckBEdetails>field_pos}"/>
+							</t:template>
+						</t:Column>
+						<t:Column id="remarks" filterProperty="BL" width="10rem">
+							<Label text="Remarks" tooltip="Remarks"/>
+							<t:template>
+								<Text text="{CheckBEdetails>remarks}" tooltip="{CheckBEdetails>remarks}" wrapping="false"/>
+							</t:template>
+						</t:Column>
+					</t:columns>
+				</t:Table>
+			</f:content>
+		</f:SimpleForm>
+		<buttons>
+			<Button id="frg_close" press="handleCloseFrgmnt" text="Close"/></buttons>
+	</Dialog>
+</core:FragmentDefinition>

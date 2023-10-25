@@ -1,0 +1,57 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table">
+	<Dialog id="BndCrtUi" title="Create Ex Bond" contentWidth="80%" contentHeight="60%">
+		<t:Table selectionMode="None" rows="{boeItemList>/results}" id="BndItmsTbl" visibleRowCount="8">
+			<t:columns>
+				<!--width="7rem"-->
+				<t:Column >
+					<Label text="BoE Item No" width="5rem"/>
+					<t:template>
+						<Input id="ic1" value="{boeItemList>boeitno}"  enabled="false"/>
+					</t:template>
+				</t:Column>
+				<t:Column >
+					<Label text="Article Number"/>
+					<t:template>
+						<Input id="ic2" value="{boeItemList>matnr}"  enabled="false"/>
+					</t:template>
+				</t:Column>
+				<t:Column>
+					<Label text="Article Name"/>
+					<t:template>
+						<Input id="ic3" value="{boeItemList>matldes}" tooltip="{boeItemList>matldes}"  enabled="false"/>
+					</t:template>
+				</t:Column>
+				<t:Column >
+					<Label text="Total Invoice Quantity"/>
+					<t:template>
+						<Input id="ic4" value="{boeItemList>menge}"  enabled="false"/>
+					</t:template>
+				</t:Column>
+				<t:Column >
+					<Label text="Balance Invoice Quantity"/>
+					<t:template>
+						<Input id="ic5" value="{boeItemList>bal_inv_qty}"  enabled="false"/>
+					</t:template>
+				</t:Column>
+				<t:Column visible="false">
+					<Label text="Bond to Bond Qty"/>
+					<t:template>
+						<Input id="ic6" value="{boeItemList>btob_inv_qty}" enabled="true"  liveChange="CheckQtyVal"/>
+					</t:template>
+				</t:Column>
+				<t:Column visible="false">
+					<Label text="Ex Bond Qty"/>
+					<t:template>
+						<Input id="ic7" value="{boeItemList>exbnd_inv_qty}" enabled="true" liveChange="CheckQtyVal"/>
+					</t:template>
+				</t:Column>
+			</t:columns>
+		</t:Table>
+		<buttons>
+			 <Button id="CrtBndtoBnd"    type="Accept" text="Create Bond to Bond" visible="false" press="CreateBond"/>
+			  <Button id="CrtExBnd"    type="Accept" text="Create Ex Bond" visible="false" press="CreateBond"/>
+			<Button id="CancelButton" type="Accept" text="Cancel"  press="CloseWin"/>
+			
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

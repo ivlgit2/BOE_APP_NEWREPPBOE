@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Document Type Code" class="sapUiPopupWithPadding" items="{path:'BOEDOCList>/xBRIxI_SUPP_CODTYP',sorter:{path:'codtyp'}}"
+		liveChange="_handleSearchDocType" confirm="_handleValueHelpClose_Vendor" cancel="_handleValueHelpClose_Vendor">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{BOEDOCList>codtyp}" description="{BOEDOCList>coddesc}"/>
+	</SelectDialog>
+</core:FragmentDefinition>
