@@ -1204,6 +1204,10 @@ sap.ui.define([
 						onClose: function (oAction) {
 							if (oAction === sap.m.MessageBox.Action.OK) {
 								_self._CloseBusyDialog();
+								window.FlagRefresh = true;
+								window.FromDocNumber = _self.docNumber;
+								 window.BOEType = _self.docType;
+								_self.router.navTo("boelist", true);
 							}
 						}
 					});
