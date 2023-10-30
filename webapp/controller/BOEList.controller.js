@@ -23,7 +23,7 @@ sap.ui.define([
 				VaroModelData.setData(this.getOwnerComponent().getModel("BOEDOCList").getData());
 				this.getView().setModel(VaroModelData, "BOEDOCList");*/
 		},
-	_handleRouteMatched: async function (oEvent) {
+		_handleRouteMatched: async function (oEvent) {
 			this.OnChangeMode();
 			var _self = this;
 			var filter = new Array();
@@ -79,14 +79,17 @@ sap.ui.define([
 					if (window.FromDocNumber) {
 						this.SelectedSubCat = "";
 						this.byId("idBOEType").setSelectedKey(window.BOEType);
+						this.byId("sts_fltr").setSelectedKey(window.Status_val);
 						await this.OnChangeCategory();
 						this.getView().byId("idNNDOnoFrom").setValue(window.FromDocNumber);
 					}
 					this.onSearch(oEvent);
+					window.Status_val = "";
 					window.FlagRefresh = false;
 					window.FromDocNumber = "";
 					window.BOEType = "";
 				}
+
 			}
 		},
 		_OpenBusyDialog: function () {
@@ -335,7 +338,7 @@ sap.ui.define([
 		// 	}
 
 		// },//Commentd Aiswarya for adding Riji's new code
-			OnChangeCategory: async function (oEvent) {
+		OnChangeCategory: async function (oEvent) {
 			//return new Promise((resolve, reject) => {
 			this._OpenBusyDialog();
 			var getView = this.getView();
@@ -526,7 +529,7 @@ sap.ui.define([
 				}
 			});
 		},
-		
+
 		OnChangeSubCategory: function (oEvent) {
 			this.SelectedSubCat = oEvent.getSource().getSelectedKey();
 			var oModelDataRefDocs = new sap.ui.model.json.JSONModel();
@@ -960,12 +963,14 @@ sap.ui.define([
 			oEvent.getSource().getBinding("items").filter([oFilter]);
 		},
 		onSearch: function (oEvent) {
+
 			this._OpenBusyDialog();
 			var _self = this;
 			this.getView().byId('idnndoTable').setVisible(false);
 			this.getView().byId('downloadBtn').setVisible(false);
 
-			var NNDOnoFrom, NNDOnoTo, NNDODaterange, CustomsDaterange, NNDOvender, DESTPort, CUSTBoeNO, ImpCord, CFTCord, ModeShp, ETA, Ebelen, ETD, UJNo,
+			var NNDOnoFrom, NNDOnoTo, NNDODaterange, CustomsDaterange, NNDOvender, DESTPort, CUSTBoeNO, ImpCord, CFTCord, ModeShp, ETA, Ebelen,
+				ETD, UJNo,
 				CHAJNo, SHP_No, MdShp, CMPCD, CLSType, BUCord, CtryExp, DFPmnt, BOEStatus, flag =
 				1,
 				refdoccat = "";
@@ -1198,9 +1203,19 @@ sap.ui.define([
 						_self._CloseBusyDialog();
 
 						if (getData.results.length <= 0) {
+							// if (window.BOEType == "XX") { //Aiswarya
+							// 	this.getView().byId('sts_fltr').setValue("");
+							// 	this.getView().getModel("BOE_StatusModel").refresh();
+							// 	oModelData.setData(getData);
+							// 	_self.getView().setModel(oModelData, "nndoLists");
+							// 	_self.getView().byId('idnndoTable').setVisible(true);
+							// 	_self.getView().byId('downloadBtn').setVisible(true);
+							// 	_self.getView().byId("table_footer").setText("Number of Records : " + getData.results.length);
+							// } else {
 							MessageBox.error("No Matching Result(s) Found for the Filter");
 							_self.getView().byId('idnndoTable').setVisible(false);
 							_self.getView().byId('downloadBtn').setVisible(false);
+							// }
 						} else {
 							oModelData.setData(getData);
 							_self.getView().setModel(oModelData, "nndoLists");

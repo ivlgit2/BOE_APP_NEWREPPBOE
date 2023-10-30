@@ -95,34 +95,35 @@ sap.ui.define([
 						_self.S_User_Identif_Model.read("/xBRIxI_CODTYP", {
 							filters: filters,
 							success: function (getData) {
-								if (_self.boeHeaderData.doc_stat >= getData.results[0].value1) { // codtyp to value1 changed by Aiswarya
-									_self.getView().byId("idVersionlist").setVisible(true);
-									_self.getView().byId("btn_beamendfile").setVisible(true);
-									_self.getView().byId("btn_newversion").setVisible(true); //Aiswarya
-								}
+								// if (_self.boeHeaderData.doc_stat >= getData.results[0].value1) { // codtyp to value1 changed by Aiswarya
+								_self.getView().byId("idVersionlist").setVisible(true);
+								_self.getView().byId("btn_beamendfile").setVisible(true);
+								_self.getView().byId("btn_newversion").setVisible(true); //Aiswarya
+								// }
 								_self._CloseBusyDialog();
 							},
 							error: function (response) {}
 						});
 
 					} else {
-						_self.getView().byId("btn_newversion").setVisible(false);
+						_self.getView().byId("btn_newversion").setVisible(true);
+						_self.getView().byId("idVersionlist").setVisible(false);
 						// _self.getView().byId("btn_befile").setVisible(false);
 						_self.getView().byId("btn_beamendfile").setVisible(false);
-						_self.S_User_Identif_Model.read("/xBRIxI_CODTYP", { //Aiswarya
-							filters: filters,
-							success: function (getData) {
-								if (_self.boeHeaderData.doc_stat >= getData.results[0].value1) { // codtyp to value1 changed by Aiswarya
-									_self.getView().byId("btn_newversion").setVisible(true);
+						// _self.S_User_Identif_Model.read("/xBRIxI_CODTYP", { //Aiswarya
+						// 	filters: filters,
+						// 	success: function (getData) {
+						// 		if (_self.boeHeaderData.doc_stat >= getData.results[0].value1) { // codtyp to value1 changed by Aiswarya
+						// 			_self.getView().byId("btn_newversion").setVisible(true);
 
-								}
-								_self._CloseBusyDialog();
-							},
-							error: function (response) {}
-						});
+						// 		}
+						// 		_self._CloseBusyDialog();
+						// 	},
+						// 	error: function (response) {}
+						// });
 
 					}
-					// _self._CloseBusyDialog();
+					 _self._CloseBusyDialog();
 				},
 				error: function (response) {
 					// MessageBox.error("Something went wrong. Please try again later.");
@@ -1206,7 +1207,8 @@ sap.ui.define([
 								_self._CloseBusyDialog();
 								window.FlagRefresh = true;
 								window.FromDocNumber = _self.docNumber;
-								 window.BOEType = _self.docType;
+								window.BOEType = _self.docType;
+								window.Status_val="";
 								_self.router.navTo("boelist", true);
 							}
 						}
@@ -1219,6 +1221,7 @@ sap.ui.define([
 						MessageBox.error(JSON.parse(Error.responseText).error.message.value);
 					} else {
 						MessageBox.error("Error occured while creating data,Please try again later");
+							_self._CloseBusyDialog();
 					}
 
 				}
@@ -2809,6 +2812,11 @@ sap.ui.define([
 		},
 		OnChangeSwitchFun: function () {
 			this.amnd_fun(); //for IGMS//Aiswarya
+			// if (this.boeHeaderData.shptyp == "FCL") { //if else added by Aiswarya
+			// 	this.getView().byId("lastDateFree").setEnabled(false);
+			// } else {
+			// 	this.getView().byId("lastDateFree").setEnabled(true);
+			// }
 			var _self = this;
 			if (this.valChngFlag == 1) {
 				MessageBox.show(
@@ -4241,6 +4249,7 @@ sap.ui.define([
 			return jsonObj;
 		},
 		StatusChange: function (oEvent) {
+
 			this.SelVal = oEvent.mParameters.selectedItem.mProperties.key;
 			/*	if (this.SelVal == 20) {
 					this.boeHeaderData.doc_stat = "19";
@@ -4253,6 +4262,11 @@ sap.ui.define([
 			}
 			if (this.BOEStatus >= 25) {
 				this.AuthConfiguration("Display");
+			}
+			if (this.boeHeaderData.shptyp == "FCL") { //if else added by Aiswarya
+				this.getView().byId("lastDateFree").setEnabled(false);
+			} else {
+				this.getView().byId("lastDateFree").setEnabled(true);
 			}
 		},
 
@@ -7035,7 +7049,7 @@ sap.ui.define([
 										arr[i].entityset.match("xBRIxi_boe_itm_pro_be") || arr[i].entityset.match("xBRIxi_boe_itm_ctrl_be") || arr[i].entityset
 										.match(
 											"xBRIxI_RSP_BE") || arr[i].entityset.match("xBRIxI_statemet_be") || arr[i].entityset.match(
-											"xBRIxI_be_sup_doc")) {
+											"xBRIxI_be_sup_doc") || arr[i].entityset.match("xBRIxI_IIDBEHDR")) {
 										_self.RequiredItemFileds.push(arr[i].fldnam);
 										_self.RequiredItemFiledsDesc.push(arr[i].flddescr);
 										_self.RequiredItemFiledsErrorSts.push(arr[i].errstat);
