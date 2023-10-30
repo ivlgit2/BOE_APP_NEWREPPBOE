@@ -123,7 +123,7 @@ sap.ui.define([
 						// });
 
 					}
-					 _self._CloseBusyDialog();
+					_self._CloseBusyDialog();
 				},
 				error: function (response) {
 					// MessageBox.error("Something went wrong. Please try again later.");
@@ -1208,7 +1208,7 @@ sap.ui.define([
 								window.FlagRefresh = true;
 								window.FromDocNumber = _self.docNumber;
 								window.BOEType = _self.docType;
-								window.Status_val="";
+								window.Status_val = "";
 								_self.router.navTo("boelist", true);
 							}
 						}
@@ -1221,7 +1221,7 @@ sap.ui.define([
 						MessageBox.error(JSON.parse(Error.responseText).error.message.value);
 					} else {
 						MessageBox.error("Error occured while creating data,Please try again later");
-							_self._CloseBusyDialog();
+						_self._CloseBusyDialog();
 					}
 
 				}
@@ -2512,32 +2512,6 @@ sap.ui.define([
 				}
 			}
 		},
-		// onPressGoBack: function () {
-		// 	var oHistory, sPreviousHash;
-		// 	var _self = this;
-		// 	oHistory = History.getInstance();
-		// 	sPreviousHash = oHistory.getPreviousHash();
-		// 	if (this.byId("idSwtichMode").getState() == true) {
-		// 		MessageBox.confirm("Your entries will be lost if u leave this page", {
-		// 			onClose: function (oAction) {
-		// 				if (oAction == sap.m.MessageBox.Action.OK) {
-		// 					_self.byId("idSwtichMode").setState(false);
-		// 					_self.LockObjectCall();
-		// 					if (sPreviousHash !== undefined) {
-		// 						_self.ClearRequiredFileds();
-		// 						window.history.go(-1);
-		// 					} else {
-		// 						_self.ClearRequiredFileds();
-		// 						_self.router.navTo("boelist", true);
-		// 					}
-		// 				}
-		// 			}
-		// 		});
-		// 	} else {
-		// 		_self.ClearRequiredFileds();
-		// 		this.router.navTo("boelist", true);
-		// 	}
-		// },
 		onPressGoBack: function () {
 			var oHistory, sPreviousHash;
 			var _self = this;
@@ -2551,7 +2525,8 @@ sap.ui.define([
 							_self.LockObjectCall();
 							if (sPreviousHash !== undefined) {
 								_self.ClearRequiredFileds();
-								window.FlagRefresh = true;
+								// window.FlagRefresh = true;
+									window.FlagOfRefresh = true;
 								window.FromDocNumber = _self.docNumber;
 								window.BOEType = _self.docType;
 								_self.goBackFlag = true; //riji
@@ -2559,24 +2534,65 @@ sap.ui.define([
 								// window.history.go(-1);
 							} else {
 								_self.ClearRequiredFileds();
-								window.FlagRefresh = true;
+								// window.FlagRefresh = true;
+									window.FlagOfRefresh = true;
 								window.FromDocNumber = _self.docNumber;
 								window.BOEType = _self.docType;
 								_self.goBackFlag = true; //riji
 								_self.router.navTo("boelist", true);
+
 							}
 						}
 					}
 				});
 			} else {
 				_self.ClearRequiredFileds();
-				window.FlagRefresh = true;
+				// window.FlagRefresh = true;
+				window.FlagOfRefresh = true;
 				window.FromDocNumber = _self.docNumber;
 				window.BOEType = _self.docType;
-				_self.goBackFlag = true; //riji
 				this.router.navTo("boelist", true);
 			}
 		},
+		// onPressGoBack: function () {
+		// 	var oHistory, sPreviousHash;
+		// 	var _self = this;
+		// 	oHistory = History.getInstance();
+		// 	sPreviousHash = oHistory.getPreviousHash();
+		// 	if (this.byId("idSwtichMode").getState() == true) {
+		// 		MessageBox.confirm("Your entries will be lost if u leave this page", {
+		// 			onClose: function (oAction) {
+		// 				if (oAction == sap.m.MessageBox.Action.OK) {
+		// 					_self.byId("idSwtichMode").setState(false);
+		// 					_self.LockObjectCall();
+		// 					if (sPreviousHash !== undefined) {
+		// 						_self.ClearRequiredFileds();
+		// 						window.FlagRefresh = true;
+		// 						window.FromDocNumber = _self.docNumber;
+		// 						window.BOEType = _self.docType;
+		// 						_self.goBackFlag = true; //riji
+		// 						_self.router.navTo("boelist", true);
+		// 						// window.history.go(-1);
+		// 					} else {
+		// 						_self.ClearRequiredFileds();
+		// 						window.FlagRefresh = true;
+		// 						window.FromDocNumber = _self.docNumber;
+		// 						window.BOEType = _self.docType;
+		// 						_self.goBackFlag = true; //riji
+		// 						_self.router.navTo("boelist", true);
+		// 					}
+		// 				}
+		// 			}
+		// 		});
+		// 	} else {
+		// 		_self.ClearRequiredFileds();
+		// 		window.FlagRefresh = true;
+		// 		window.FromDocNumber = _self.docNumber;
+		// 		window.BOEType = _self.docType;
+		// 		_self.goBackFlag = true; //riji
+		// 		this.router.navTo("boelist", true);
+		// 	}
+		// },
 		OnChangeSwitch: function (oEvent) {
 			if (this.byId("idSwtichMode").getState() == false) {
 				this.byId("btn_reallocate").setVisible(false);

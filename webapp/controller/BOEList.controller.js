@@ -89,7 +89,20 @@ sap.ui.define([
 					window.FromDocNumber = "";
 					window.BOEType = "";
 				}
-
+				else if(window.FlagOfRefresh){
+					if (window.FromDocNumber) {
+						this.SelectedSubCat = "";
+						this.byId("idBOEType").setSelectedKey(window.BOEType);
+						// this.byId("sts_fltr").setSelectedKey(window.Status_val);
+						await this.OnChangeCategory();
+						 this.getView().byId("idNNDOnoFrom").setValue(window.FromDocNumber);
+					}
+					this.onSearch(oEvent);
+					window.Status_val = "";
+					window.FlagOfRefresh = false;
+					window.FromDocNumber = "";
+					window.BOEType = "";	
+				}
 			}
 		},
 		_OpenBusyDialog: function () {
