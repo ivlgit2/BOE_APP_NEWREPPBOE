@@ -2525,8 +2525,8 @@ sap.ui.define([
 							_self.LockObjectCall();
 							if (sPreviousHash !== undefined) {
 								_self.ClearRequiredFileds();
-								// window.FlagRefresh = true;
-									window.FlagOfRefresh = true;
+								// window.FlagRefresh = true;//Aiswarya commented
+								window.FlagOfRefresh = true;
 								window.FromDocNumber = _self.docNumber;
 								window.BOEType = _self.docType;
 								_self.goBackFlag = true; //riji
@@ -2535,7 +2535,7 @@ sap.ui.define([
 							} else {
 								_self.ClearRequiredFileds();
 								// window.FlagRefresh = true;
-									window.FlagOfRefresh = true;
+								window.FlagOfRefresh = true;//Aiswarya Added
 								window.FromDocNumber = _self.docNumber;
 								window.BOEType = _self.docType;
 								_self.goBackFlag = true; //riji
@@ -2547,8 +2547,8 @@ sap.ui.define([
 				});
 			} else {
 				_self.ClearRequiredFileds();
-				// window.FlagRefresh = true;
-				window.FlagOfRefresh = true;
+				// window.FlagRefresh = true;//Aiswarya commented
+				window.FlagOfRefresh = true;//Aiswarya Added
 				window.FromDocNumber = _self.docNumber;
 				window.BOEType = _self.docType;
 				this.router.navTo("boelist", true);
@@ -3870,7 +3870,8 @@ sap.ui.define([
 									_self.byId("idSwtichMode").setState(false);
 									_self.ClearRequiredFileds();
 									_self.LockObjectCall();
-									window.FlagRefresh = true;
+									// window.FlagRefresh = true;// commented Aiswarya Added
+									window.FlagOfRefresh = true //Aiswarya Added
 									window.FromDocNumber = _self.docNumber;
 									window.BOEType = _self.docType;
 									_self._IntialDisplayView();
@@ -3902,7 +3903,8 @@ sap.ui.define([
 								if (_self.boeHeaderData.doc_stat >= 25) {
 									_self.AuthConfiguration("Display");
 								}
-								window.FlagRefresh = true;
+								// window.FlagRefresh = true;// commented Aiswarya Added
+								window.FlagOfRefresh = true //Aiswarya Added
 								window.FromDocNumber = _self.docNumber;
 								window.BOEType = _self.docType;
 							}
