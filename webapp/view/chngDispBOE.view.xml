@@ -1100,7 +1100,7 @@
 											enabled="{= ${boeHeaderdetails>/doc_stat} >= '25'?false:${State>/enable}}"/>
 										<Label text="Last date of free days"/>
 										<DatePicker id="lastDateFree" value="{path:'boeHeaderdetails>/free_lastdt',formatter:'BOE.Formatter.formatDateandTime'}"
-											valueFormat="dd/MM/yyyy" displayFormat="dd/MM/yyyy" enabled="{= ${boeHeaderdetails>/doc_stat} >= '20'?false:${State>/enable}}"/>
+											valueFormat="dd/MM/yyyy" displayFormat="dd/MM/yyyy" enabled="{= ${boeHeaderdetails>/doc_stat} >= '10'?false:${State>/enable}}"/>
 										<!--***********Anita************-->
 										<core:Title text="Port Details"/>
 										<Label text="Mode of transport"/>

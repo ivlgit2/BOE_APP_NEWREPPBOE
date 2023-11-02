@@ -7469,7 +7469,7 @@ sap.ui.define([
 		},
 		OnPressCHA: function () {
 			var _self = this;
-			var semanticObject = "BASF_CHA";
+			var semanticObject = "CHA_CREATE_APP1";
 			this.BolNo = this.getView().byId("bolnr").getValue();
 			if (this.Chacode && this.BolNo) {
 				var RefNo = this.Chacode;
