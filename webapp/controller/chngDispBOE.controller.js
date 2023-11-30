@@ -5879,7 +5879,7 @@ sap.ui.define([
 			if (arrayOrder == 0) {
 				semanticObject = "EXIM_NNDO";
 			} else if (arrayOrder == 1) {
-				semanticObject = "EXIM_CLIN_APP";
+				semanticObject = "EXIM_CLIN_APP2";
 			} else if (arrayOrder == 2) {
 				if (RefNo != this.docNumber) {
 					semanticObject = "BOE_APP";
