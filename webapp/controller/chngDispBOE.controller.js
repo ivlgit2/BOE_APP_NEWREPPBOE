@@ -1192,6 +1192,16 @@ sap.ui.define([
 			delete json.to_WAREHOUSE_MASTER;
 			delete json.to_bndocdlrymtod;
 			delete json.to_drctportdelvery;
+			var inputDateString = json.grndat; //Aiswarya for offset error by grndat
+			if (inputDateString == null) {
+
+			} else {
+				if (inputDateString.includes('Z')) {
+					var dateWithoutZ = inputDateString.replace('Z', '');
+					json.grndat = dateWithoutZ; 
+				}else{
+				}
+			}//ended code
 			var self = this;
 			this.BoeModelV.create("/xBRIxI_IIDBOEHDR_V", json, {
 				success: function (oData, response) {
