@@ -1198,10 +1198,9 @@ sap.ui.define([
 			} else {
 				if (inputDateString.includes('Z')) {
 					var dateWithoutZ = inputDateString.replace('Z', '');
-					json.grndat = dateWithoutZ; 
-				}else{
-				}
-			}//ended code
+					json.grndat = dateWithoutZ;
+				} else {}
+			} //ended code
 			var self = this;
 			this.BoeModelV.create("/xBRIxI_IIDBOEHDR_V", json, {
 				success: function (oData, response) {
@@ -2545,7 +2544,7 @@ sap.ui.define([
 							} else {
 								_self.ClearRequiredFileds();
 								// window.FlagRefresh = true;
-								window.FlagOfRefresh = true;//Aiswarya Added
+								window.FlagOfRefresh = true; //Aiswarya Added
 								window.FromDocNumber = _self.docNumber;
 								window.BOEType = _self.docType;
 								_self.goBackFlag = true; //riji
@@ -2558,7 +2557,7 @@ sap.ui.define([
 			} else {
 				_self.ClearRequiredFileds();
 				// window.FlagRefresh = true;//Aiswarya commented
-				window.FlagOfRefresh = true;//Aiswarya Added
+				window.FlagOfRefresh = true; //Aiswarya Added
 				window.FromDocNumber = _self.docNumber;
 				window.BOEType = _self.docType;
 				this.router.navTo("boelist", true);
@@ -2688,7 +2687,7 @@ sap.ui.define([
 			} //change by nikhila
 
 			if (this.byId("idSwtichMode").getState() == false) {
-
+				this.byId("btn_beamendfile").setVisible(true); //Added by Aiswarya for hiding the amnmnt button in edit mode
 				this.byId("btn_reallocate").setVisible(false);
 				this.byId("btn_reset").setVisible(false);
 				this.byId("id_add_RSP_row").setVisible(false);
@@ -2756,6 +2755,7 @@ sap.ui.define([
 						this.AllocatedNewRow = true;
 					}
 				}
+				this.byId("btn_beamendfile").setVisible(false);//Added by Aiswarya for hiding the amnmnt button in edit mode
 				this.byId("id_add_RSP_row").setVisible(true);
 				this.byId("id_add_reimport_row").setVisible(true);
 				this.byId("id_add_SuppDoc_row").setVisible(true);
